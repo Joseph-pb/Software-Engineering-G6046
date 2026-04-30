@@ -1,0 +1,582 @@
+\chapter{Process Documentation}
+\label{chap:process}
+
+\section{Agile Process Evidence}
+
+The project followed four two-to-three week Agile sprints running from 19 February to 30 April 2026.
+Each sprint produced a working increment and closed with a retrospective that fed directly into the next sprint plan.
+The evidence for each sprint is structured as: summary data, individual contributions, user stories, requirements, design decisions, test results, and retrospective.
+
+% ---- SPRINT 1 ----
+\section{Sprint 1 --- Project Setup, Architecture \& Core Data}
+\label{sec:sprint1}
+
+\subsection*{Summary Data}
+\begin{tabular}{ll}
+\textbf{Team Number:} & 15 \\
+\textbf{Sprint Technical Lead:} & Edward (Unity setup, class diagram, JSON schema) \\
+\textbf{Start Date:} & 19 February 2026 \\
+\textbf{End Date:} & 07 March 2026 \\
+\end{tabular}
+
+\subsection*{Individual Key Contributions}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Team Member} & \textbf{Key Contribution(s)} \\ \hline
+Matt & Created initial Unity project (\texttt{matts-ui}); pushed to GitHub; established project structure \\ \hline
+Ewan & Game logic architecture; turn flow and class responsibility design \\ \hline
+Joe & Board and movement design; initial board representation planning \\ \hline
+Ethan & Board and movement design; room and corridor layout planning \\ \hline
+Ben & Card system: \texttt{Card} class, \texttt{Deck} class, \texttt{CardType} enum \\ \hline
+Edward & Data handling: designed \texttt{cards.json} external data file; \texttt{SceneController} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{User Stories}
+
+\textbf{US1 -- Shared Development Environment:} As a development team, we need a shared, runnable Unity project on GitHub so that all team members can contribute from a common baseline. (Priority: Critical)
+
+\textbf{US2 -- Card \& Deck Data Structures:} As a developer, I need card and deck data structures so that subsequent sprints can implement dealing, hand management and the murder envelope. (Priority: High)
+
+\textbf{US3 -- Scene-to-Scene Data Passing:} As a developer, I need player and AI count to persist from the menu scene to the game scene so that the game can be configured before starting. (Priority: High)
+
+\subsection*{Requirements Analysis}
+
+\textbf{Functional Requirements (Mandatory):}
+\begin{itemize}
+    \item \textbf{F1.1} A shared version-controlled repository accessible to all team members.
+    \item \textbf{F1.2} Unity (C\#) as the implementation platform.
+    \item \textbf{F1.3} \texttt{Card} stores a \texttt{CardType} enum (Person / Weapon / Room), a name string, and an integer ID.
+    \item \textbf{F1.4} \texttt{Deck} loads card names from \texttt{StreamingAssets/cards.json} via \texttt{JsonUtility}.
+    \item \textbf{F1.5} Three cards (one of each type) are selected as the murder envelope before dealing.
+    \item \textbf{F1.6} Remaining 18 cards are dealt to active players one at a time, round-robin.
+    \item \textbf{F1.7} Player count and AI count persist from menu to game scene via \texttt{SceneController}.
+\end{itemize}
+
+\textbf{Functional Requirements (Desirable):}
+\begin{itemize}
+    \item \textbf{F1.8} Character, weapon, and room names configurable via \texttt{cards.json} without recompiling.
+\end{itemize}
+
+\textbf{Non-Functional Requirements:}
+\begin{itemize}
+    \item \textbf{NF1.1} Project compiles and runs on all team members' machines by sprint close.
+    \item \textbf{NF1.2} C\# XML \texttt{///} doc comment format as the documentation standard.
+\end{itemize}
+
+\textbf{Domain Requirements:}
+\begin{itemize}
+    \item \textbf{D1.1} Exactly 6 persons, 6 weapons, and 9 rooms --- 21 cards total.
+    \item \textbf{D1.2} One person, one weapon, one room card in the murder envelope; remaining 18 dealt.
+\end{itemize}
+
+\subsection*{Design --- Class Diagram (Sprint 1 scope)}
+
+The full class diagram below covers all sprint deliverables. Key Sprint 1 classes are \texttt{Card}, \texttt{Deck}, and \texttt{SceneController}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{class_diagram.png}
+\caption{Full class diagram --- all sprints}
+\label{fig:class-diagram}
+\end{figure}
+
+\textbf{cards.json structure:}
+\begin{verbatim}
+{
+  "names":   ["Miss Scarlett","Colonel Mustard","Mrs. White",
+              "Reverend Green","Mrs. Peacock","Professor Plum"],
+  "weapons": ["Candlestick","Dagger","Lead Pipe",
+              "Revolver","Rope","Spanner"],
+  "rooms":   ["Kitchen","Ballroom","Conservatory","Billiard Room",
+              "Library","Study","Hall","Lounge","Dining Room"]
+}
+\end{verbatim}
+
+\subsection*{Test Plan and Evidence of Testing}
+
+\textbf{Unit Tests:}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|p{5cm}|p{3cm}|p{2.5cm}|l|}
+\hline
+\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\ \hline
+U1.1 & Card & Constructor sets type correctly & card.Type == Person & Person & Pass \\ \hline
+U1.2 & Card & ToString() returns name & ``Dagger'' & ``Dagger'' & Pass \\ \hline
+U1.3 & Deck & 18 cards dealt after envelope & 18 dealt, 3 in envelope & 18 dealt, 3 in envelope & Pass \\ \hline
+U1.4 & Deck & Envelope has one of each type & 1 Person + 1 Weapon + 1 Room & Confirmed & Pass \\ \hline
+U1.5 & Deck & GetCharacterHand correct & Non-empty, no duplicates & All verified & Pass \\ \hline
+U1.6 & SceneController & Singleton prevents duplicate & Second instance destroyed & Destroyed & Pass \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{Sprint Retrospective}
+
+\textbf{Did you achieve your objectives?} Yes. Unity/C\# agreed and confirmed running on every machine. Deck, Card, and CardType implemented and unit-tested. \texttt{cards.json} in place. \texttt{SceneController} persists player and AI count between scenes.
+
+\textbf{Is there a working prototype?} Not yet a playable game. The project compiles and runs cleanly; card and deck logic is functional.
+
+\textbf{What went well?}
+\begin{itemize}
+    \item Role split agreed quickly at Meeting 3 before any code was written.
+    \item JSON-driven card system designed early, giving downstream systems a fixed data contract.
+    \item Edward's early Unity spike de-risked the tool chain from day one.
+\end{itemize}
+
+\textbf{What did not go well?}
+\begin{itemize}
+    \item Repository tooling (Git LFS, Unity merge settings, PR templates) not yet in place --- caused early Sprint 2 conflicts.
+    \item Class diagram was rough at sprint close; refined in parallel with implementation.
+\end{itemize}
+
+\textbf{What will you do differently?} Front-load repository tooling at the start of Sprint 2: Git LFS, \texttt{.gitattributes}, UnityYAMLMerge, PR templates, Unity compile-check workflow.
+
+% ---- SPRINT 2 ----
+\section{Sprint 2 --- Board, Game Manager, Dice \& Scene Infrastructure}
+\label{sec:sprint2}
+
+\subsection*{Summary Data}
+\begin{tabular}{ll}
+\textbf{Team Number:} & 15 \\
+\textbf{Sprint Technical Lead:} & Ewan (GameManagerScript + GameState) \\
+\textbf{Start Date:} & 07 March 2026 \\
+\textbf{End Date:} & 21 March 2026 \\
+\end{tabular}
+
+\subsection*{Individual Key Contributions}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Team Member} & \textbf{Key Contribution(s)} \\ \hline
+Matt & \texttt{BoardScript}: 25-row $\times$ 24-col tile array; walkable, door, player-start squares; board prefab \\ \hline
+Ewan & \texttt{GameManagerScript}: singleton, deck init, token spawning, character-order turn loop; \texttt{GameState}: Playing/MainMenu/GameOver state machine \\ \hline
+Joe & \texttt{Player} base class: initial tile-position fields and structure; occupancy tracking \\ \hline
+Ethan & Board movement planning; room connectivity and door position verification \\ \hline
+Ben & \texttt{DiceRollScript}: Rigidbody physics dice; face-orientation result calculation \\ \hline
+Edward & \texttt{MenuController}: OnNewGame/QuitGame; wiring \texttt{SceneController} into menu flow \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{Requirements Analysis}
+
+\textbf{Functional Requirements (Mandatory):}
+\begin{itemize}
+    \item \textbf{F2.1} Board is a 25-row $\times$ 24-col grid. Tile encoding: 0 = wall, 1 = corridor, 2--11 = room door squares, 33 = special tile, 50--55 = player starting positions.
+    \item \textbf{F2.2} Game initialises automatically: board rendered, tokens spawned, deck with murder envelope created.
+    \item \textbf{F2.3} Game supports 2--6 players (human or AI) as configured in the menu.
+    \item \textbf{F2.4} Dice produces a result between 1 and 6 inclusive; physics-based.
+    \item \textbf{F2.5} Each player token spawns at its designated starting position.
+    \item \textbf{F2.6} Game has distinct states: Playing, MainMenu, GameOver.
+\end{itemize}
+
+\subsection*{Key Design Decision: Board Tile Encoding}
+
+\begin{table}[H]
+\centering
+\caption{BoardScript Tile Encoding}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{Value} & \textbf{Meaning} \\ \hline
+0 & Wall / impassable \\ \hline
+1 & Walkable corridor (\texttt{WALKABLE\_FLOOR}) \\ \hline
+2--11 & Room door entry square (value = room ID) \\ \hline
+33 & Special tile (\texttt{SPECIAL\_TILE}) \\ \hline
+50--55 & Player starting positions (\texttt{OCCUPIED = 50}) \\ \hline
+\end{tabular}
+\end{table}
+
+\textbf{Room ID Mapping} (\texttt{BoardScript.RoomData}):
+
+\begin{table}[H]
+\centering
+\caption{Room ID to Name Mapping }
+\begin{tabular}{|c|l|}
+\hline
+\textbf{ID} & \textbf{Room} \\ \hline
+2 & Study \\ \hline
+3 & Hall \\ \hline
+4 & Lounge \\ \hline
+5 & Library \\ \hline
+6 & Dining Room \\ \hline
+7 & Billiard Room \\ \hline
+8 & Conservatory \\ \hline
+9 & Ballroom \\ \hline
+10 & Kitchen \\ \hline
+11 & Stairwell \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Key Design Decision: Physics Dice}
+
+A Rigidbody physics dice was chosen over \texttt{Random.Range(1,7)} to provide visual authenticity (Watson Games requirement: ``fun to play, colourful interface''). \texttt{CalculateResult()} uses dot products against \texttt{Vector3.up} to identify the uppermost face. A \texttt{Random.Range(1,7)} fallback is used if no face is clearly detected.
+
+\subsection*{Test Plan and Evidence of Testing}
+
+\textbf{Unit Tests:}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|p{5cm}|p{3cm}|p{2.5cm}|l|}
+\hline
+\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\ \hline
+U2.1 & BoardScript & GetTile returns 0 for out-of-bounds coordinates & 0 & 0 & Pass \\ \hline
+U2.2 & BoardScript & GetTile returns 1 for known corridor tile (7,0) & 1 & 1 & Pass \\ \hline
+U2.3 & BoardScript & IsWalkable returns false for wall tile (value 0) & false & false & Pass \\ \hline
+U2.4 & BoardScript & IsWalkable returns true for door tile (value 2) & true & true & Pass \\ \hline
+U2.5 & DiceRollScript & CalculateResult returns value in range 1--6 for all 6 face orientations & 1 $\leq$ result $\leq$ 6 & All 6 orientations in range & Pass \\ \hline
+U2.6 & GameManagerScript & Singleton prevents duplicate instance & Second instance destroyed & Second destroyed & Pass \\ \hline
+U2.7 & GameState & SetCurrentState(GameOver) sets timeScale to 0 & timeScale = 0 & timeScale = 0 & Pass \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\textbf{System Tests:}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|p{4cm}|p{3cm}|p{3cm}|l|}
+\hline
+\textbf{Ref} & \textbf{Req} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
+S2.1 & F2.2 & Game starts and board renders & Board visible; no errors & Board renders; console clean & Pass \\ \hline
+S2.2 & F2.5 & Tokens spawn correctly & Tokens at start squares & Tokens at correct positions & Pass \\ \hline
+S2.3 & F2.4 & Dice gives valid result & Value 1--6 & 1--6 displayed & Pass \\ \hline
+S2.4 & F2.6 & Menu transitions to game scene & Scene loads with correct count & Scene transition works & Pass \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{Sprint Retrospective}
+
+\textbf{Did you achieve your objectives?} Yes. \texttt{BoardScript} with 25-row $\times$ 24-col tile encoding is in place. \texttt{GameManagerScript} handles player setup and deck initialisation. \texttt{DiceRollScript} produces physics-based rolls. Tokens spawn at designated start positions.
+
+\textbf{What went well?}
+\begin{itemize}
+    \item Repository tooling (Git LFS, \texttt{.gitattributes}, UnityYAMLMerge, PR templates, Unity compile-check) completed in week 1 of Sprint 2 --- prevented destructive merge conflicts for the remainder of the project (R2 mitigated).
+    \item Singleton patterns for \texttt{GameManagerScript}, \texttt{BoardScript}, and \texttt{GameState} made cross-script communication clean and predictable.
+    \item Matt's Unity walkthrough at Meeting 5 levelled-up backend-focused team members.
+\end{itemize}
+
+\textbf{What did not go well?}
+\begin{itemize}
+    \item Repo tooling consumed $\sim$1 week of effort not budgeted in the Gantt.
+    \item The deck refactor briefly delayed GameManager work ($\sim$2 days).
+\end{itemize}
+
+\textbf{What will you do differently?} Begin \texttt{TokenMovementScript} with a clearly bounded scope --- legal-move detection only, not A* pathfinding. Schedule the Easter break explicitly in Sprint 3 plan. Adopt \texttt{Vector2Int} as the standard board-coordinate type from day one of Sprint 3.
+
+% ---- SPRINT 3 ----
+\section{Sprint 3 --- Movement, Rooms, UI \& Detective Notebook}
+\label{sec:sprint3}
+
+\subsection*{Summary Data}
+\begin{tabular}{ll}
+\textbf{Team Number:} & 15 \\
+\textbf{Sprint Technical Lead:} & Joe (movement lead, paired with Ethan) \\
+\textbf{Start Date:} & 21 March 2026 \\
+\textbf{End Date:} & 11 April 2026 \\
+\end{tabular}
+
+\subsection*{Individual Key Contributions}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Team Member} & \textbf{Key Contribution(s)} \\ \hline
+Joe & \texttt{Player}/\texttt{HumanPlayer}/\texttt{TokenMover}: legal-move detection, keyboard input, room-entry detection \\ \hline
+Ethan & \texttt{TokenMover} support: board occupancy rules, movement edge-case testing \\ \hline
+Ewan & \texttt{Player} base class turn coroutine (\texttt{PlayTurn}); \texttt{WaitUntil} async UI patterns \\ \hline
+Matt & \texttt{UiManager} singleton; all turn-prompt/suggestion/card-reveal UI; \texttt{NotepadGrid} (\texttt{NotepadUI.cs}); \texttt{GameOverScreen} \\ \hline
+Ben & \texttt{RoomRules}: secret passage map; passage room detection \\ \hline
+Edward & \texttt{CharacterData} ScriptableObject; JSON integration verification \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{Key Design Decision: Player Class Hierarchy}
+
+The original \texttt{TokenMovementScript} concept was refactored into a clean class hierarchy that separates movement mechanics from game-logic decisions:
+
+\begin{itemize}
+    \item \textbf{\texttt{Player} (abstract MonoBehaviour):} owns all turn sequencing (\texttt{PlayTurn} coroutine), board-position state delegation, knowledge tracking (\texttt{PlayerKnowledge}), and notepad toggles. Defines abstract ``decision hook'' methods that subclasses override.
+    \item \textbf{\texttt{HumanPlayer}:} overrides decision hooks by calling \texttt{UiManager} and awaiting player input.
+    \item \textbf{\texttt{AiPlayer}:} overrides decision hooks: BFS-directed movement toward envelope-candidate rooms, knowledge-filtered suggestions, and envelope-based accusation trigger (satisfies Watson Games AI requirement).
+    \item \textbf{\texttt{TokenMover} (MonoBehaviour component on the same prefab):} handles all grid movement, room entry/exit, and world-space positioning. Exposes \texttt{GetLegalMoves()}, \texttt{Step()}, \texttt{EnterRoom()}, \texttt{LeaveThroughDoor()}.
+\end{itemize}
+
+\subsection*{Key Design Decision: Legal Move Detection (Not A* Pathfinding)}
+
+\texttt{TokenMover.GetLegalMoves()} returns the set of immediately adjacent walkable tiles (orthogonal only). The player selects direction step-by-step. This matches the Clue! rules and avoids over-engineering. A* pathfinding was cut at Meeting 6 once the irregular-board complexity was understood.
+
+\subsection*{Key Design Decision: Callback-Driven UI}
+
+\texttt{UiManager} communicates results to game logic via \texttt{System.Action} delegates; \texttt{Player} coroutines wait via \texttt{WaitUntil}. This keeps UI code and game logic separated: the turn coroutine does not need to know how the UI is implemented.
+
+\subsection*{Secret Passages (\texttt{RoomRules})}
+
+Secret passages are implemented in the static \texttt{RoomRules} class:
+\begin{itemize}
+    \item Study (ID 2) $\leftrightarrow$ Kitchen (ID 10)
+    \item Lounge (ID 4) $\leftrightarrow$ Conservatory (ID 8)
+\end{itemize}
+A player in a passage room can take \texttt{TurnAction.Passage} instead of rolling.
+
+\subsection*{NotepadGrid}
+
+\texttt{NotepadGrid} (in \texttt{NotepadUI.cs}) generates three toggle sections for characters, weapons, and rooms. Section dimensions are configured via Unity Inspector fields (\texttt{charColumns=6}, \texttt{weaponColumns=6}, \texttt{roomColumns=9}, \texttt{rows=7}). Toggle state is stored as \texttt{int[147]} in \texttt{Player.NotepadToggles} (7 rows $\times$ 6 characters + 7 rows $\times$ 6 weapons + 7 rows $\times$ 9 rooms = 147 cells).
+
+\subsection*{Sequence Diagram --- Player Turn (Movement Phase)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{sequence_movement.png}
+\caption{Sequence diagram --- player turn movement phase}
+\label{fig:seq-movement}
+\end{figure}
+
+\subsection*{Test Plan and Evidence of Testing}
+
+\textbf{Unit Tests:}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|p{5cm}|p{3cm}|p{2.5cm}|l|}
+\hline
+\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\ \hline
+U3.1 & TokenMover & Legal moves exclude impassable (value 0) tiles & 0-tile not in result & 0-tile excluded & Pass \\ \hline
+U3.2 & TokenMover & Legal moves exclude out-of-play (value $\geq$ 50) tiles & $\geq$50 tile not in result & Excluded & Pass \\ \hline
+U3.3 & RoomRules & IsRoomTile returns true for door values (2, 5, 9, 11); false for non-door values & true/false per value & All cases correct & Pass \\ \hline
+U3.4 & BoardScript & Tile resets to WALKABLE\_FLOOR (1) after token steps away & Old tile = 1 & Old tile reset to 1 & Pass \\ \hline
+U3.5 & BoardScript & RoomData maps room IDs 2--11 to correct room names & e.g.\ RoomData[2].name = ``Study'' & All 10 room names correct & Pass \\ \hline
+U3.6 & NotepadGrid & LoadData processes 147 toggles (21 columns $\times$ 7 rows) & Toggle count = 147 & 147 toggles & Pass \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\textbf{System Tests:}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|p{4cm}|p{3cm}|p{3cm}|l|}
+\hline
+\textbf{Ref} & \textbf{Req} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
+S3.1 & F3.1 & Player moves by dice value & Token moves N squares & Moves exactly N & Pass \\ \hline
+S3.2 & F3.2 & Diagonal movement blocked & Only orthogonal & Diagonal ignored & Pass \\ \hline
+S3.3 & F3.3 & Two tokens cannot share corridor & Move blocked & Blocked & Pass \\ \hline
+S3.4 & F3.4 & Room entry ends movement & Movement stops & Halts on door tile & Pass \\ \hline
+S3.5 & F3.6 & Turn UI appears on player turn & Controls visible & UiManager prompts & Pass \\ \hline
+S3.6 & F3.7 & Suggestion UI shows correct room & Room field locked & Read-only field & Pass \\ \hline
+S3.7 & F3.9 & AI moves without input & AI selects move & Turn completes & Pass \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{Sprint Retrospective}
+
+\textbf{Did you achieve your objectives?} Partially. \texttt{Player}/\texttt{HumanPlayer}/\texttt{AiPlayer}/\texttt{TokenMover}, \texttt{RoomRules}, \texttt{UiManager}, and \texttt{NotepadGrid} were delivered. A* pathfinding was scoped down to legal-move-only detection. Suggestion/Accusation was formally pushed into Sprint 4 at Meeting 8.
+
+\textbf{What went well?}
+\begin{itemize}
+    \item The Player class hierarchy cleanly separates game logic from rendering and input.
+    \item \texttt{UiManager} as single UI entry point kept GUI logic decoupled from movement and game-state code.
+    \item \texttt{Vector2Int} adopted as standard at Meeting 7, avoiding coordinate-system bugs in Sprint 4.
+\end{itemize}
+
+\textbf{What did not go well?}
+\begin{itemize}
+    \item Easter break (20 March -- 14 April) paused all development for $\sim$3.5 weeks.
+    \item Legal-move detection on the irregular Cluedo board was more complex than estimated.
+    \item Suggestion/Accusation (originally Sprint 3 work) deferred into Sprint 4, compressing that sprint.
+\end{itemize}
+
+\textbf{What will you do differently?} Focus Sprint 4 exclusively on the end-to-end game loop. Plan a single integration day mid-sprint. Accept architectural compromises where a refactor risks the deadline.
+
+% ---- SPRINT 4 ----
+\section{Sprint 4 --- Game Loop, Suggestions, Accusations \& Testing}
+\label{sec:sprint4}
+
+\subsection*{Summary Data}
+\begin{tabular}{ll}
+\textbf{Team Number:} & 15 \\
+\textbf{Sprint Technical Lead:} & Ewan (MainLoop, Suggestion, Accusation) \\
+\textbf{Start Date:} & 11 April 2026 \\
+\textbf{End Date:} & 30 April 2026 \\
+\end{tabular}
+
+\subsection*{Individual Key Contributions}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Team Member} & \textbf{Key Contribution(s)} \\ \hline
+Ewan & \texttt{GameManagerScript.MainLoop()}: full coroutine turn cycle; \texttt{RunSuggestion()}: clockwise card-showing; \texttt{ResolveAccusation()} \\ \hline
+Ben & \texttt{AiPlayer} decision methods: BFS-directed move, knowledge-filtered suggestion, envelope-based accusation \\ \hline
+Joe & \texttt{Player.DoSuggestionThenAccusation()}: room-entry suggestion + accusation follow-up \\ \hline
+Ethan & Movement edge cases; room entry integration testing; large-branch merge \\ \hline
+Matt & \texttt{GameOverScreen}: restart / return-to-menu; final UI polish \\ \hline
+Edward & \texttt{MenuController} input wiring; \texttt{PlayerKnowledge} integration; documentation \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{Requirements Analysis}
+
+\textbf{Functional Requirements (Mandatory):}
+\begin{itemize}
+    \item \textbf{F4.1} Turn order: Miss Scarlett, Colonel Mustard, Mrs. White, Reverend Green, Mrs. Peacock, Professor Plum.
+    \item \textbf{F4.2} Suggestion only available when token is in a room.
+    \item \textbf{F4.3} Suggestion room is fixed as the player's current room.
+    \item \textbf{F4.4} Clockwise card-showing round: each player reveals one matching card if held; first match ends the round.
+    \item \textbf{F4.5} Suggested character token is moved into the suggestion room (\texttt{target.Mover.EnterRoom()}).
+    \item \textbf{F4.6} Accusation checks three chosen cards against the murder envelope (\texttt{Deck.GetEnvelope()}).
+    \item \textbf{F4.7} Correct accusation triggers win/game-over state.
+    \item \textbf{F4.8} Incorrect accusation eliminates the player; their hand remains for suggestion responses.
+    \item \textbf{F4.9} AI player completes a full turn without human input.
+\end{itemize}
+
+\subsection*{Key Design Decision: Suggestion and Accusation in GameManagerScript}
+
+The original design called for standalone \texttt{Suggestion} and \texttt{Accusation} classes. Under time pressure in Sprint 4, both were implemented directly in \texttt{GameManagerScript}:
+
+\begin{itemize}
+    \item \texttt{GameManagerScript.RunSuggestion()} --- coroutine that iterates players clockwise, prompts card reveal, updates \texttt{PlayerKnowledge}, logs refutations, and calls \texttt{UiManager.ShowRevealedCard()} for private display.
+    \item \texttt{GameManagerScript.ResolveAccusation()} --- checks accusation against \texttt{Deck.GetEnvelope()}, calls \texttt{EndGame()} on correct or sets \texttt{player.HasLost = true} on incorrect.
+\end{itemize}
+
+This is a known architectural deviation (KI-4), documented transparently.
+
+\subsection*{Key Design Decision: PlayerKnowledge}
+
+A \texttt{PlayerKnowledge} class was added to track per-player card inferences:
+\begin{itemize}
+    \item \textbf{Held facts:} cards known to be held by a specific player (from \texttt{NoteShown} or own hand).
+    \item \textbf{NotHeld facts:} cards known not held by a player (from \texttt{NoteCannotRefute}).
+    \item \textbf{Disjunctions:} a player refuted \textit{something}, but the observer didn't see which card (\texttt{NoteRefutedSomething}).
+    \item \textbf{Envelope candidates:} cards not definitively held by anyone (\texttt{GetEnvelopeCandidates()}).
+\end{itemize}
+
+\texttt{PlayerKnowledge} is wired into \texttt{GameManagerScript.RunSuggestion()} and exposed to \texttt{AiPlayer} for future deduction logic.
+
+\subsection*{Turn State Machine}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{state_turn.png}
+\caption{Turn state machine}
+\label{fig:state-turn}
+\end{figure}
+
+\subsection*{Sequence Diagram --- Suggestion Resolution}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{sequence_suggestion.png}
+\caption{Sequence diagram --- suggestion resolution}
+\label{fig:seq-suggestion}
+\end{figure}
+
+\subsection*{Test Plan and Evidence of Testing}
+
+\textbf{Unit Tests:}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|p{5cm}|p{3cm}|p{2.5cm}|l|}
+\hline
+\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\ \hline
+U4.1 & GameManagerScript & Turn order cycles Scarlett$\to$Mustard$\to$White (canonical character order) & Correct order & Correct order & Pass \\ \hline
+U4.2 & GameManagerScript & Player with HasLost=true is excluded from active turn order & Mustard absent from order & Mustard absent & Pass \\ \hline
+U4.3 & GameManagerScript & CheckAccusation returns true when all three cards match the envelope & true & true & Pass \\ \hline
+U4.4 & GameManagerScript & CheckAccusation returns false for wrong guess; accuser HasLost set true & false; HasLost = true & Confirmed & Pass \\ \hline
+U4.5 & GameManagerScript & RunSuggestion: refuter's revealed card recorded as Held in suggester's PlayerKnowledge & Knowledge.Status = Held & Held confirmed & Pass \\ \hline
+U4.6 & GameManagerScript & RunSuggestion: SuggestionLog records no-refute when no player holds matching cards & log contains ``could not refute'' & Confirmed & Pass \\ \hline
+U4.7 & GameManagerScript & RunSuggestion moves suggested character's CurrentRoomID to suggestion room & CurrentRoomID = targetRoom & \textbf{Failing} --- EnterRoom dependency on BoardScript.Instance in Play Mode & \textbf{Fail} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+% TODO (system testing): The rows below are requirements-derived test cases.
+% Actual output and Pass/Fail columns must be filled in after manual play-through.
+% Run the game in the Unity Editor with a mix of human and AI players and record
+% observed behaviour. See report/Testing/system_testing.md for the full test
+% script (inputs, expected outputs, tester name, commit hash, date).
+\textbf{System Tests:}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|p{4cm}|p{3cm}|p{3cm}|l|}
+\hline
+\textbf{Ref} & \textbf{Req} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
+S4.1 & F4.1 & Miss Scarlett goes first & Turn 1 = Scarlett & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.2 & F4.1 & Turn order cycles correctly & P1$\to$P2$\to$P3$\to$P1 & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.3 & F4.2 & Suggestion unavailable on corridor & No suggestion prompt & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.4 & F4.3 & Current room locked in suggestion UI & Room = current room; read-only & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.5 & F4.4 & Clockwise card show; first match stops round & P2 reveals to P1; P3 not asked & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.6 & F4.4 & No card shown if nobody holds matching cards & No reveal; round ends & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.7 & F4.5 & Suggested character token moves to suggestion room & Token in room & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.8 & F4.7 & Correct accusation shows win screen & Win screen displayed & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.9 & F4.8 & Wrong accusation eliminates player; they still respond to suggestions & Player skipped; still refutes & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.10 & F4.8 & Eliminated players are skipped in turn order & Eliminated player gets no turn & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.11 & F4.9 & AI completes a full turn without human input & No hang; completes in $<$5 s & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.12 & NF4.2 & Card reveal is private; other players cannot see & Private modal; others unaware & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{Known Issues / Deficiencies}
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{5cm}|l|p{3.5cm}|}
+\hline
+\textbf{ID} & \textbf{Description} & \textbf{Severity} & \textbf{Planned Fix} \\ \hline
+KI-1 & \texttt{GameManagerScript.Awake()} falls back to \texttt{playerCount=4, aiCount=2} if \texttt{SceneController} is null. Player/AI counts are adjusted via \texttt{StepHumans(int)}/\texttt{StepAI(int)} in \texttt{MenuController} and written to \texttt{SceneController} in \texttt{OnBegin()}, but the fallback path remains. & Medium & Ensure \texttt{SceneController} is always initialised before \texttt{GameManagerScript.Awake()} \\ \hline
+KI-2 & \texttt{SpawnTokens()} comment notes issue with fewer than 6 players; AI player selection uses random shuffle across all 6 slots & Medium & Fix loop condition to handle $<$6 players cleanly \\ \hline
+KI-3 & \texttt{AiPlayer} uses BFS-directed movement and knowledge-filtered suggestions; \texttt{ChooseAccusationFollowUp} returns true when envelope candidates narrow to exactly 3. Full notebook-based deduction not implemented. & Low & Extend \texttt{PlayerKnowledge} inference to eliminate cards more aggressively \\ \hline
+KI-4 & Suggestion/Accusation lives inside \texttt{GameManagerScript} not standalone classes & Low (architectural) & Extract into \texttt{Suggestion}/\texttt{Accusation} classes; add unit tests \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{Sprint Retrospective}
+
+\textbf{Did you achieve your objectives?} Largely yes. The game loop is integrated end-to-end via `GameManagerScript.MainLoop()`. Suggestion with clockwise card-showing is implemented (`ResolveSuggestion`).
+          Accusation evaluation and win / elimination logic both work as specified. The AI player takes full turns without human input. Two issues carry into the known deficiencies log: Suggestion and Accusation logic lives inside `GameManagerScript` and `UiManager` rather than as standalone classes (KI-4, architectural), and system testing identified that suggested character and weapon tokens do not fully move to the suggestion room under all conditions (KI-5, functional). Both are documented in section 6 above.
+
+\textbf{Is there a working prototype?} Yes. A full game of Clue! can be played: players take turns, roll dice, move, enter rooms, make suggestions, see cards revealed privately, and make accusations.
+
+\textbf{What went well?}
+\begin{itemize}
+    \item Every Sprint 4 critical-path objective shipped.
+    \item Large merge on 18 April consolidated all feature branches without losing work.
+    \item \texttt{PlayerKnowledge} class provides a clean foundation for future AI deduction.
+    \item Sprint 4 testing documented all known limitations rather than hiding them.
+\end{itemize}
+
+\textbf{What did not go well?}
+\begin{itemize}
+    \item Suggestion/Accusation could not be extracted into standalone classes (KI-4).
+    \item AI player movement and suggestions are functional (BFS navigation, knowledge-filtered suggestions) but full notebook-based deduction was not implemented (KI-3).
+    \item Matt missed Meetings 8 and 9, requiring async communication for UI integration decisions.
+\end{itemize}
+
+\textbf{What would you do differently?}
+\begin{itemize}
+    \item Stub the end-to-end game loop in Sprint 1 so that all systems have a spine to plug into.
+    \item Treat the Easter break as a Sprint 3 deadline rather than a transparent pause.
+    \item Allocate explicit documentation time in each sprint alongside code.
+    \item Front-load all repository tooling on day one of Sprint 1.
+\end{itemize}
+
+\newpage

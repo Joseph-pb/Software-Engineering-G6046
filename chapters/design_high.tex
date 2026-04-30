@@ -1,0 +1,106 @@
+\chapter{Design Documentation --- High Level}
+\label{chap:design-high}
+
+\section{System Overview}
+
+The Clue! simulation is a desktop game implemented in Unity (C\#). The table below identifies the major subsystems, their key classes, and responsibilities.
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|p{7cm}|}
+\hline
+\textbf{Subsystem} & \textbf{Key Classes} & \textbf{Responsibility} \\ \hline
+Scene Management & \texttt{SceneController}, \texttt{MenuController} & Persists player/AI count between menu and game scenes \\ \hline
+Game State & \texttt{GameState} & Tracks Playing / MainMenu / GameOver; controls timescale \\ \hline
+Board & \texttt{BoardScript} & 25-row $\times$ 24-col tile grid; single source of truth for occupancy and walkability \\ \hline
+Card System & \texttt{Card}, \texttt{Deck} & Loads cards from JSON; creates murder envelope; deals hands \\ \hline
+Character Data & \texttt{CharacterData} & ScriptableObject storing character metadata (name, ID) \\ \hline
+Game Orchestration & \texttt{GameManagerScript} & Spawns tokens; runs \texttt{MainLoop} coroutine; resolves suggestions and accusations \\ \hline
+Player Turn (Human) & \texttt{HumanPlayer} & Waits for UI input via UiManager callbacks \\ \hline
+Player Turn (AI) & \texttt{AiPlayer} & Uses BFS-directed movement and knowledge-filtered suggestions; accuses when envelope candidates narrow to 3 \\ \hline
+Player Base & \texttt{Player} & Abstract base: turn sequencing, knowledge tracking, notepad state \\ \hline
+Movement & \texttt{TokenMover} & Grid movement, room entry/exit, world-space positioning \\ \hline
+Rooms / Passages & \texttt{RoomRules} & Static class: room tile detection, secret passage map \\ \hline
+Dice & \texttt{DiceRollScript} & Physics Rigidbody dice; result by face orientation \\ \hline
+UI & \texttt{UiManager} & Central singleton: all player-facing prompts, suggestion/accusation panels, card reveal \\ \hline
+Notebook & \texttt{NotepadGrid} & 147-cell toggle grid for detective deduction \\ \hline
+Card Knowledge & \texttt{PlayerKnowledge} & Per-player card inference (Held / NotHeld / disjunctions) \\ \hline
+End Screen & \texttt{GameOverScreen} & Restart / return-to-menu on game conclusion \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\section{Use Cases}
+
+\textbf{Actors:} Human Player, AI Player.
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Use Case} & \textbf{Human Player} & \textbf{AI Player} \\ \hline
+Configure game (human/AI counts) & \checkmark & --- \\ \hline
+Roll dice & \checkmark & \checkmark (automated) \\ \hline
+Move token step-by-step & \checkmark (arrow keys) & \checkmark (BFS-directed toward target room) \\ \hline
+Use secret passage & \checkmark & \checkmark (takes passage only if it leads to target room) \\ \hline
+Enter room & \checkmark & \checkmark \\ \hline
+Make suggestion & \checkmark & \checkmark (knowledge-filtered char + weapon) \\ \hline
+Respond to suggestion (show card) & \checkmark & \checkmark (first matching card) \\ \hline
+View hand of cards & \checkmark & --- \\ \hline
+Open detective notebook & \checkmark & --- \\ \hline
+Make accusation & \checkmark & \checkmark (when envelope candidates == 3) \\ \hline
+Restart game / return to menu & \checkmark & --- \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\noindent\textit{Note: ``Make Suggestion'' \texttt{<<include>>} ``Respond to Suggestion''; ``Make Accusation'' ends the game (correct) or eliminates the player (incorrect).}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{use_case_diagram.png}
+\caption{Use case diagram --- Human Player and AI Player}
+\label{fig:use-case}
+\end{figure}
+
+\section{Component Interaction Diagram}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{component_diagram.png}
+\caption{Component interaction diagram}
+\label{fig:component-diagram}
+\end{figure}
+
+\section{Key Design Decisions}
+
+\subsection*{4.1 Unity + C\# (Technology Choice)}
+Agreed unanimously at Meeting 1. Unity provides built-in 3D rendering, Rigidbody physics (used for the dice), and cross-platform Mac/PC builds. The team had limited prior Unity experience and saw it as a valuable learning opportunity.
+
+\subsection*{4.2 Singleton Pattern (Manager Classes)}
+\texttt{GameManagerScript}, \texttt{BoardScript}, \texttt{UiManager}, \texttt{GameState}, and \texttt{SceneController} all use the Unity Singleton pattern. These represent unique global state that any script may need to access. The singleton prevents duplicate instances and provides a predictable, globally accessible reference.
+
+\subsection*{4.3 Data-Driven Card System}
+All card names (characters, weapons, rooms) loaded from \texttt{StreamingAssets/cards.json} via \texttt{JsonUtility}. Watson Games explicitly require the game be ``easily customised.'' Changing characters or weapons requires only editing this JSON file --- no code changes.
+
+\subsection*{4.4 Physics-Based Dice}
+\texttt{DiceRollScript} uses a Rigidbody simulation rather than \texttt{Random.Range}. Watson Games require a ``fun to play and colourful interface.'' A physical dice provides visual authenticity. Face orientation is detected by dot product against \texttt{Vector3.up}; a \texttt{Random.Range(1,7)} fallback handles any degenerate result.
+
+\subsection*{4.5 Callback-Driven UI (Action Delegates)}
+\texttt{UiManager} communicates results to game logic via \texttt{System.Action} callbacks; \texttt{Player} coroutines wait via \texttt{WaitUntil}. Keeps UI code and game logic independent.
+
+\subsection*{4.6 AI Player --- Random Decision-Making with Knowledge Scaffold}
+\texttt{AiPlayer} uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestion generation. \texttt{ChooseAccusationFollowUp} returns true when the envelope has been narrowed to exactly 3 candidates. A \texttt{PlayerKnowledge} instance is maintained for each AI player and updated on every suggestion round, providing a clean foundation for further deduction-based improvements without requiring a rewrite.
+
+\section{Activity Diagram --- Full Game Flow}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{activity_game_flow.png}
+\caption{Activity diagram --- full game flow}
+\label{fig:activity-game-flow}
+\end{figure}
+
+\newpage

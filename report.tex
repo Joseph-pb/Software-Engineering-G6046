@@ -1,0 +1,53 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{14.5pt}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tocloft}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{amssymb}
+
+\geometry{margin=1in}
+\graphicspath{{images/}}
+
+% Define colors for marking scheme
+\definecolor{darkblue}{HTML}{1f4788}
+\definecolor{lightblue}{HTML}{e8f1f8}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Software Engineering G6046}
+\lhead{Group Coursework Report}
+\cfoot{\thepage}
+
+% Title Page
+\title{\textbf{Software Engineering G6046} \\ \Large Clue!: Coursework Report}
+\author{Group 15}
+\date{May 1, 2026}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+\input{chapters/marking_scheme}
+\input{chapters/planning}
+\input{chapters/process}
+\input{chapters/design_high}
+\input{chapters/design_low}
+\input{chapters/software}
+\input{chapters/project_overview}
+\input{chapters/source_documentation}
+
+\end{document}

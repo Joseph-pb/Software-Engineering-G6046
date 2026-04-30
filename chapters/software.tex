@@ -1,0 +1,236 @@
+\chapter{Software Documentation}
+\label{chap:software}
+
+\section{Code Documentation Standard}
+
+The codebase is implemented in C\# under Unity. All custom scripts adopt the C\#
+XML documentation comment standard (triple-slash \texttt{///}) --- the idiomatic
+equivalent of JavaDoc for the .NET ecosystem. This standard was chosen because
+it is the native format consumed by Visual Studio, Visual Studio Code, and
+JetBrains Rider for IntelliSense / hover tooltips, and because it can be
+mechanically extracted into static HTML by tools such as DocFX or Sandcastle
+without any further annotation work.
+
+Every public type, public/internal member, and non-trivial private helper
+carries at minimum a \texttt{<summary>} tag. Methods that take parameters or
+return a meaningful value additionally carry \texttt{<param>} and
+\texttt{<returns>} tags. Cross-references between related types use the
+\texttt{<see cref="...">} tag so that IntelliSense renders clickable links.
+
+\subsection*{Coverage}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|r|}
+\hline
+\textbf{Metric} & \textbf{Count} \\ \hline
+Custom C\# scripts in repository & 33 \\ \hline
+Gameplay scripts (\texttt{Main Game/Scripts/}) & 22 \\ \hline
+Menu / settings scripts (\texttt{Main Game/Menu/}) & 6 \\ \hline
+Editor tooling (\texttt{Editor/}) & 1 \\ \hline
+EditMode unit-test scripts (\texttt{Tests/EditMode/}) & 4 \\ \hline
+Total \texttt{<summary>} doc tags & 209 \\ \hline
+Total \texttt{<param>} / \texttt{<returns>} tags & 141 \\ \hline
+\end{tabular}
+\caption{XML documentation coverage across the custom codebase}
+\end{table}
+
+The XML documentation pass was committed in commit \texttt{b720a97}
+(``Add XML documentation to all 29 custom C\# scripts''); the four test
+scripts were documented inline as they were written. Unity-generated assets
+(\texttt{TextMesh Pro}, \texttt{InputSystem\_Actions}, \texttt{OutlineEffect},
+\texttt{UI Toolkit}, \texttt{Settings}) are excluded --- they are third-party
+boilerplate, not authored team code.
+
+\section{Documentation Conventions}
+
+\subsection*{Class-level summaries}
+
+Every class begins with a multi-line \texttt{<summary>} block describing its
+single responsibility and any collaborators. For example, \texttt{PlayerKnowledge}
+begins:
+
+\begin{verbatim}
+/// <summary>
+/// Per-player inference about who holds which card. Populated by
+/// GameManagerScript during suggestion resolution. Read by AiPlayer; in
+/// a future PR, an "auto-fill notepad" toggle will project this into the
+/// human's NotepadGrid.
+///
+/// Conceptually three tables of facts about the cards this player has
+/// observed:
+///   1. Definitely held by X       (saw X reveal it, or it's in own hand).
+///   2. Definitely NOT held by X   (X passed on a suggestion containing
+///                                  the card).
+///   3. Held by exactly one of {X, cards}  (X refuted a suggestion but you
+///                                          didn't see which card).
+/// </summary>
+public sealed class PlayerKnowledge { ... }
+\end{verbatim}
+
+\subsection*{Method-level documentation}
+
+Public methods document their summary, parameters, and return value. The
+following excerpt from \texttt{RoomRules.cs} is representative:
+
+\begin{verbatim}
+/// <summary>
+/// Returns the room ID at the other end of the secret passage from
+/// <paramref name="roomID"/>, or -1 if no passage exists.
+/// </summary>
+/// <param name="roomID">The room to travel from.</param>
+/// <returns>Destination room ID, or -1.</returns>
+public static int GetPassageDestination(int roomID) =>
+    PassageMap.TryGetValue(roomID, out int d) ? d : -1;
+\end{verbatim}
+
+\subsection*{Enum and struct documentation}
+
+Enum members and struct fields are documented individually so IntelliSense
+explains each option at the call site. From \texttt{Player.cs}:
+
+\begin{verbatim}
+/// <summary>Actions available at the start of a turn (before or instead
+/// of rolling).</summary>
+public enum TurnAction
+{
+    /// <summary>Roll the dice and move.</summary>
+    Roll,
+    /// <summary>Use a secret passage to an adjacent room.</summary>
+    Passage,
+    /// <summary>Make a suggestion without rolling (only valid when already
+    /// in a room).</summary>
+    Suggest
+}
+\end{verbatim}
+
+\subsection*{Inline comments}
+
+Inline (\texttt{//}) comments are reserved for non-obvious algorithmic steps,
+Unity-specific gotchas (e.g.\ Edit Mode vs.\ Play Mode coroutine constraints in
+the test helpers), and rationale that would otherwise be lost. Self-explanatory
+code is left uncommented to avoid noise.
+
+\section{Documentation Tooling}
+
+\begin{itemize}
+    \item \textbf{IDE integration:} Visual Studio, VS Code (with the C\# Dev
+    Kit), and JetBrains Rider all surface XML doc comments as hover tooltips
+    and parameter hints. No separate build step is required --- every
+    contributor sees the documentation while editing.
+    \item \textbf{Static HTML generation:} the comments are compatible with
+    DocFX (\texttt{docfx.exe}) and Sandcastle, which can produce a browsable
+    HTML reference site directly from the source tree. This was not run for
+    submission but the source is ready for it.
+    \item \textbf{Compiler-checked references:} \texttt{<see cref="...">} tags
+    are validated by the C\# compiler when the project is built with
+    \texttt{/doc} enabled, catching stale references during refactors.
+    \item \textbf{Project-level documentation:} architectural narrative,
+    sprint records, and design diagrams live in the \texttt{report/} tree
+    (Markdown and PlantUML sources, rendered into this report).
+\end{itemize}
+
+\section{Codebase Structure}
+
+\subsection*{Repository layout}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{6.2cm}|p{8cm}|}
+\hline
+\textbf{Path} & \textbf{Contents} \\ \hline
+\texttt{README.md} & Setup guide: cloning, opening the project in Unity, Smart
+Merge configuration, commit / PR workflow conventions \\ \hline
+\texttt{UIstuff.md} & UI development notes for menu / in-game panels \\ \hline
+\texttt{matts-ui/} & Unity project root (open this folder in Unity Hub) \\ \hline
+\texttt{matts-ui/Assets/Main Game/} & Game scene, prefabs, scripts \\ \hline
+\texttt{matts-ui/Assets/Main Game/Scripts/} & 22 gameplay scripts (board,
+deck, player, AI, UI manager, etc.) \\ \hline
+\texttt{matts-ui/Assets/Main Game/Menu/} & 6 menu scripts (controller,
+settings, stepper, modal, room plaque) \\ \hline
+\texttt{matts-ui/Assets/Editor/} & Editor-only tooling
+(\texttt{ProjectFileGenerator.cs}) \\ \hline
+\texttt{matts-ui/Assets/Tests/EditMode/} & Sprint-aligned unit tests
+(\texttt{Sprint1Tests.cs}\,--\,\texttt{Sprint4Tests.cs}) \\ \hline
+\texttt{matts-ui/Assets/StreamingAssets/} & \texttt{cards.json} --- runtime
+data contract for the deck \\ \hline
+\texttt{report/} & All design / planning / testing / meeting documentation
+sources (Markdown + PlantUML) \\ \hline
+\texttt{report/overleaf/} & LaTeX source of this submission report \\ \hline
+\end{tabular}
+\caption{Repository layout and documentation locations}
+\end{table}
+
+\subsection*{Gameplay scripts at a glance}
+
+Each script in \texttt{Main Game/Scripts/} owns a single responsibility,
+documented in its class summary:
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Script} & \textbf{Responsibility (from class \texttt{<summary>})} \\ \hline
+\texttt{GameManagerScript.cs} & Central game controller: main turn loop, player
+spawning, weapon placement, suggestion / accusation resolution \\ \hline
+\texttt{BoardScript.cs} & 25$\times$24 tile grid; single source of truth for
+walkability and occupancy \\ \hline
+\texttt{DeckScript.cs} & Loads cards from \texttt{cards.json}, builds the
+murder envelope, deals hands \\ \hline
+\texttt{Player.cs} & Abstract base: turn state machine and decision hooks \\ \hline
+\texttt{HumanPlayer.cs} & Player subclass: routes decisions through
+\texttt{UiManager} \\ \hline
+\texttt{AiPlayer.cs} & Player subclass: BFS-directed movement and
+knowledge-filtered suggestions \\ \hline
+\texttt{TokenMover.cs} & Grid movement, room entry / exit, world-space
+positioning \\ \hline
+\texttt{RoomRules.cs} & Static helper: secret-passage map and door-tile
+detection \\ \hline
+\texttt{DiceRollScript.cs} & Rigidbody dice; result decoded from face
+orientation \\ \hline
+\texttt{UiManager.cs} & Singleton entry point for every player-facing prompt \\ \hline
+\texttt{NotepadUI.cs} & 147-cell detective-notebook toggle grid \\ \hline
+\texttt{PlayerKnowledge.cs} & Per-player card inference (Held / NotHeld /
+disjunctions) \\ \hline
+\texttt{GameStateScript.cs} & Playing / MainMenu / GameOver state machine \\ \hline
+\texttt{SceneController.cs} & Persists player and AI count between menu and
+game scenes \\ \hline
+\texttt{CharacterData.cs} & ScriptableObject: per-character static metadata \\ \hline
+\texttt{GameOverScreen.cs} & End-of-game restart / return-to-menu UI \\ \hline
+\texttt{CameraFollow.cs} & Smooth camera follow for the active player \\ \hline
+\texttt{BoardThemer.cs} / \texttt{Theme Changer.cs} & Runtime board / menu
+theme switching \\ \hline
+\texttt{BakeData.cs} / \texttt{BakedNavData.cs} & Pre-computed navigation data
+for AI BFS \\ \hline
+\texttt{DiceDebugLogger.cs} & Editor-only diagnostic logger for dice physics \\ \hline
+\end{tabular}%
+}
+\caption{Gameplay scripts and their documented responsibilities}
+\end{table}
+
+\section{Setup and Usage Guide}
+
+The repository \texttt{README.md} is the canonical setup document. The key
+steps it covers are:
+
+\begin{enumerate}
+    \item Clone the repository to a known location.
+    \item Install the Unity version pinned in the project (Unity Hub will
+    prompt if a different version is opened).
+    \item In Unity Hub, click \textit{Add} $\to$ select the \texttt{matts-ui}
+    folder.
+    \item Open \textit{Assets / Main Game / Main Game} (the main scene) and
+    press \textit{Play}.
+    \item Configure \texttt{git config merge.unityyamlmerge.driver} once per
+    machine using the OS-specific command in \texttt{README.md} ---
+    this enables Unity Smart Merge for \texttt{.unity} and \texttt{.prefab}
+    files (R2 mitigation, see \S\ref{sec:sprint2}).
+\end{enumerate}
+
+\noindent The README additionally documents the team's commit-message
+expectations (testing notes, design rationale, collaboration evidence, risk
+assessment, task attribution) and the branching strategy (feature branches per
+sprint, merged via reviewed pull requests).
+
+\newpage

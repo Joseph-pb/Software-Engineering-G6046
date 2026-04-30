@@ -1,0 +1,213 @@
+\chapter{Design Documentation --- Low Level}
+\label{chap:design-low}
+
+\section{Class Diagram}
+
+The full class diagram below shows all major classes, inheritance relationships, aggregation, and key public interfaces. The diagram reflects the codebase as delivered on the \texttt{guessing} branch.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{class_diagram.png}
+\caption{Full class diagram --- all sprints (see also Figure \ref{fig:class-diagram} in Process section)}
+\label{fig:class-diagram-low}
+\end{figure}
+
+% TODO: Verify the class_diagram.png matches the guessing branch class hierarchy below.
+% The diagram MUST show:
+%  - Player (abstract MonoBehaviour) <- HumanPlayer, AiPlayer (sealed)
+%  - Player has-a TokenMover (composition), PlayerKnowledge (composition), CharacterData (association)
+%  - GameManagerScript (Singleton) 1--* Player; holds Deck reference; runs RunSuggestion/ResolveAccusation
+%  - BoardScript (Singleton) holds int[25,24] boardArray and static RoomData dictionary
+%  - Deck (static state class) -> Card (pure C# data class), CardType (enum)
+%  - RoomRules (static utility class)
+%  - UiManager (Singleton MonoBehaviour)
+%  - DiceRollScript, NotepadGrid, GameOverScreen, MenuController, SceneController, GameState (class in GameStateScript.cs)
+% If the current class_diagram.png was drawn before the Player/HumanPlayer/AiPlayer refactor
+% (which replaced TokenMovementScript), redraw it to reflect the actual guessing branch structure.
+
+\subsection*{Player Class Hierarchy}
+
+The central inheritance hierarchy separates game-logic sequencing from input method:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|p{7.5cm}|}
+\hline
+\textbf{Class} & \textbf{Kind} & \textbf{Role} \\ \hline
+\texttt{Player} & abstract MonoBehaviour & Owns all turn sequencing (\texttt{PlayTurn}), board-position delegation, knowledge tracking (\texttt{PlayerKnowledge}), and 147-cell notepad state. Declares abstract ``decision hook'' methods. \\ \hline
+\texttt{HumanPlayer} & sealed : Player & Overrides every decision hook by calling \texttt{UiManager} and awaiting a callback via \texttt{WaitUntil}. \\ \hline
+\texttt{AiPlayer} & sealed : Player & Overrides decision hooks: BFS-directed movement toward target room, knowledge-filtered suggestions, envelope-based accusation trigger. Comments describe further upgrade paths. \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Key Public Decision Hook Signatures (\texttt{Player})}
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Method (abstract / public)} & \textbf{When called} \\ \hline
+\texttt{ChooseTurnStartAction(canPassage, canSuggest, Action<TurnAction>)} & At turn start: roll / take passage / suggest-in-place \\ \hline
+\texttt{ChooseMove(legalMoves, canEnterRoom, canUseSpecial, Action<Vector2Int,bool,bool>)} & Each movement step while walking \\ \hline
+\texttt{ChooseDoor(doors, Action<Vector2Int>)} & When leaving a multi-door room \\ \hline
+\texttt{ChooseSuggestion(roomID, chars, weapons, Action<SuggestionInput>)} & When the player must produce a suggestion \\ \hline
+\texttt{ChooseAccusationFollowUp(Action<bool>)} & Immediately after suggestion resolves \\ \hline
+\texttt{ChooseAccusation(roomID, Action<AccusationInput>)} & When \texttt{ChooseAccusationFollowUp} returned true \\ \hline
+\texttt{ChooseCardToReveal(matches, Action<Card>)} & When refuting another player's suggestion \\ \hline
+\texttt{ChooseRoomAction(canLeave, Action<RoomAction>)} & When in a room: stay and suggest in place, or leave through a door \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\section{Key Class APIs}
+
+\subsection*{\texttt{GameManagerScript} (Singleton)}
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{9cm}|}
+\hline
+\textbf{Method} & \textbf{Description} \\ \hline
+\texttt{CheckAccusation(character, weapon, room) : bool} & Checks three named cards against \texttt{Deck.GetEnvelope()} \\ \hline
+\texttt{RunSuggestion(suggester, roomID) : IEnumerator} & Clockwise card-showing round; updates all players' \texttt{PlayerKnowledge}; shows revealed card to suggester via \texttt{UiManager.ShowRevealedCard} \\ \hline
+\texttt{ResolveAccusation(accuser, AccusationInput) : IEnumerator} & Calls \texttt{CheckAccusation}; triggers \texttt{EndGame()} on win or sets \texttt{HasLost=true} on incorrect guess \\ \hline
+\texttt{PlayersInTurnOrderStartingAfter(suggester) : IEnumerable<Player>} & Returns players clockwise from the suggester for card-showing \\ \hline
+\texttt{GetNextFreeRoomSlot(roomID, excluding) : int} & Returns the next unoccupied visual slot in a room (1--6) \\ \hline
+\texttt{MoveWeaponToRoom(weaponName, roomID)} & Repositions a weapon token to the specified room's spawn point \\ \hline
+\texttt{DiceRoll() : GameObject} & Instantiates the physics dice and starts its roll coroutine \\ \hline
+\texttt{EndGame()} & Sets \texttt{GameEnded=true}, destroys board/tokens, calls \texttt{GameState.GameOver()} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{\texttt{BoardScript} (Singleton)}
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{9cm}|}
+\hline
+\textbf{Member} & \textbf{Description} \\ \hline
+\texttt{GetTile(x, y) : int} & Returns tile value; 0 for out-of-bounds \\ \hline
+\texttt{SetTile(x, y, value)} & Writes a tile value; used by \texttt{TokenMover} to encode occupancy \\ \hline
+\texttt{IsWalkable(x, y) : bool} & Returns true iff tile value is $\geq 1$ and $< 50$ (not wall, not player-start) \\ \hline
+\texttt{FindPlayer(playerID) : Vector2Int} & Scans board for tile value == playerID; returns \texttt{(-1,-1)} if not found \\ \hline
+\texttt{FindAllTiles(value) : List<Vector2Int>} & Returns all board positions with the given tile value (used for door sets) \\ \hline
+\texttt{static RoomData : Dictionary<int,(string,Vector3)>} & Room ID $\to$ (name, world-space spawn position) \\ \hline
+\texttt{const WALL=0, WALKABLE\_FLOOR=1, SPECIAL\_TILE=33, OCCUPIED=50} & Named tile-encoding constants \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{\texttt{TokenMover} (per-player MonoBehaviour)}
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{9cm}|}
+\hline
+\textbf{Method} & \textbf{Description} \\ \hline
+\texttt{InitialiseFromBoard(playerID)} & Locates the player's tile on \texttt{BoardScript}, sets grid position and world position \\ \hline
+\texttt{GetLegalMoves() : List<Vector2Int>} & Returns orthogonal adjacent tiles that pass \texttt{BoardScript.IsWalkable} \\ \hline
+\texttt{Step(Vector2Int delta)} & Moves one step: restores old tile value, encodes new tile with playerID, updates world position \\ \hline
+\texttt{EnterRoom(roomID, slot)} & Moves token to the room's visual slot position; sets \texttt{CurrentRoomID} and \texttt{RoomSlot} \\ \hline
+\texttt{LeaveThroughDoor(Vector2Int door)} & Exits room: places token on door tile, clears \texttt{CurrentRoomID}/\texttt{RoomSlot} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsection*{\texttt{PlayerKnowledge}}
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{9cm}|}
+\hline
+\textbf{Method} & \textbf{Description} \\ \hline
+\texttt{NoteOwnHand(owner, cards)} & Seeds the knowledge base with cards the player holds \\ \hline
+\texttt{NoteShown(refuter, card)} & Records that \texttt{refuter} definitely holds \texttt{card} (suggester saw it) \\ \hline
+\texttt{NoteCannotRefute(refuter, cards)} & Records that \texttt{refuter} holds none of \texttt{cards} (they passed) \\ \hline
+\texttt{NoteRefutedSomething(refuter, cards)} & Records a disjunction: \texttt{refuter} holds at least one of \texttt{cards} (other observers) \\ \hline
+\texttt{GetEnvelopeCandidates(allCards)} & Returns cards not definitively held by anyone --- the set of possible envelope cards \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\section{Object-Oriented Design Principles}
+
+\subsection*{Single Responsibility}
+Each class has one clearly bounded job:
+\begin{itemize}
+    \item \texttt{BoardScript} --- board state only (tile values, occupancy, walkability)
+    \item \texttt{TokenMover} --- grid movement and room entry/exit only
+    \item \texttt{Player} --- turn sequencing and knowledge tracking only; never touches the board directly
+    \item \texttt{DiceRollScript} --- physics dice and face-detection only
+    \item \texttt{UiManager} --- UI display and input collection only
+    \item \texttt{Deck} / \texttt{Card} --- card data, dealing, and envelope management only
+    \item \texttt{PlayerKnowledge} --- per-player card inference only
+    \item \texttt{NotepadGrid} --- detective notebook toggle UI only
+\end{itemize}
+
+\subsection*{Inheritance and Polymorphism}
+\texttt{Player} is an abstract MonoBehaviour that declares all turn-sequencing logic in concrete methods (\texttt{PlayTurn}, \texttt{DoMovementBudget}, \texttt{DoSuggestionThenAccusation}) and exposes abstract ``decision hook'' methods that the two subclasses override independently.
+\begin{itemize}
+    \item \textbf{Template Method pattern}: \texttt{Player.PlayTurn()} defines the skeleton of the turn; \texttt{HumanPlayer} and \texttt{AiPlayer} supply the input strategy by overriding each hook.
+    \item \textbf{Open/closed}: adding a new player type (e.g.\ a network player) requires only a new subclass --- no changes to \texttt{GameManagerScript} or \texttt{Player.PlayTurn()}.
+\end{itemize}
+
+\subsection*{Singleton (Restricted to True Globals)}
+\texttt{GameManagerScript}, \texttt{BoardScript}, \texttt{UiManager}, \texttt{GameState}, and \texttt{SceneController} use the Unity Singleton pattern because they represent unique global state any script may access. Per-player classes (\texttt{Player}, \texttt{TokenMover}, \texttt{DiceRollScript}) are instantiated per character.
+
+\subsection*{Separation of Data and Presentation}
+\texttt{Card} and \texttt{Deck} are pure C\# classes with no \texttt{MonoBehaviour} dependency. All visual representation is handled by \texttt{UiManager}. This keeps game logic testable independently of Unity's rendering pipeline.
+
+\subsection*{Encapsulation}
+Board state is private inside \texttt{BoardScript} --- all access is via \texttt{GetTile} / \texttt{SetTile} / \texttt{IsWalkable}. \texttt{TokenMover} writes back to the board via \texttt{SetTile}, so \texttt{BoardScript} is always the single source of truth for occupancy. \texttt{Deck}'s static dictionaries are private; access is only through \texttt{GetCharacterHand} and \texttt{GetEnvelope}.
+
+\subsection*{Data-Driven Design}
+All card names are loaded from \texttt{StreamingAssets/cards.json} at runtime via \texttt{JsonUtility}. Adding or renaming a character, weapon, or room requires only a JSON edit --- no code change, no recompile.
+
+\subsection*{Callback-Driven UI Decoupling}
+\texttt{UiManager} communicates results back to game logic via \texttt{System.Action} delegates; \texttt{Player} coroutines wait via \texttt{WaitUntil}. This means the turn coroutine has no knowledge of how the UI is built --- the same \texttt{Player.PlayTurn()} code drives both human and AI turns.
+
+\section{Design vs.\ Implementation Deviations}
+
+The table below records where the delivered codebase on the \texttt{guessing} branch differs from the original design. Each deviation is documented transparently.
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|p{3.5cm}|p{3.5cm}|p{3.5cm}|l|}
+\hline
+\textbf{\#} & \textbf{Designed} & \textbf{Delivered} & \textbf{Why} & \textbf{Where it lives now} \\ \hline
+D1 & Standalone \texttt{Suggestion} class & Suggestion flow inside \texttt{GameManagerScript.RunSuggestion()} and \texttt{UiManager} & Late Sprint 4 integration --- a refactor risked the deadline & \texttt{GameManagerScript.cs} \\ \hline
+D2 & Standalone \texttt{Accusation} class & Accusation inside \texttt{GameManagerScript.ResolveAccusation()} & Same as D1 --- co-located with Suggestion to share player/room state & \texttt{GameManagerScript.cs} \\ \hline
+D3 & \texttt{AiPlayer} with full notebook-based deduction & \texttt{AiPlayer} uses BFS-directed movement and knowledge-filtered suggestions; \texttt{ChooseAccusationFollowUp} returns true when envelope candidates narrow to 3 & Full deduction-based play scoped down in Sprint 4; core navigation and knowledge filtering were implemented & \texttt{AiPlayer.cs} --- each method body has a \texttt{TODO (ai)} comment for the upgrade path \\ \hline
+D4 & Full A* pathfinding for movement & Legal-move-only detection; step-by-step navigation & Decided at Meeting 6 once irregular-board complexity was understood & \texttt{TokenMover.GetLegalMoves()} \\ \hline
+D5 & Single \texttt{TokenMovementScript} & Split into \texttt{Player} (abstract, turn logic) + \texttt{TokenMover} (movement only) + \texttt{HumanPlayer} / \texttt{AiPlayer} subclasses & Refactored in Sprint 3 to separate input strategy from movement mechanics & \texttt{Player.cs}, \texttt{TokenMover.cs}, \texttt{HumanPlayer.cs}, \texttt{AiPlayer.cs} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\section{Design Validation}
+
+\subsection*{Sequence Diagrams}
+
+The sequence diagrams are embedded in the sprint sections where the behaviour was first implemented:
+
+\begin{itemize}
+    \item \textbf{Player turn --- movement phase} (Figure \ref{fig:seq-movement}, Sprint 3): shows the interaction between \texttt{Player.PlayTurn()}, \texttt{TokenMover.GetLegalMoves()}, \texttt{HumanPlayer.ChooseMove()}, and \texttt{BoardScript}.
+    \item \textbf{Suggestion resolution} (Figure \ref{fig:seq-suggestion}, Sprint 4): shows \texttt{GameManagerScript.RunSuggestion()} iterating players clockwise, calling \texttt{ChooseCardToReveal()} on the refuter, updating \texttt{PlayerKnowledge} on all observers, and calling \texttt{UiManager.ShowRevealedCard()} on the suggester.
+\end{itemize}
+
+\subsection*{Turn State Machine}
+
+The turn state machine (Figure \ref{fig:state-turn}, Sprint 4) shows the states a player passes through within a single turn: \textit{Start} $\to$ \textit{ChooseAction} $\to$ \textit{Rolling/Moving/Passage} $\to$ \textit{InRoom} $\to$ \textit{Suggestion} $\to$ \textit{Accusation?} $\to$ \textit{End}.
+
+% TODO: If the state machine diagram has been updated since the Sprint 4 image was generated
+% (e.g. the ChooseTurnStartAction hook now also exposes a Suggest-in-place option),
+% regenerate state_turn.puml and export a new state_turn.png to the overleaf/ folder.
+
+\newpage

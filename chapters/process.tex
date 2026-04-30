@@ -16,7 +16,7 @@ The evidence for each sprint is structured as: summary data, individual contribu
 \textbf{Team Number:} & 15 \\
 \textbf{Sprint Technical Lead:} & Edward (Unity setup, class diagram, JSON schema) \\
 \textbf{Start Date:} & 19 February 2026 \\
-\textbf{End Date:} & 07 March 2026 \\
+\textbf{End Date:} & 05 March 2026 \\
 \end{tabular}
 
 \subsection*{Individual Key Contributions}
@@ -145,8 +145,8 @@ U1.6 & SceneController & Singleton prevents duplicate & Second instance destroye
 \begin{tabular}{ll}
 \textbf{Team Number:} & 15 \\
 \textbf{Sprint Technical Lead:} & Ewan (GameManagerScript + GameState) \\
-\textbf{Start Date:} & 07 March 2026 \\
-\textbf{End Date:} & 21 March 2026 \\
+\textbf{Start Date:} & 05 March 2026 \\
+\textbf{End Date:} & 17 March 2026 \\
 \end{tabular}
 
 \subsection*{Individual Key Contributions}
@@ -281,7 +281,7 @@ S2.4 & F2.6 & Menu transitions to game scene & Scene loads with correct count & 
 \begin{tabular}{ll}
 \textbf{Team Number:} & 15 \\
 \textbf{Sprint Technical Lead:} & Joe (movement lead, paired with Ethan) \\
-\textbf{Start Date:} & 21 March 2026 \\
+\textbf{Start Date:} & 17 March 2026 \\
 \textbf{End Date:} & 11 April 2026 \\
 \end{tabular}
 
@@ -545,6 +545,7 @@ KI-1 & \texttt{GameManagerScript.Awake()} falls back to \texttt{playerCount=4, a
 KI-2 & \texttt{SpawnTokens()} comment notes issue with fewer than 6 players; AI player selection uses random shuffle across all 6 slots & Medium & Fix loop condition to handle $<$6 players cleanly \\ \hline
 KI-3 & \texttt{AiPlayer} uses BFS-directed movement and knowledge-filtered suggestions; \texttt{ChooseAccusationFollowUp} returns true when envelope candidates narrow to exactly 3. Full notebook-based deduction not implemented. & Low & Extend \texttt{PlayerKnowledge} inference to eliminate cards more aggressively \\ \hline
 KI-4 & Suggestion/Accusation lives inside \texttt{GameManagerScript} not standalone classes & Low (architectural) & Extract into \texttt{Suggestion}/\texttt{Accusation} classes; add unit tests \\ \hline
+KI-5 & Suggested character and weapon tokens do not fully move to the suggestion room under all conditions. \texttt{RunSuggestion()} calls \texttt{target.Mover.EnterRoom()} only when \texttt{GetPlayerByCharacterName()} returns non-null and the target is not the suggester; \texttt{MoveWeaponToRoom()} is called unconditionally. At least one path is not producing the expected result (\texttt{GameManagerScript.cs} lines 334--338). Root cause not isolated before submission deadline. & Medium (functional) & Trace the exact failing path; add a unit test asserting both token positions after \texttt{RunSuggestion()} \\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -552,7 +553,7 @@ KI-4 & Suggestion/Accusation lives inside \texttt{GameManagerScript} not standal
 \subsection*{Sprint Retrospective}
 
 \textbf{Did you achieve your objectives?} Largely yes. The game loop is integrated end-to-end via `GameManagerScript.MainLoop()`. Suggestion with clockwise card-showing is implemented (`ResolveSuggestion`).
-          Accusation evaluation and win / elimination logic both work as specified. The AI player takes full turns without human input. Two issues carry into the known deficiencies log: Suggestion and Accusation logic lives inside `GameManagerScript` and `UiManager` rather than as standalone classes (KI-4, architectural), and system testing identified that suggested character and weapon tokens do not fully move to the suggestion room under all conditions (KI-5, functional). Both are documented in section 6 above.
+          Accusation evaluation and win / elimination logic both work as specified. The AI player takes full turns without human input. Two issues carry into the known deficiencies log: Suggestion and Accusation logic lives inside `GameManagerScript` and `UiManager` rather than as standalone classes (KI-4, architectural), and system testing identified that suggested character and weapon tokens do not fully move to the suggestion room under all conditions (KI-5, functional). Both are documented in the Known Issues / Deficiencies subsection above.
 
 \textbf{Is there a working prototype?} Yes. A full game of Clue! can be played: players take turns, roll dice, move, enter rooms, make suggestions, see cards revealed privately, and make accusations.
 

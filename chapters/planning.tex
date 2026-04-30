@@ -67,15 +67,15 @@ The execution deviated from the initial Gantt in seven notable ways. They are re
     \item \textbf{Easter break paused development for $\sim$3.5 weeks:} There were \textbf{zero commits between 20 March and 14 April} on any branch. All the work nominally scheduled across the second half of Sprint 3 was compressed into the period 15--24 April.
     \item \textbf{TokenMovement slipped past its planned end date:} The major movement-fix commits actually landed on \textbf{17 April} and \textbf{18 April}. Legal-move detection on the irregular Cluedo board required more edge-case handling than the plan accounted for.
     \item \textbf{Suggestion / Accusation became a team task:} Originally assigned to Ewan, the work was distributed across Edward (guessing logic), Ethan (looping mechanisms), and Ewan (GameStateScript and menus) under time pressure.
-    \item \textbf{Suggestion / Accusation logic merged into existing managers:} In the delivered codebase, the logic lives inside \texttt{GameManagerScript.cs} and \texttt{UiManager.cs} rather than in standalone classes. Splitting the classes cleanly would have required a refactor the team did not have time for (reflected in \texttt{Design/low\_level\_design.md}).
-    \item \textbf{AI player scoped down:} The AI uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestions; full notebook-based deduction (eliminating cards systematically) was not implemented (documented in \texttt{Sprint Docs/sprint\_4.md}).
+    \item \textbf{Suggestion / Accusation logic merged into existing managers:} In the delivered codebase, the logic lives inside \texttt{GameManagerScript.cs} and \texttt{UiManager.cs} rather than in standalone classes. Splitting the classes cleanly would have required a refactor the team did not have time for (reflected in Chapter~\ref{chap:design-low}).
+    \item \textbf{AI player scoped down:} The AI uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestions; full notebook-based deduction (eliminating cards systematically) was not implemented (documented in Section~\ref{sec:sprint4}).
     \item \textbf{Sprint 2 absorbed unplanned repo infrastructure work:} Significant effort went into Git LFS setup, \texttt{.gitignore} fixes, PR templates, and Unity merge settings. This was necessary to prevent merge conflicts in Unity scenes but consumed feature development time.
     \item \textbf{Matt's script commits arrived late:} Matt's earlier work was contributed via pair-programming or was scene/asset work in Unity (which does not surface as distinct script commits). His first direct script commits in the repository arrived on 22--23 April.
 \end{itemize}
 
 \subsection{Effort Allocation}
 
-Table \ref{tab:effort} shows the approximate hours per team member per sprint, estimated from Gantt task ownership, sprint-document contributions, and commit history. This justifies the peer-assessment split in \texttt{Group Report/group\_report.md}.
+Table \ref{tab:effort} shows the approximate hours per team member per sprint, estimated from Gantt task ownership, sprint-document contributions, and commit history. This justifies the peer-assessment split in Section~\ref{sec:peer-assessment}.
 
 \begin{table}[H]
 \centering
@@ -128,7 +128,7 @@ The team reviewed the risk register at the start of each sprint planning meeting
 \begin{itemize}
     \item \textbf{Sprint 1:} \textbf{R1} was pre-empted. The team agreed on a Unity LTS version, and Edward seeded the repository with a working scene validated end-to-end. \textbf{R9 materialised} as the team's knowledge gap in Unity and C\# became apparent early on. To mitigate this, time was explicitly allocated in Sprint 1 for tutorials, and members relied heavily on pair-programming with the experienced team member to get up to speed.
     \item \textbf{Sprint 2:} \textbf{R2 materialised} (Unity scene merge conflicts) and \textbf{R1 partially materialised} (incomplete \texttt{.gitignore}). Ethan configured Git LFS, and Edward established Unity Smart Merge settings, PR compile-checks, and \texttt{.gitattributes} for \texttt{.unity} and \texttt{.prefab} files. The issue did not recur.
-    \item \textbf{Sprint 3:} \textbf{R3 materialised} (the Easter break effectively paused all development for $\sim$3.5 weeks). \textbf{R4 partially materialised} as TokenMovement was more complex than estimated. The team scoped down TokenMovement, cutting A* pathfinding in favour of legal-move detection (documented in \texttt{Sprint Docs/sprint\_3.md}).
+    \item \textbf{Sprint 3:} \textbf{R3 materialised} (the Easter break effectively paused all development for $\sim$3.5 weeks). \textbf{R4 partially materialised} as TokenMovement was more complex than estimated. The team scoped down TokenMovement, cutting A* pathfinding in favour of legal-move detection (documented in Section~\ref{sec:sprint3}).
     \item \textbf{Sprint 4:} \textbf{R8 materialised} (GameLoop, Suggestion, and AI were unfinished). \textbf{R4 materialised} via deliberate descoping under pressure. \textbf{R2 re-emerged} during the final integration push. Edward executed a large consolidate merge on 18 April. \textbf{R7} was mitigated by verifying the zip unpacking before the deadline.
 \end{itemize}
 
@@ -249,7 +249,7 @@ Prepare for next meeting & All & Yes \\ \hline
 Create skeleton class diagram & Edward & Yes --- see \texttt{Design} docs \\ \hline
 Agree commit schematic format & All & Yes --- followed across PRs \\ \hline
 Set up documentation structure (\texttt{report/} folder) & Joe & Yes --- commits 19/02 \\ \hline
-Draft initial risk register & Joe / Edward & Yes --- \texttt{risk\_analysis.md} \\ \hline
+Draft initial risk register & Joe / Edward & Yes --- Table~\ref{tab:risk_register} \\ \hline
 Continue building out basic Unity project structure & Edward & Yes --- commits 01/02 \\ \hline
 \end{tabular}%
 }

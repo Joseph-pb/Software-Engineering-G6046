@@ -142,17 +142,17 @@ code is left uncommented to avoid noise.
 \texttt{README.md} & Setup guide: cloning, opening the project in Unity, Smart
 Merge configuration, commit / PR workflow conventions \\ \hline
 \texttt{UIstuff.md} & UI development notes for menu / in-game panels \\ \hline
-\texttt{matts-ui/} & Unity project root (open this folder in Unity Hub) \\ \hline
-\texttt{matts-ui/Assets/Main Game/} & Game scene, prefabs, scripts \\ \hline
-\texttt{matts-ui/Assets/Main Game/Scripts/} & 22 gameplay scripts (board,
+\texttt{clue/} & Unity project root (open this folder in Unity Hub) \\ \hline
+\texttt{clue/Assets/Main Game/} & Game scene, prefabs, scripts \\ \hline
+\texttt{clue/Assets/Main Game/Scripts/} & 22 gameplay scripts (board,
 deck, player, AI, UI manager, etc.) \\ \hline
-\texttt{matts-ui/Assets/Main Game/Menu/} & 6 menu scripts (controller,
+\texttt{clue/Assets/Main Game/Menu/} & 6 menu scripts (controller,
 settings, stepper, modal, room plaque) \\ \hline
-\texttt{matts-ui/Assets/Editor/} & Editor-only tooling
+\texttt{clue/Assets/Editor/} & Editor-only tooling
 (\texttt{ProjectFileGenerator.cs}) \\ \hline
-\texttt{matts-ui/Assets/Tests/EditMode/} & Sprint-aligned unit tests
+\texttt{clue/Assets/Tests/EditMode/} & Sprint-aligned unit tests
 (\texttt{Sprint1Tests.cs}\,--\,\texttt{Sprint4Tests.cs}) \\ \hline
-\texttt{matts-ui/Assets/StreamingAssets/} & \texttt{cards.json} --- runtime
+\texttt{clue/Assets/StreamingAssets/} & \texttt{cards.json} --- runtime
 data contract for the deck \\ \hline
 \texttt{report/} & All design / planning / testing / meeting documentation
 sources (Markdown + PlantUML) \\ \hline
@@ -218,7 +218,7 @@ steps it covers are:
     \item Clone the repository to a known location.
     \item Install the Unity version pinned in the project (Unity Hub will
     prompt if a different version is opened).
-    \item In Unity Hub, click \textit{Add} $\to$ select the \texttt{matts-ui}
+    \item In Unity Hub, click \textit{Add} $\to$ select the \texttt{clue}
     folder.
     \item Open \textit{Assets / Main Game / Main Game} (the main scene) and
     press \textit{Play}.

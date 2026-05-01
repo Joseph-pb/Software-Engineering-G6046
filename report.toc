@@ -1,0 +1,60 @@
+\contentsline {chapter}{Marking Scheme}{}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Planning Documentation}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Project Plan}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Initial Gantt Chart}{1}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Critical Path}{3}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Revised Plan}{4}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Effort Allocation}{5}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Risk Analysis}{5}{subsection.1.1.5}%
+\contentsline {section}{\numberline {1.2}Team Meetings}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}How to Read This Section}{7}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Meeting 1}{7}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Meeting 2}{8}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Meeting 3}{9}{subsection.1.2.4}%
+\contentsline {subsection}{\numberline {1.2.5}Meeting 4}{11}{subsection.1.2.5}%
+\contentsline {subsection}{\numberline {1.2.6}Meeting 5}{12}{subsection.1.2.6}%
+\contentsline {subsection}{\numberline {1.2.7}Meeting 6}{13}{subsection.1.2.7}%
+\contentsline {subsection}{\numberline {1.2.8}Meeting 7}{14}{subsection.1.2.8}%
+\contentsline {subsection}{\numberline {1.2.9}Meeting 8}{15}{subsection.1.2.9}%
+\contentsline {subsection}{\numberline {1.2.10}Meeting 9}{16}{subsection.1.2.10}%
+\contentsline {chapter}{\numberline {2}Process Documentation}{18}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Agile Process Evidence}{18}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Sprint 1 --- Project Setup, Architecture \& Core Data}{18}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Sprint 2 --- Board, Game Manager, Dice \& Scene Infrastructure}{21}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Sprint 3 --- Movement, Rooms, UI \& Detective Notebook}{24}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Sprint 4: Game Loop, Suggestions, Accusations, and Testing}{29}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Design Documentation --- High Level}{37}{chapter.3}%
+\contentsline {section}{\numberline {3.1}System Overview}{37}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Use Cases}{38}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Component Interaction Diagram}{40}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Key Design Decisions}{40}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Activity Diagram: Full Game Flow}{42}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Design Documentation: Low Level}{43}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Class Diagram}{43}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Key Class APIs}{44}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Object-Oriented Design Principles}{45}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Design vs.\ Implementation Deviations}{47}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Design Validation}{47}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Software Documentation}{48}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Code Documentation Standard}{48}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Documentation Conventions}{49}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Documentation Tooling}{50}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Codebase Structure}{51}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Setup and Usage Guide}{52}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Project Overview}{53}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Team Members}{53}{section.6.1}%
+\contentsline {section}{\numberline {6.2}About This Project}{53}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Project Description}{53}{subsection.6.2.1}%
+\contentsline {section}{\numberline {6.3}How the Team Was Organised}{54}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Technology Choices}{54}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Version Control}{55}{subsection.6.3.2}%
+\contentsline {section}{\numberline {6.4}Sprint Summary}{55}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Key Achievements}{56}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Outstanding Issues and Known Bugs}{56}{section.6.6}%
+\contentsline {section}{\numberline {6.7}What Went Well}{57}{section.6.7}%
+\contentsline {section}{\numberline {6.8}What Didn't Go Well / Lessons Learned}{58}{section.6.8}%
+\contentsline {section}{\numberline {6.9}What We Would Do Differently}{59}{section.6.9}%
+\contentsline {section}{\numberline {6.10}Ideas for Further Development}{60}{section.6.10}%
+\contentsline {section}{\numberline {6.11}Peer Assessment}{60}{section.6.11}%
+\contentsline {section}{\numberline {6.12}Weekly Progress Log}{62}{section.6.12}%
+\contentsline {chapter}{\numberline {A}Appendix: AI Use Declaration}{64}{appendix.A}%

@@ -1,0 +1,2018 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.18)  1 MAY 2026 14:26
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**report.tex
+(./report.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@chapter=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.
+sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/gettitlestring/gettitlestr
+ing.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count284
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count285
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen149
+\Hy@linkcounter=\count286
+\Hy@pagecounter=\count287
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count288
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4201.
+Package hyperref Info: Link nesting OFF on input line 4206.
+Package hyperref Info: Hyper index ON on input line 4209.
+Package hyperref Info: Plain pages OFF on input line 4216.
+Package hyperref Info: Backreferencing OFF on input line 4221.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4468.
+\c@Hy@tempcnt=\count289
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4807.
+\XeTeXLinkMargin=\dimen150
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count290
+\Field@Width=\dimen151
+\Fld@charsize=\dimen152
+Package hyperref Info: Hyper figures OFF on input line 6084.
+Package hyperref Info: Link nesting OFF on input line 6089.
+Package hyperref Info: Hyper index ON on input line 6092.
+Package hyperref Info: backreferencing OFF on input line 6099.
+Package hyperref Info: Link coloring OFF on input line 6104.
+Package hyperref Info: Link coloring with OCG OFF on input line 6109.
+Package hyperref Info: PDF/A mode OFF on input line 6114.
+\Hy@abspage=\count291
+\c@Item=\count292
+\c@Hfootnote=\count293
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2026-01-29 v7.01p Hyperref driver for pdfTeX
+\Fld@listcount=\count294
+\c@bookmark@seq@number=\count295
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/rerunfilecheck/rerunfilechec
+k.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/uniquecounter/uniquecounte
+r.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip51
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count296
+\Gm@cntv=\count297
+\c@Gm@tempcnt=\count298
+\Gm@bindingoffset=\dimen153
+\Gm@wd@mp=\dimen154
+\Gm@odd@mp=\dimen155
+\Gm@even@mp=\dimen156
+\Gm@layoutwidth=\dimen157
+\Gm@layoutheight=\dimen158
+\Gm@layouthoffset=\dimen159
+\Gm@layoutvoffset=\dimen160
+\Gm@dimlist=\toks18
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip52
+\f@nch@offset@elh=\skip53
+\f@nch@offset@erh=\skip54
+\f@nch@offset@olh=\skip55
+\f@nch@offset@orh=\skip56
+\f@nch@offset@elf=\skip57
+\f@nch@offset@erf=\skip58
+\f@nch@offset@olf=\skip59
+\f@nch@offset@orf=\skip60
+\f@nch@height=\skip61
+\f@nch@footalignment=\skip62
+\f@nch@widthL=\skip63
+\f@nch@widthC=\skip64
+\f@nch@widthR=\skip65
+\@temptokenb=\toks19
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen161
+\Gin@req@width=\dimen162
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/tools/array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen163
+\ar@mcellbox=\box53
+\extrarowheight=\dimen164
+\NC@list=\toks20
+\extratabsurround=\skip66
+\backup@length=\skip67
+\ar@cellbox=\box54
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen165
+\lightrulewidth=\dimen166
+\cmidrulewidth=\dimen167
+\belowrulesep=\dimen168
+\belowbottomsep=\dimen169
+\aboverulesep=\dimen170
+\abovetopsep=\dimen171
+\cmidrulesep=\dimen172
+\cmidrulekern=\dimen173
+\defaultaddspace=\dimen174
+\@cmidla=\count299
+\@cmidlb=\count300
+\@aboverulesep=\dimen175
+\@belowrulesep=\dimen176
+\@thisruleclass=\count301
+\@lastruleclass=\count302
+\@thisrulewidth=\dimen177
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip68
+\cftbeforetoctitleskip=\skip69
+\cftaftertoctitleskip=\skip70
+\cftbeforepartskip=\skip71
+\cftpartnumwidth=\skip72
+\cftpartindent=\skip73
+\cftbeforechapskip=\skip74
+\cftchapindent=\skip75
+\cftchapnumwidth=\skip76
+\cftbeforesecskip=\skip77
+\cftsecindent=\skip78
+\cftsecnumwidth=\skip79
+\cftbeforesubsecskip=\skip80
+\cftsubsecindent=\skip81
+\cftsubsecnumwidth=\skip82
+\cftbeforesubsubsecskip=\skip83
+\cftsubsubsecindent=\skip84
+\cftsubsubsecnumwidth=\skip85
+\cftbeforeparaskip=\skip86
+\cftparaindent=\skip87
+\cftparanumwidth=\skip88
+\cftbeforesubparaskip=\skip89
+\cftsubparaindent=\skip90
+\cftsubparanumwidth=\skip91
+\cftbeforeloftitleskip=\skip92
+\cftafterloftitleskip=\skip93
+\cftbeforefigskip=\skip94
+\cftfigindent=\skip95
+\cftfignumwidth=\skip96
+\c@lofdepth=\count303
+\c@lotdepth=\count304
+\cftbeforelottitleskip=\skip97
+\cftafterlottitleskip=\skip98
+\cftbeforetabskip=\skip99
+\cfttabindent=\skip100
+\cfttabnumwidth=\skip101
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+\everycr=\toks21
+\minrowclearance=\skip102
+\rownum=\count305
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count306
+\float@exts=\toks22
+\float@box=\box55
+\@float@everytoks=\toks23
+\@floatcapt=\box56
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen178
+\captionmargin=\dimen179
+\caption@leftmargin=\dimen180
+\caption@rightmargin=\dimen181
+\caption@width=\dimen182
+\caption@indent=\dimen183
+\caption@parindent=\dimen184
+\caption@hangindent=\dimen185
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count307
+\c@continuedfloat=\count308
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
+\LTleft=\skip103
+\LTright=\skip104
+\LTpre=\skip105
+\LTpost=\skip106
+\LTchunksize=\count309
+\LTcapwidth=\dimen186
+\LT@head=\box57
+\LT@firsthead=\box58
+\LT@foot=\box59
+\LT@lastfoot=\box60
+\LT@gbox=\box61
+\LT@cols=\count310
+\LT@rows=\count311
+\c@LT@tables=\count312
+\c@LT@chunks=\count313
+\LT@p@ftn=\toks24
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks25
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
+ef
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count314
+) (./report.aux)
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+Package hyperref Info: Link coloring OFF on input line 36.
+ (./report.out) (./report.out)
+\@outlinefile=\write3
+\openout3 = `report.out'.
+
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=452.9679pt
+* \textheight=700.50687pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-39.5pt
+* \headheight=14.5pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count315
+\scratchdimen=\dimen187
+\scratchbox=\box62
+\nofMPsegments=\count316
+\nofMParguments=\count317
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count318
+\MPscratchDim=\dimen188
+\MPnumerator=\count319
+\makeMPintoPDFobject=\count320
+\everyMPtoPDFconversion=\toks27
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.s
+ty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: longtable package is loaded.
+ (/usr/local/texlive/2026basic/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 39.
+
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
+
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./report.toc
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.37 ...e {4.5}Design Validation}{47}{section.4.5}
+                                                  % [1])
+\tf@toc=\write4
+\openout4 = `report.toc'.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.42 \newpage
+              [2] (./chapters/marking_scheme.tex
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+[]|\OT1/cmr/m/n/12 Project plan, PERT/Gantt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\OT1/cmr/m/n/12 Planning ---
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+[]|\OT1/cmr/m/n/12 Process Doc-u-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\OT1/cmr/m/n/12 Design Doc-u-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\OT1/cmr/m/n/12 Software Doc-u-
+ []
+
+
+Underfull \hbox (badness 3612) in paragraph at lines 33--33
+[]|\OT1/cmr/m/n/12 Code com-ments, XML Doc-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\OT1/cmr/m/n/12 Testing Doc-u-
+ []
+
+
+Underfull \hbox (badness 3657) in paragraph at lines 39--39
+[]|\OT1/cmr/m/n/12 Achievements, is-sues, crit-i-cal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
+[]|\OT1/cmr/m/n/12 Submitted
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.55 \end{itemize}
+                   [3
+
+]
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.57 \newpage
+              [4]) (./chapters/planning.tex
+Chapter 1.
+<images/gantt.png, id=340, 649.42625pt x 672.5125pt>
+File: images/gantt.png Graphic file (type png)
+<use images/gantt.png>
+Package pdftex.def Info: images/gantt.png  used on input line 13.
+(pdftex.def)             Requested size: 452.9679pt x 469.08287pt.
+[1
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\OT1/cmtt/m/n/10.95 Card\OT1/cmr/m/n/10.95 , \OT1/cmtt/m/n/10.95 Deck \OT1/c
+mr/m/n/10.95 data classes &
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+[]|\OT1/cmtt/m/n/10.95 GameManagerScript \OT1/cmr/m/n/10.95 sin-gle-ton &
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\OT1/cmtt/m/n/10.95 DiceRollScript \OT1/cmr/m/n/10.95 (physics) &
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]|\OT1/cmtt/m/n/10.95 Player\OT1/cmr/m/n/10.95 /\OT1/cmtt/m/n/10.95 HumanPlaye
+r\OT1/cmr/m/n/10.95 /\OT1/cmtt/m/n/10.95 TokenMover
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\OT1/cmtt/m/n/10.95 RoomRules \OT1/cmr/m/n/10.95 (se-cret pas-sages) &
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]|\OT1/cmtt/m/n/10.95 AiPlayer \OT1/cmr/m/n/10.95 (BFS nav-i-ga-tion,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\OT1/cmtt/m/n/10.95 PlayerKnowledge \OT1/cmr/m/n/10.95 &
+ []
+
+[2 <./images/gantt.png>]
+Overfull \hbox (11.84273pt too wide) in paragraph at lines 52--53
+[]\OT1/cmr/m/n/12 BoardScript \TS1/cmr/m/n/12 ^^Y \OT1/cmr/m/n/12 Game-M-an-age
+r \TS1/cmr/m/n/12 ^^Y \OT1/cmr/m/n/12 Deck/Cards \TS1/cmr/m/n/12 ^^Y \OT1/cmr/m
+/n/12 To-ken-Move-ment \TS1/cmr/m/n/12 ^^Y \OT1/cmr/m/n/12 GameLoop
+ []
+
+[3] [4] [5] [6] [7] [8] [9]
+Underfull \hbox (badness 2012) in paragraph at lines 304--304
+[]|\OT1/cmr/m/n/12 Board ren-der-ing, player HUD, de-tec-tive
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--337
+[]|\OT1/cmr/m/n/12 Create shared doc-u-men-ta-tion
+ []
+
+[10]
+Overfull \hbox (13.99257pt too wide) in paragraph at lines 354--355
+[]\OT1/cmr/m/n/12 Agreed Sprint 2 pri-or-i-ties: Board-Script, Game-M-an-ager-S
+cript sin-gle-ton, DiceRollScript
+ []
+
+
+Overfull \hbox (24.1521pt too wide) in paragraph at lines 362--363
+[]\OT1/cmr/bx/n/12 Sprint 2 plan: \OT1/cmr/m/n/12 Core game-play in-fras-truc-t
+ure. Repo tool-ing (Git LFS, \OT1/cmtt/m/n/12 .gitattributes\OT1/cmr/m/n/12 ,
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 381--381
+[]|\OT1/cmr/m/n/12 Add PR tem-plates, com-pile
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 381--381
+[]|\OT1/cmr/m/n/12 Begin \OT1/cmtt/m/n/12 GameManagerScript
+ []
+
+
+Underfull \hbox (badness 2310) in paragraph at lines 381--381
+[]|\OT1/cmr/m/n/12 Begin \OT1/cmtt/m/n/12 DiceRollScript \OT1/cmr/m/n/12 (Rigid
+-
+ []
+
+
+Underfull \hbox (badness 1454) in paragraph at lines 381--381
+[]|\OT1/cmr/m/n/12 Refine class di-a-gram along-side
+ []
+
+
+Overfull \hbox (2.90324pt too wide) in paragraph at lines 397--398
+[]\OT1/cmr/m/n/12 Matt walked the team through the Unity ed-i-tor, scene hi-er-
+ar-chy, and \OT1/cmtt/m/n/12 MonoBehaviour
+ []
+
+
+Overfull \hbox (38.54132pt too wide) in paragraph at lines 398--399
+[]\OT1/cmr/m/n/12 Edward flagged that the cur-rent \OT1/cmtt/m/n/12 DeckScript 
+\OT1/cmr/m/n/12 was block-ing progress on \OT1/cmtt/m/n/12 GameManagerScript\OT
+1/cmr/m/n/12 .
+ []
+
+[12]
+Overfull \hbox (1.50122pt too wide) in paragraph at lines 405--406
+[]\OT1/cmr/bx/n/12 Customisation: \OT1/cmr/m/n/12 Char-ac-ter names, weapons, r
+oom names loaded from \OT1/cmtt/m/n/12 cards.json\OT1/cmr/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--424
+[]|\OT1/cmr/m/n/12 Begin to-ken spawn-ing logic in
+ []
+
+
+Underfull \hbox (badness 2990) in paragraph at lines 424--424
+[]|\OT1/cmr/m/n/12 Confirm \OT1/cmtt/m/n/12 cards.json \OT1/cmr/m/n/12 cov-ers 
+6 chars, 6
+ []
+
+
+Overfull \hbox (44.14424pt too wide) in paragraph at lines 439--440
+[]\OT1/cmr/m/n/12 Decision made to for-malise a \OT1/cmtt/m/n/12 GameState \OT1
+/cmr/m/n/12 sin-gle-ton to man-age Play-ing/MainMenu/GameOver
+ []
+
+[13]
+Underfull \hbox (badness 2393) in paragraph at lines 465--465
+[]|\OT1/cmr/m/n/12 Finalise \OT1/cmtt/m/n/12 SceneController \OT1/cmr/m/n/12 wi
+th Dont-De-
+ []
+
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 488.
+
+Underfull \hbox (badness 10000) in paragraph at lines 508--508
+[]|\OT1/cmr/m/n/12 Implement \OT1/cmtt/m/n/12 TokenMover.EnterRoom() \OT1/cmr/m
+/n/12 &
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 550--550
+[]|\OT1/cmr/m/n/12 Implement \OT1/cmtt/m/n/12 RunSuggestion() \OT1/cmr/m/n/12 c
+lock-wise
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--550
+[]|\OT1/cmr/m/n/12 Implement ac-cu-sa-tion check vs
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 593--593
+[]|\OT1/cmr/m/n/12 Complete group re-port (achieve-ments,
+ []
+
+[16] [17]) (./chapters/process.tex
+Chapter 2.
+[18
+
+]
+Overfull \hbox (17.91054pt too wide) in paragraph at lines 57--58
+[]\OT1/cmr/bx/n/12 F1.7 \OT1/cmr/m/n/12 Player count and AI count per-sist from
+ menu to game scene via \OT1/cmtt/m/n/12 SceneController\OT1/cmr/m/n/12 . 
+ []
+
+<images/class_diagram.png, id=484, 3164.82375pt x 1663.21375pt>
+File: images/class_diagram.png Graphic file (type png)
+<use images/class_diagram.png>
+Package pdftex.def Info: images/class_diagram.png  used on input line 83.
+(pdftex.def)             Requested size: 452.9679pt x 238.02556pt.
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 116--116
+[]|\OT1/cmr/m/n/12 card.Type ==
+ []
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 116--116
+[]|\OT1/cmr/m/n/12 1 Per-son + 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--116
+\OT1/cmr/m/n/12 Weapon + 1
+ []
+
+
+Underfull \hbox (badness 6094) in paragraph at lines 116--116
+[]|\OT1/cmr/m/n/12 Non-empty, no
+ []
+
+
+Underfull \hbox (badness 4492) in paragraph at lines 116--116
+[]|\OT1/cmr/m/n/12 Singleton pre-vents du-pli-
+ []
+
+[20 <./images/class_diagram.png>]
+Underfull \hbox (badness 1642) in paragraph at lines 167--167
+\OT1/cmr/m/n/12 ing, character-order turn loop; \OT1/cmtt/m/n/12 GameState\OT1/
+cmr/m/n/12 : Play-
+ []
+
+
+Underfull \hbox (badness 5288) in paragraph at lines 167--167
+[]|\OT1/cmtt/m/n/12 DiceRollScript\OT1/cmr/m/n/12 : Rigid-body physics dice; fa
+ce-
+ []
+
+
+Underfull \hbox (badness 3601) in paragraph at lines 167--167
+[]|\OT1/cmtt/m/n/12 MenuController\OT1/cmr/m/n/12 : On-NewGame/QuitGame; wiring
+
+ []
+
+[21] [22]
+Overfull \hbox (37.8277pt too wide) in paragraph at lines 222--223
+\OT1/cmr/m/n/12 tic-ity, meet-ing Wat-son Games' re-quire-ment for a fun and co
+lour-ful in-ter-face. \OT1/cmtt/m/n/12 CalculateResult()
+ []
+
+
+Overfull \hbox (16.20229pt too wide) in paragraph at lines 222--223
+\OT1/cmr/m/n/12 uses dot prod-ucts against \OT1/cmtt/m/n/12 Vector3.up \OT1/cmr
+/m/n/12 to iden-tify the up-per-most face. A \OT1/cmtt/m/n/12 Random.Range(1,7)
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
+[]|\OT1/cmr/m/n/12 CalculateResult re-turns
+ []
+
+
+Underfull \hbox (badness 4492) in paragraph at lines 241--241
+[]|\OT1/cmr/m/n/12 Singleton pre-vents du-pli-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
+[]|\OT1/cmr/m/n/12 Second de-
+ []
+
+
+Overfull \hbox (5.01665pt too wide) in paragraph at lines 241--241
+[]|\OT1/cmr/m/n/12 SetCurrentState(GameOver)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--256
+[]|\OT1/cmr/m/n/12 Game starts and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--256
+[]|\OT1/cmr/m/n/12 Board ren-ders;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--256
+[]|\OT1/cmr/m/n/12 Tokens spawn cor-
+ []
+
+
+Underfull \hbox (badness 2772) in paragraph at lines 256--256
+[]|\OT1/cmr/m/n/12 Tokens at cor-
+ []
+
+
+Underfull \hbox (badness 3250) in paragraph at lines 256--256
+[]|\OT1/cmr/m/n/12 Menu tran-si-tions to
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
+[]|\OT1/cmtt/m/n/12 Player \OT1/cmr/m/n/12 base class turn corou-tine (\OT1/cmt
+t/m/n/12 PlayTurn\OT1/cmr/m/n/12 );
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
+\OT1/cmr/m/n/12 reveal UI; \OT1/cmtt/m/n/12 NotepadGrid \OT1/cmr/m/n/12 (\OT1/c
+mtt/m/n/12 NotepadUI.cs\OT1/cmr/m/n/12 );
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 304--304
+[]|\OT1/cmtt/m/n/12 CharacterData \OT1/cmr/m/n/12 Script-ableOb-ject; JSON in-t
+e-gra-tion
+ []
+
+[24]
+Overfull \hbox (28.56516pt too wide) in paragraph at lines 315--316
+\OT1/cmr/m/n/12 move-ment, room en-try and exit, and world-space po-si-tion-ing
+. Ex-poses \OT1/cmtt/m/n/12 GetLegalMoves()\OT1/cmr/m/n/12 ,
+ []
+
+[25]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 326.
+
+Runaway argument?
+{Sequence Diagram: Player Turn (Movement Phase) 
+! Paragraph ended before \@ssect was complete.
+<to be read again> 
+                   \par 
+l.340 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+<images/sequence_movement.png, id=539, 979.66pt x 911.405pt>
+File: images/sequence_movement.png Graphic file (type png)
+<use images/sequence_movement.png>
+Package pdftex.def Info: images/sequence_movement.png  used on input line 343.
+(pdftex.def)             Requested size: 452.9679pt x 421.40695pt.
+[26]
+Underfull \hbox (badness 2293) in paragraph at lines 364--364
+[]|\OT1/cmr/m/n/12 Legal moves ex-clude im-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--364
+[]|\OT1/cmr/m/n/12 0-tile ex-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--364
+[]|\OT1/cmr/m/n/12 true/false per
+ []
+
+
+Underfull \hbox (badness 5388) in paragraph at lines 364--364
+[]|\OT1/cmr/m/n/12 Tile re-sets to WALK-A-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--364
+[]|\OT1/cmr/m/n/12 e.g. Room-
+ []
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 364--364
+[]|\OT1/cmr/m/n/12 All 10 room
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--364
+[]|\OT1/cmr/m/n/12 LoadData pro-cesses 147
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 364--364
+\OT1/cmr/m/n/12 tog-gles (21 columns $\OMS/cmsy/m/n/12 ^^B$ \OT1/cmr/m/n/12 7
+ []
+
+[27 <./images/sequence_movement.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 382--382
+[]|\OT1/cmr/m/n/12 Diagonal move-ment
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--382
+[]|\OT1/cmr/m/n/12 Diagonal ig-
+ []
+
+
+Underfull \hbox (badness 7012) in paragraph at lines 382--382
+[]|\OT1/cmr/m/n/12 Two to-kens can-not
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--382
+[]|\OT1/cmr/m/n/12 Room en-try ends
+ []
+
+
+Underfull \hbox (badness 5388) in paragraph at lines 382--382
+[]|\OT1/cmr/m/n/12 Halts on door
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--382
+[]|\OT1/cmr/m/n/12 UiManager
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--382
+[]|\OT1/cmr/m/n/12 Room field
+ []
+
+
+Overfull \hbox (4.65657pt too wide) in paragraph at lines 387--388
+\OT1/cmr/m/n/12 Did you achieve your ob-jec-tives? Par-tially. \OT1/cmtt/m/n/12
+ Player\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 HumanPlayer\OT1/cmr/m/n/12 , \OT1/cmt
+t/m/n/12 AiPlayer\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 TokenMover\OT1/cmr/m/n/12 ,
+
+ []
+
+[28]
+Underfull \hbox (badness 3769) in paragraph at lines 431--431
+\OT1/cmr/m/n/12 cy-cle; \OT1/cmtt/m/n/12 RunSuggestion()\OT1/cmr/m/n/12 : clock
+-wise card-showing;
+ []
+
+
+Underfull \hbox (badness 4036) in paragraph at lines 431--431
+[]|\OT1/cmtt/m/n/12 AiPlayer \OT1/cmr/m/n/12 de-ci-sion meth-ods: BFS-directed 
+move,
+ []
+
+[29]
+Overfull \hbox (71.76743pt too wide) in paragraph at lines 442--443
+[]\OT1/cmr/bx/n/12 F4.5 \OT1/cmr/m/n/12 Sug-gested char-ac-ter to-ken is moved 
+into the sug-ges-tion room (\OT1/cmtt/m/n/12 target.Mover.EnterRoom()\OT1/cmr/m
+/n/12 ). 
+ []
+
+
+Overfull \hbox (60.88936pt too wide) in paragraph at lines 443--444
+[]\OT1/cmr/bx/n/12 F4.6 \OT1/cmr/m/n/12 Ac-cu-sa-tion checks three cho-sen card
+s against the mur-der en-ve-lope (\OT1/cmtt/m/n/12 Deck.GetEnvelope()\OT1/cmr/m
+/n/12 ). 
+ []
+
+
+Overfull \hbox (61.14296pt too wide) in paragraph at lines 455--456
+[]\OT1/cmtt/m/n/12 GameManagerScript.ResolveAccusation()\OT1/cmr/m/n/12 : Check
+s ac-cu-sa-tion against \OT1/cmtt/m/n/12 Deck.GetEnvelope()\OT1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (30.74808pt too wide) in paragraph at lines 467--468
+[]\OT1/cmr/m/n/12 Envelope can-di-dates: Cards not defini-tively held by any-on
+e (\OT1/cmtt/m/n/12 GetEnvelopeCandidates()\OT1/cmr/m/n/12 ). 
+ []
+
+<images/state_turn.png, id=571, 897.3525pt x 1786.675pt>
+File: images/state_turn.png Graphic file (type png)
+<use images/state_turn.png>
+Package pdftex.def Info: images/state_turn.png  used on input line 476.
+(pdftex.def)             Requested size: 385.02547pt x 766.59229pt.
+[30]
+Overfull \vbox (121.3354pt too high) has occurred while \output is active []
+
+
+[31 <./images/state_turn.png>]
+<images/sequence_suggestion.png, id=585, 1163.34625pt x 1317.92375pt>
+File: images/sequence_suggestion.png Graphic file (type png)
+<use images/sequence_suggestion.png>
+Package pdftex.def Info: images/sequence_suggestion.png  used on input line 485
+.
+(pdftex.def)             Requested size: 452.9679pt x 513.1637pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 Turn or-der cy-cles
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+\OT1/cmr/m/n/12 Scarlett$\OMS/cmsy/m/n/12 !$\OT1/cmr/m/n/12 Mustard$\OMS/cmsy/m
+/n/12 !$\OT1/cmr/m/n/12 White
+ []
+
+
+Underfull \hbox (badness 1603) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 Mustard ab-sent
+ []
+
+
+Underfull \hbox (badness 5446) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 Mustard ab-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 CheckAccusation re-turns
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 CheckAccusation re-turns
+ []
+
+
+Underfull \hbox (badness 5622) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 RunSuggestion: re-futer's
+ []
+
+
+Overfull \hbox (6.41718pt too wide) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 Knowledge.Status
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 Held con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 RunSuggestion: Sug-ges-
+ []
+
+
+Underfull \hbox (badness 3219) in paragraph at lines 507--507
+\OT1/cmr/m/n/12 tion-Log records no-refute
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+\OT1/cmr/m/n/12 when no player holds
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 log con-tains
+ []
+
+
+Underfull \hbox (badness 4132) in paragraph at lines 507--507
+\OT1/cmr/m/n/12 ``could not re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 CurrentRoomID
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+[]|\OT1/cmr/m/n/12 Character
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--507
+\OT1/cmr/m/n/12 cor-rectly
+ []
+
+[32 <./images/sequence_suggestion.png>]
+Overfull \hbox (6.11906pt too wide) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 P1$\OMS/cmsy/m/n/12 !$\OT1/cmr/m/n/12 P2$\OMS/cmsy/m/n/12 !$
+\OT1/cmr/m/n/12 P3$\OMS/cmsy/m/n/12 !$\OT1/cmr/m/n/12 P1| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 Suggestion un-avail-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 No sug-ges-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
+\OT1/cmr/m/n/12 first match stops
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 Suggested char-ac-ter
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 Correct ac-cu-sa-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 Wrong ac-cu-sa-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
+\OT1/cmr/m/n/12 elim-i-nates player;
+ []
+
+
+Underfull \hbox (badness 3601) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 Player skipped;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 Eliminated
+ []
+
+
+Underfull \hbox (badness 4378) in paragraph at lines 532--532
+\OT1/cmr/m/n/12 player gets no
+ []
+
+
+Underfull \hbox (badness 2080) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 AI com-pletes a full
+ []
+
+
+Underfull \hbox (badness 1226) in paragraph at lines 532--532
+\OT1/cmr/m/n/12 turn with-out hu-man
+ []
+
+
+Underfull \hbox (badness 1199) in paragraph at lines 532--532
+\OT1/cmr/m/n/12 other play-ers can-not
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--532
+[]|\OT1/cmr/m/n/12 Private modal;
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+[]|\OT1/cmtt/m/n/12 AiPlayer \OT1/cmr/m/n/12 uses BFS-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 directed move-ment
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 and knowledge-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 filtered sug-ges-tions;
+ []
+
+
+Overfull \hbox (5.9363pt too wide) in paragraph at lines 548--548
+\OT1/cmtt/m/n/12 ChooseAccusationFollowUp
+ []
+
+
+Underfull \hbox (badness 3826) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 re-turns true when en-ve-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 based de-duc-tion not
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+[]|\OT1/cmr/m/n/12 Extend
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmtt/m/n/12 PlayerKnowledge
+ []
+
+
+Underfull \hbox (badness 1910) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 in-fer-ence to elim-
+ []
+
+
+Underfull \hbox (badness 4569) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 i-nate cards more
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+[]|\OT1/cmr/m/n/12 Extract into
+ []
+
+
+Overfull \hbox (29.79036pt too wide) in paragraph at lines 548--548
+\OT1/cmtt/m/n/12 Suggestion\OT1/cmr/m/n/12 /\OT1/cmtt/m/n/12 Accusation
+ []
+
+
+Underfull \hbox (badness 2970) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 classes; add unit
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+[]|\OT1/cmr/m/n/12 Suggested char-ac-ter and
+ []
+
+
+Underfull \hbox (badness 7064) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 move to the sug-ges-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmtt/m/n/12 RunSuggestion() \OT1/cmr/m/n/12 calls
+ []
+
+
+Overfull \hbox (5.9363pt too wide) in paragraph at lines 548--548
+\OT1/cmtt/m/n/12 target.Mover.EnterRoom()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 only when
+ []
+
+
+Overfull \hbox (18.2863pt too wide) in paragraph at lines 548--548
+\OT1/cmtt/m/n/12 GetPlayerByCharacterName()
+ []
+
+
+Underfull \hbox (badness 2229) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 re-turns non-null and the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmtt/m/n/12 MoveWeaponToRoom() \OT1/cmr/m/n/12 is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 called un-con-di-tion-ally.
+ []
+
+
+Underfull \hbox (badness 4765) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 This means that to-kens
+ []
+
+
+Underfull \hbox (badness 1253) in paragraph at lines 548--548
+[]|\OT1/cmr/m/n/12 Spawn the to-kens
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 for each player,
+ []
+
+
+Underfull \hbox (badness 2582) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 play-ing, and just
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 omit them from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--548
+\OT1/cmr/m/n/12 the board un-til
+ []
+
+[34] [35] [36]) (./chapters/design_high.tex
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\OT1/cmr/m/n/12 Tracks Play-ing / Main-Menu /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\OT1/cmr/m/n/12 ScriptableObject stor-ing char-ac-ter
+ []
+
+
+Underfull \hbox (badness 8075) in paragraph at lines 31--31
+[]|\OT1/cmr/m/n/12 Uses BFS-directed move-ment and
+ []
+
+
+Underfull \hbox (badness 7415) in paragraph at lines 31--31
+[]|\OT1/cmr/m/n/12 Grid move-ment, room en-try/exit,
+ []
+
+
+Underfull \hbox (badness 1983) in paragraph at lines 31--31
+[]|\OT1/cmr/m/n/12 Central sin-gle-ton: all player-facing
+ []
+
+
+Underfull \hbox (badness 5217) in paragraph at lines 31--31
+[]|\OT1/cmr/m/n/12 Per-player card in-fer-ence (Held /
+ []
+
+[37
+
+]
+<images/use_case_diagram.png, id=619, 714.67pt x 857.2025pt>
+File: images/use_case_diagram.png Graphic file (type png)
+<use images/use_case_diagram.png>
+Package pdftex.def Info: images/use_case_diagram.png  used on input line 63.
+(pdftex.def)             Requested size: 385.02547pt x 461.8099pt.
+ [38]
+<images/component_diagram.png, id=629, 1616.0375pt x 963.6pt>
+File: images/component_diagram.png Graphic file (type png)
+<use images/component_diagram.png>
+Package pdftex.def Info: images/component_diagram.png  used on input line 72.
+(pdftex.def)             Requested size: 452.9679pt x 270.08553pt.
+ [39 <./images/use_case_diagram.png>]
+Overfull \hbox (37.35793pt too wide) in paragraph at lines 86--87
+\OT1/cmr/m/n/12 All card names (char-ac-ters, weapons, and rooms) are loaded fr
+om \OT1/cmtt/m/n/12 StreamingAssets/cards.json
+ []
+
+[40 <./images/component_diagram.png>]
+Overfull \hbox (3.75702pt too wide) in paragraph at lines 92--93
+\OT1/cmtt/m/n/12 UiManager \OT1/cmr/m/n/12 com-mu-ni-cates re-sults to game log
+ic via \OT1/cmtt/m/n/12 System.Action \OT1/cmr/m/n/12 call-backs, while \OT1/cm
+tt/m/n/12 Player
+ []
+
+<images/activity_game_flow.png, id=645, 996.72375pt x 1184.425pt>
+File: images/activity_game_flow.png Graphic file (type png)
+<use images/activity_game_flow.png>
+Package pdftex.def Info: images/activity_game_flow.png  used on input line 101.
+
+(pdftex.def)             Requested size: 339.72592pt x 403.69318pt.
+[41] [42 <./images/activity_game_flow.png>]) (./chapters/design_low.tex
+Chapter 4.
+File: images/class_diagram.png Graphic file (type png)
+<use images/class_diagram.png>
+Package pdftex.def Info: images/class_diagram.png  used on input line 10.
+(pdftex.def)             Requested size: 452.9679pt x 238.02556pt.
+
+Underfull \hbox (badness 1077) in paragraph at lines 24--24
+[]|\OT1/cmr/m/n/12 Owns all turn se-quenc-ing (\OT1/cmtt/m/n/12 PlayTurn\OT1/cm
+r/m/n/12 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+\OT1/cmr/m/n/12 board-position del-e-ga-tion, knowl-edge
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 24--24
+\OT1/cmr/m/n/12 track-ing (\OT1/cmtt/m/n/12 PlayerKnowledge\OT1/cmr/m/n/12 ), a
+nd 147-
+ []
+
+
+Underfull \hbox (badness 1005) in paragraph at lines 24--24
+\OT1/cmr/m/n/12 cell notepad state. De-clares ab-stract
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\OT1/cmr/m/n/12 Overrides de-ci-sion hooks: BFS-
+ []
+
+
+Underfull \hbox (badness 1910) in paragraph at lines 26--26
+\OT1/cmr/m/n/12 based ac-cu-sa-tion trig-ger. Com-ments
+ []
+
+[43
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/12 Checks three named cards against
+ []
+
+
+Underfull \hbox (badness 3189) in paragraph at lines 69--69
+[]|\OT1/cmr/m/n/12 Sets \OT1/cmtt/m/n/12 GameEnded=true\OT1/cmr/m/n/12 , de-str
+oys board/tokens,
+ []
+
+[44]
+Underfull \hbox (badness 4072) in paragraph at lines 105--105
+[]|\OT1/cmr/m/n/12 Returns or-thog-o-nal ad-ja-cent tiles that pass
+ []
+
+[45]
+Overfull \hbox (13.17697pt too wide) in paragraph at lines 157--158
+\OT1/cmr/m/n/12 All card names are loaded from \OT1/cmtt/m/n/12 StreamingAssets
+/cards.json \OT1/cmr/m/n/12 at run-time via \OT1/cmtt/m/n/12 JsonUtility\OT1/cm
+r/m/n/12 .
+ []
+
+
+Overfull \hbox (1.32pt too wide) in paragraph at lines 160--161
+\OT1/cmtt/m/n/12 UiManager \OT1/cmr/m/n/12 com-mu-ni-cates re-sults back to gam
+e logic via \OT1/cmtt/m/n/12 System.Action \OT1/cmr/m/n/12 del-e-gates; \OT1/cm
+tt/m/n/12 Player
+ []
+
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+[]|\OT1/cmr/m/n/12 Standalone
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+[]|\OT1/cmr/m/n/12 Suggestion flow in-side
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+\OT1/cmtt/m/n/12 GameManagerScript.RunSuggestion()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+[]|\OT1/cmr/m/n/12 Standalone
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+[]|\OT1/cmr/m/n/12 Accusation in-side
+ []
+
+
+Overfull \hbox (0.85307pt too wide) in paragraph at lines 178--178
+\OT1/cmtt/m/n/12 GameManagerScript.ResolveAccusation()| 
+ []
+
+
+Underfull \hbox (badness 1831) in paragraph at lines 178--178
+\OT1/cmr/m/n/12 with Sug-ges-tion to share
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+[]|\OT1/cmtt/m/n/12 AiPlayer \OT1/cmr/m/n/12 uses BFS-directed move-ment
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+\OT1/cmr/m/n/12 and knowledge-filtered sug-ges-tions;
+ []
+
+
+Underfull \hbox (badness 4634) in paragraph at lines 178--178
+\OT1/cmtt/m/n/12 ChooseAccusationFollowUp \OT1/cmr/m/n/12 re-turns true
+ []
+
+
+Underfull \hbox (badness 1748) in paragraph at lines 178--178
+[]|\OT1/cmr/m/n/12 Full deduction-based play
+ []
+
+
+Underfull \hbox (badness 1248) in paragraph at lines 178--178
+\OT1/cmr/m/n/12 nav-i-ga-tion and knowl-edge
+ []
+
+
+Underfull \hbox (badness 2837) in paragraph at lines 178--178
+[]|\OT1/cmtt/m/n/12 AiPlayer.cs \OT1/cmr/m/n/12 --- each method
+ []
+
+
+Underfull \hbox (badness 1845) in paragraph at lines 178--178
+\OT1/cmr/m/n/12 irregular-board com-plex-ity
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+[]|\OT1/cmr/m/n/12 Single
+ []
+
+
+Overfull \hbox (17.74042pt too wide) in paragraph at lines 178--178
+\OT1/cmtt/m/n/12 TokenMovementScript| 
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 178--178
+[]|\OT1/cmr/m/n/12 Split into \OT1/cmtt/m/n/12 Player \OT1/cmr/m/n/12 (ab-strac
+t, turn logic)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+\OT1/cmr/m/n/12 + \OT1/cmtt/m/n/12 TokenMover \OT1/cmr/m/n/12 (move-ment only) 
++
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+\OT1/cmr/m/n/12 sep-a-rate in-put strat-egy
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+[]|\OT1/cmtt/m/n/12 Player.cs\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 TokenMover.cs\O
+T1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (49.73pt too wide) in paragraph at lines 188--189
+\OT1/cmr/m/n/12 be-tween \OT1/cmtt/m/n/12 Player.PlayTurn()\OT1/cmr/m/n/12 , \O
+T1/cmtt/m/n/12 TokenMover.GetLegalMoves()\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 Hum
+anPlayer.ChooseMove()\OT1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (53.72343pt too wide) in paragraph at lines 189--190
+[]\OT1/cmr/bx/n/12 Suggestion res-o-lu-tion \OT1/cmr/m/n/12 (Fig-ure []2.4[], S
+print 4): shows \OT1/cmtt/m/n/12 GameManagerScript.RunSuggestion()
+ []
+
+[47]) (./chapters/software.tex
+Chapter 5.
+[48
+
+]
+Overfull \hbox (10.15733pt too wide) in paragraph at lines 69--69
+[]\OT1/cmtt/m/n/12 ///   1. Definitely held by X       (saw X reveal it, or it'
+s in own hand).[] 
+ []
+
+
+Overfull \hbox (10.15733pt too wide) in paragraph at lines 69--69
+[]\OT1/cmtt/m/n/12 ///   3. Held by exactly one of {X, cards}  (X refuted a sug
+gestion but you[] 
+ []
+
+
+Overfull \hbox (10.15733pt too wide) in paragraph at lines 105--105
+[]    \OT1/cmtt/m/n/12 /// <summary>Make a suggestion without rolling (only val
+id when already[] 
+ []
+
+[49]
+Overfull \hbox (3.32333pt too wide) in paragraph at lines 109--113
+\OT1/cmr/m/n/12 Inline (\OT1/cmtt/m/n/12 //\OT1/cmr/m/n/12 ) com-ments are re-s
+erved for non-obvious al-go-rith-mic steps, Unity-specific gotchas
+ []
+
+
+Overfull \hbox (7.3253pt too wide) in paragraph at lines 121--125
+[]\OT1/cmr/bx/n/12 Static HTML gen-er-a-tion: \OT1/cmr/m/n/12 the com-ments are
+ com-pat-i-ble with DocFX (\OT1/cmtt/m/n/12 docfx.exe\OT1/cmr/m/n/12 )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--146
+[]|\OT1/cmtt/m/n/12 clue/Assets/Main
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
+[]|\OT1/cmr/m/n/12 Editor-only tool-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
+[]|\OT1/cmr/m/n/12 Sprint-aligned unit tests
+ []
+
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 207--207
+[]|\OT1/cmr/m/n/12 Player sub-class: BFS-directed move-ment and
+ []
+
+[51] [52]) (./chapters/project_overview.tex
+Chapter 6.
+
+Underfull \hbox (badness 1442) in paragraph at lines 16--17
+[]|\OT1/cmr/m/n/12 Data han-dling --- JSON schema de-sign,
+ []
+
+
+Underfull \hbox (badness 3690) in paragraph at lines 16--17
+\OT1/cmtt/m/n/12 DeckScript \OT1/cmr/m/n/12 refac-tor, repo tool-ing (Git
+ []
+
+[53
+
+] [54]
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
+\OT1/cmtt/m/n/12 Deck\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 SceneController
+ []
+
+
+Underfull \hbox (badness 3471) in paragraph at lines 65--65
+[]|\OT1/cmtt/m/n/12 BoardScript \OT1/cmr/m/n/12 (25$\OMS/cmsy/m/n/12 ^^B$\OT1/c
+mr/m/n/12 24 tile
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 65--65
+\OT1/cmr/m/n/12 grid), \OT1/cmtt/m/n/12 GameManagerScript
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+[]|\OT1/cmtt/m/n/12 TokenMovementScript
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+\OT1/cmr/m/n/12 (cor-ri-dor move-ment,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+\OT1/cmr/m/n/12 room en-try, oc-cu-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+\OT1/cmr/m/n/12 pancy), \OT1/cmtt/m/n/12 UiManager
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+\OT1/cmr/m/n/12 (sug-ges-tion/card re-veal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+\OT1/cmr/m/n/12 prompts), \OT1/cmtt/m/n/12 NotepadGrid\OT1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (24.16124pt too wide) in paragraph at lines 66--66
+\OT1/cmtt/m/n/12 HandManager\OT1/cmr/m/n/12 /\OT1/cmtt/m/n/12 CardInteraction| 
+
+ []
+
+
+Overfull \hbox (30.6363pt too wide) in paragraph at lines 67--67
+[]|\OT1/cmtt/m/n/12 GameManagerScript.MainLoop()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+\OT1/cmr/m/n/12 full turn cy-cle;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+\OT1/cmtt/m/n/12 RunSuggestion() \OT1/cmr/m/n/12 clock-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+\OT1/cmr/m/n/12 wise card-showing; ac-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+\OT1/cmr/m/n/12 cu-sa-tion eval-u-a-tion; AI
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+\OT1/cmr/m/n/12 player (BFS + Ba-sic
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+\OT1/cmr/m/n/12 game state knowl-edge);
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+\OT1/cmtt/m/n/12 GameOverScreen\OT1/cmr/m/n/12 ; sys-tem
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+[]|\OT1/cmr/m/n/12 Full playable game
+ []
+
+[55]
+Underfull \hbox (badness 10000) in paragraph at lines 91--91
+\OT1/cmr/m/n/12 sug-ges-tion de-ci-sions
+ []
+
+
+Underfull \hbox (badness 6859) in paragraph at lines 91--91
+\OT1/cmr/m/n/12 ob-served, but does
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--91
+[]|\OT1/cmr/m/n/12 Deeper de-duc-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--91
+\OT1/cmr/m/n/12 logic was voted
+ []
+
+
+Underfull \hbox (badness 2922) in paragraph at lines 91--91
+\OT1/cmr/m/n/12 against in Sprint 4
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+[]|\OT1/cmr/m/n/12 Layer probability-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+\OT1/cmr/m/n/12 elimination de-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+\OT1/cmr/m/n/12 duc-tion on top
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+\OT1/cmr/m/n/12 of the base us-ing
+ []
+
+
+Overfull \hbox (127.0141pt too wide) in paragraph at lines 91--92
+\OT1/cmtt/m/n/12 PlayerKnowledge.GetEnvelopeCandidates()
+ []
+
+
+Underfull \hbox (badness 7981) in paragraph at lines 91--92
+\OT1/cmr/m/n/12 --- the ar-chi-tec-ture
+ []
+
+
+Overfull \hbox (9.68904pt too wide) in paragraph at lines 92--92
+\OT1/cmtt/m/n/12 GameManagerScript.cs
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--92
+\OT1/cmr/m/n/12 and \OT1/cmtt/m/n/12 UiManager.cs
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 92--92
+\OT1/cmr/m/n/12 al-low a clean refac-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+[]|\OT1/cmr/m/n/12 Extract \OT1/cmtt/m/n/12 Suggestion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+[]|\OT1/cmr/m/n/12 Test S4.7 (F4.5):
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 sug-gested char-ac-ter
+ []
+
+
+Underfull \hbox (badness 6592) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 and weapon to-kens
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmtt/m/n/12 RunSuggestion()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 calls
+ []
+
+
+Overfull \hbox (34.38905pt too wide) in paragraph at lines 93--93
+\OT1/cmtt/m/n/12 target.Mover.EnterRoom()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 only when
+ []
+
+
+Overfull \hbox (46.73906pt too wide) in paragraph at lines 93--93
+\OT1/cmtt/m/n/12 GetPlayerByCharacterName()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 re-turns non-null
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 and the tar-get is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 not the sug-gester;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmtt/m/n/12 MoveWeaponToRoom()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 to-kens that aren't
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 spawned won't be
+ []
+
+
+Underfull \hbox (badness 2334) in paragraph at lines 93--93
+\OT1/cmr/m/n/12 marked as ac-tive if
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+[]|\OT1/cmr/m/n/12 Trace the ex-act
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+\OT1/cmr/m/n/12 fail-ing path (null
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+\OT1/cmr/m/n/12 char-ac-ter lookup,
+ []
+
+
+Underfull \hbox (badness 5446) in paragraph at lines 93--94
+\OT1/cmr/m/n/12 po-si-tion-ing er-ror in
+ []
+
+
+Overfull \hbox (78.97226pt too wide) in paragraph at lines 93--94
+\OT1/cmtt/m/n/12 EnterRoom()\OT1/cmr/m/n/12 /\OT1/cmtt/m/n/12 MoveWeaponToRoom(
+)\OT1/cmr/m/n/12 );
+ []
+
+
+Underfull \hbox (badness 1430) in paragraph at lines 93--94
+\OT1/cmr/m/n/12 add a unit test as-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+\OT1/cmr/m/n/12 sert-ing both to-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+\OT1/cmr/m/n/12 ken po-si-tions af-ter
+ []
+
+[56] [57] [58] [59]
+Underfull \hbox (badness 1033) in paragraph at lines 159--160
+[]|\OT1/cmr/m/n/12 Unity project setup (clue), Board-Script scene
+ []
+
+
+Underfull \hbox (badness 3482) in paragraph at lines 159--160
+\OT1/cmr/m/n/12 UI, Card-Gen-er-a-tor/HandManager, GameOver-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
+[]|\OT1/cmr/m/n/12 TokenMovementScript (cor-ri-dor move-ment,
+ []
+
+
+Underfull \hbox (badness 1132) in paragraph at lines 164--165
+[]|\OT1/cmr/m/n/12 cards.json schema de-sign, DeckScript refac-tor,
+ []
+
+[60]
+Overfull \hbox (27.64134pt too wide) in alignment at lines 180--184
+ [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1173) in paragraph at lines 191--192
+\OT1/cmr/m/n/12 gle-ton agreed; Joe and Ethan as-signed to To-ken-
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 194--195
+[]|\OT1/cmr/m/n/12 Meeting 9 (20/04): sug-ges-tion res-o-lu-tion work-ing
+ []
+
+
+Underfull \hbox (badness 1189) in paragraph at lines 194--195
+\OT1/cmr/m/n/12 end-to-end; ac-cu-sa-tion logic com-plete; To-ken-Move-
+ []
+
+
+Overfull \hbox (27.64134pt too wide) in alignment at lines 184--197
+ [] [] [] 
+ []
+
+[61]
+ignored: Infinite glue shrinkage found in box being split [62]) (./chapters/appendix
+.tex [63]
+Appendix A.
+) [64
+
+] (./report.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: D30ADEA51B5FBB6AFD9600A90B20BBBC;10119.
+ ) 
+Here is how much of TeX's memory you used:
+ 12840 strings out of 469006
+ 203685 string characters out of 5454813
+ 627613 words of memory out of 5000000
+ 41096 multiletter control sequences out of 15000+600000
+ 640304 words of font info for 89 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 75i,14n,79p,879b,637s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </Users/edwardbaker/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jkna
+ppen/ec/tcrm1200.600pk></usr/local/texlive/2026basic/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2026basic/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026basic/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026basic/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2026basic/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026ba
+sic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/202
+6basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
+/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/tex
+live/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local
+/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on report.pdf (69 pages, 813127 bytes).
+PDF statistics:
+ 926 PDF objects out of 1000 (max. 8388607)
+ 801 compressed objects within 9 object streams
+ 281 named destinations out of 1000 (max. 500000)
+ 521 words of extra memory for PDF output out of 10000 (max. 10000000)
+

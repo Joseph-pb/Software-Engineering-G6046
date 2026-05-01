@@ -71,7 +71,7 @@ The execution deviated from the initial Gantt in seven notable ways. They are re
     \item TokenMovement slipped past its planned end date. The major movement-fix commits actually landed on 17 April and 18 April. Legal-move detection on the irregular Cluedo board required more edge-case handling than the plan accounted for.
     \item Suggestion and Accusation became a team task. Originally assigned to Ewan, the work was distributed across Edward (guessing logic), Ethan (looping mechanisms), and Ewan (GameStateScript and menus) under time pressure.
     \item Suggestion and Accusation logic merged into existing managers. In the delivered codebase, the logic lives inside \texttt{GameManagerScript.cs} and \texttt{UiManager.cs} rather than in standalone classes. Splitting the classes cleanly would have required a refactor the team did not have time for.
-    \item AI player was scoped down. The AI uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestions. Full notebook-based deduction (eliminating cards systematically) was not implemented.
+    \item The AI implementation was slightly reduced in complexity. The AI uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestions. Full card deduction (eliminating based on inference) was not implemented.
     \item Sprint 2 absorbed unplanned repo infrastructure work. Significant effort went into Git LFS setup, \texttt{.gitignore} fixes, PR templates, and Unity merge settings. This was necessary to prevent merge conflicts in Unity scenes but consumed feature development time.
     \item Matt's script commits arrived late. Matt's earlier work was contributed via pair-programming or was scene and asset work in Unity (which does not surface as distinct script commits). His first direct script commits in the repository arrived on the 22nd of April.
 \end{itemize}
@@ -131,7 +131,7 @@ The team reviewed the risk register at the start of each sprint planning meeting
 \begin{itemize}
     \item \textbf{Sprint 1:} R1 was pre-empted. The team agreed on a Unity LTS version, and Edward seeded the repository with a placeholder scene. R9 materialised as the team's knowledge gap in Unity and C\# became apparent early on. To mitigate this, time was explicitly allocated in Sprint 1 for tutorials, and members relied heavily on pair-programming with the experienced team member to get up to speed.
     \item \textbf{Sprint 2:} R2 materialised (Unity scene merge conflicts) and R1 partially materialised (incomplete \texttt{.gitignore}). Ethan configured Git LFS, and Edward established Unity Smart Merge settings, PR compile-checks, and \texttt{.gitattributes} for \texttt{.unity} and \texttt{.prefab} files. The issue did not recur.
-    \item \textbf{Sprint 3:} R3 materialised (the Easter break effectively paused all development for $\sim$3.5 weeks). R4 partially materialised as TokenMovement was more complex than estimated. The team scoped down TokenMovement, cutting A* pathfinding in favour of legal-move detection (documented in Section~\ref{sec:sprint3}).
+    \item \textbf{Sprint 3:} R3 materialised (the Easter break effectively paused all development for $\sim$3.5 weeks). R4 partially materialised as TokenMovement was more complex than estimated. The team implemented a simple AI, cutting A* pathfinding in favour of random legal moves (documented in Section~\ref{sec:sprint3}).
     \item \textbf{Sprint 4:} R8 materialised (GameLoop, Suggestion, and AI were unfinished). R4 materialised via deliberate descoping under pressure. R2 re-emerged during the final integration push. Edward executed a large consolidate merge on 18 April. R7 was mitigated by verifying the zip unpacking before the deadline.
 \end{itemize}
 
@@ -142,7 +142,7 @@ Lessons for Risk Planning:
 \begin{enumerate}
     \item \textbf{Easter / holiday windows must be costed into the plan from the start.} Treating R3 as ``individual illness'' understated the systemic impact of a predictable shutdown.
     \item \textbf{Tool chain risks (R1, R2) have a higher early-impact than they appear.} Sprint 2 lost $\sim$1 week of feature work to repository tooling.
-    \item \textbf{Scope-reduction is a valid mitigation.} Cutting some final UI tweaks preserved the time for core features at the cost of nice UI design.
+    \item \textbf{Scope-reduction is a valid mitigation.} Cutting some final UI tweaks preserved the time for core features at the cost of not perfecting the UI design.
     \item \textbf{Account for learning curves in technical projects.} Identifying the knowledge gap (R9) early allowed the team to adjust Sprint 1 expectations, but future projects should formally budget time for upskilling.
 \end{enumerate}
 

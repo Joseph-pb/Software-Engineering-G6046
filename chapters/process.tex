@@ -22,8 +22,7 @@ The evidence for each sprint is structured as: summary data, individual contribu
 \subsection*{Individual Key Contributions}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{10cm}|}
+\begin{tabular}{|l|p{9.5cm}|}
 \hline
 \textbf{Team Member} & \textbf{Key Contribution(s)} \\ \hline
 Matt & Created initial Unity project (\texttt{clue}); pushed to GitHub; established project structure \\ \hline
@@ -32,8 +31,7 @@ Joe & Board and movement design; initial board representation planning \\ \hline
 Ethan & Board and movement design; room and corridor layout planning \\ \hline
 Ben & Card system: \texttt{Card} class, \texttt{Deck} class, \texttt{CardType} enum \\ \hline
 Edward & Data handling: designed \texttt{cards.json} external data file; \texttt{SceneController} \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \subsection*{User Stories}
@@ -74,7 +72,7 @@ Edward & Data handling: designed \texttt{cards.json} external data file; \texttt
     \item \textbf{D1.2} One person, one weapon, one room card in the murder envelope; remaining 18 dealt.
 \end{itemize}
 
-\subsection*{Design: Class Diagram (Sprint 1 scope)}
+\subsection*{Design: Class Diagram (Sprint 1)}
 
 The full class diagram below covers all sprint deliverables. Key Sprint 1 classes are \texttt{Card}, \texttt{Deck}, and \texttt{SceneController}.
 
@@ -384,7 +382,7 @@ S3.7 & F3.9 & AI moves without input & AI selects move & Turn completes & Pass \
 
 \subsection*{Sprint Retrospective}
 
-Did you achieve your objectives? Partially. \texttt{Player}, \texttt{HumanPlayer}, \texttt{AiPlayer}, \texttt{TokenMover}, \texttt{RoomRules}, \texttt{UiManager}, and \texttt{NotepadGrid} were delivered. A* pathfinding was scoped down to legal-move-only detection. Suggestion and Accusation were formally pushed into Sprint 4 at Meeting 8.
+Did you achieve your objectives? Partially. \texttt{Player}, \texttt{HumanPlayer}, \texttt{AiPlayer}, \texttt{TokenMover}, \texttt{RoomRules}, \texttt{UiManager}, and \texttt{NotepadGrid} were delivered. A* pathfinding was scoped down to random legal moves, to be built on next sprint. Suggestion and Accusation were pushed back Sprint 4 at Meeting 8.
 
 What went well?
 \begin{itemize}

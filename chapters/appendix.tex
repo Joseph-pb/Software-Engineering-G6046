@@ -6,9 +6,9 @@
 Three of the four selectable board themes in the game use texture images generated with Gemini (Google DeepMind), a generative AI image model. The affected themes and their corresponding asset files are:
 
 \begin{itemize}
-    \item \textbf{Futuristic} --- \texttt{Gemini\_Generated\_Image\_8hp7e18hp7e18hp7.png}
-    \item \textbf{Space Ship} --- \texttt{Gemini\_Generated\_Image\_f7l6o8f7l6o8f7l6.png}
-    \item \textbf{Steampunk} --- \texttt{f554b52e-cbd9-4b91-aa0f-081b42186313.jpg}
+    \item Futuristic --- \texttt{Gemini\_Generated\_Image\_8hp7e18hp7e18hp7.png}
+    \item Space Ship \texttt{Gemini\_Generated\_Image\_f7l6o8f7l6o8f7l6.png}
+    \item Steampunk --- \texttt{f554b52e-cbd9-4b91-aa0f-081b42186313.jpg}
 \end{itemize}
 
 These images are applied to the board 3D object at runtime via \texttt{BoardThemer.cs}, with the player's selection persisted through Unity's \texttt{PlayerPrefs} system (\texttt{"BoardTheme"} key) and exposed to the player via the in-game settings panel (\texttt{SettingsController.cs}). The default Standard theme uses the original Cluedo board image (\texttt{cluedoboard.jpg}) and is not AI-generated.

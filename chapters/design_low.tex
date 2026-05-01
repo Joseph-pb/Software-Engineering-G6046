@@ -18,10 +18,12 @@ The central inheritance hierarchy separates game-logic sequencing from input met
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|p{7.5cm}|}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|p{1.8cm}|p{2cm}|p{6cm}|}
 \hline
 \textbf{Class} & \textbf{Kind} & \textbf{Role} \\ \hline
-\texttt{Player} & abstract MonoBehaviour & Owns all turn sequencing (\texttt{PlayTurn}), board-position delegation, knowledge tracking (\texttt{PlayerKnowledge}), and 147-cell notepad state. Declares abstract ``decision hook'' methods. \\ \hline
+\texttt{Player} & abstract Mono\-Be\-haviour & Owns all turn sequencing (\texttt{PlayTurn}), board-position delegation, knowledge tracking (\texttt{PlayerKnowledge}), and 147-cell notepad state. Declares abstract decision hook methods. \\ \hline
 \texttt{HumanPlayer} & sealed : Player & Overrides every decision hook by calling \texttt{UiManager} and awaiting a callback via \texttt{WaitUntil}. \\ \hline
 \texttt{AiPlayer} & sealed : Player & Overrides decision hooks: BFS-directed movement toward target room, knowledge-filtered suggestions, envelope-based accusation trigger. Comments describe further upgrade paths. \\ \hline
 \end{tabular}
@@ -31,20 +33,20 @@ The central inheritance hierarchy separates game-logic sequencing from input met
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{8cm}|}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|p{5.2cm}|p{4.5cm}|}
 \hline
 \textbf{Method (abstract / public)} & \textbf{When called} \\ \hline
-\texttt{ChooseTurnStartAction(canPassage, canSuggest, Action<TurnAction>)} & At turn start: roll / take passage / suggest-in-place \\ \hline
-\texttt{ChooseMove(legalMoves, canEnterRoom, canUseSpecial, Action<Vector2Int,bool,bool>)} & Each movement step while walking \\ \hline
-\texttt{ChooseDoor(doors, Action<Vector2Int>)} & When leaving a multi-door room \\ \hline
-\texttt{ChooseSuggestion(roomID, chars, weapons, Action<SuggestionInput>)} & When the player must produce a suggestion \\ \hline
-\texttt{ChooseAccusationFollowUp(Action<bool>)} & Immediately after suggestion resolves \\ \hline
-\texttt{ChooseAccusation(roomID, Action<AccusationInput>)} & When \texttt{ChooseAccusationFollowUp} returned true \\ \hline
-\texttt{ChooseCardToReveal(matches, Action<Card>)} & When refuting another player's suggestion \\ \hline
-\texttt{ChooseRoomAction(canLeave, Action<RoomAction>)} & When in a room: stay and suggest in place, or leave through a door \\ \hline
-\end{tabular}%
-}
+\texttt{ChooseTurnStart\-Action(\allowbreak canPassage, canSuggest, \allowbreak Action<TurnAction>)} & At turn start: roll / take passage / suggest-in-place \\ \hline
+\texttt{ChooseMove(legal\-Moves, canEnterRoom, \allowbreak canUseSpecial, \allowbreak Action<Vector2Int,bool,\allowbreak bool>)} & Each movement step while walking \\ \hline
+\texttt{ChooseDoor(doors, \allowbreak Action<Vector2Int>)} & When leaving a multi-door room \\ \hline
+\texttt{ChooseSug\-gestion(roomID, \allowbreak chars, weapons, \allowbreak Action<Suggestion\-Input>)} & When the player must produce a suggestion \\ \hline
+\texttt{ChooseAccusation\-FollowUp(\allowbreak Action<bool>)} & Immediately after suggestion resolves \\ \hline
+\texttt{ChooseAccusation(\allowbreak roomID, Action<\allowbreak AccusationInput>)} & When \texttt{ChooseAccusationFollowUp} returned true \\ \hline
+\texttt{ChooseCardToReveal(\allowbreak matches, Action<Card>)} & When refuting another player's suggestion \\ \hline
+\texttt{ChooseRoomAction(\allowbreak canLeave, \allowbreak Action<RoomAction>)} & When in a room: stay and suggest in place, or leave through a door \\ \hline
+\end{tabular}
 \end{table}
 
 \section{Key Class APIs}
@@ -53,73 +55,73 @@ The central inheritance hierarchy separates game-logic sequencing from input met
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{9cm}|}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|p{4.2cm}|p{5.5cm}|}
 \hline
 \textbf{Method} & \textbf{Description} \\ \hline
-\texttt{CheckAccusation(character, weapon, room) : bool} & Checks three named cards against \texttt{Deck.GetEnvelope()} \\ \hline
-\texttt{RunSuggestion(suggester, roomID) : IEnumerator} & Clockwise card-showing round; updates all players' \texttt{PlayerKnowledge}; shows revealed card to suggester via \texttt{UiManager.ShowRevealedCard} \\ \hline
-\texttt{ResolveAccusation(accuser, AccusationInput) : IEnumerator} & Calls \texttt{CheckAccusation}; triggers \texttt{EndGame()} on win or sets \texttt{HasLost=true} on incorrect guess \\ \hline
-\texttt{PlayersInTurnOrderStartingAfter(suggester) : IEnumerable<Player>} & Returns players clockwise from the suggester for card-showing \\ \hline
-\texttt{GetNextFreeRoomSlot(roomID, excluding) : int} & Returns the next unoccupied visual slot in a room (1--6) \\ \hline
-\texttt{MoveWeaponToRoom(weaponName, roomID)} & Repositions a weapon token to the specified room's spawn point \\ \hline
-\texttt{DiceRoll() : GameObject} & Instantiates the physics dice and starts its roll coroutine \\ \hline
+\texttt{CheckAccusation(\allowbreak character, weapon, \allowbreak room) : bool} & Checks three named cards against \texttt{Deck.\allowbreak GetEnvelope()} \\ \hline
+\texttt{RunSuggestion(\allowbreak suggester, \allowbreak roomID) : \allowbreak IEnumerator} & Clockwise card-showing round; updates all players' \texttt{PlayerKnowledge}; shows revealed card to suggester via \texttt{UiManager.ShowRevealedCard} \\ \hline
+\texttt{ResolveAccusation(\allowbreak accuser, \allowbreak Accusation\-Input) : \allowbreak IEnumerator} & Calls \texttt{CheckAccusation}; triggers \texttt{EndGame()} on win or sets \texttt{HasLost=true} on incorrect guess \\ \hline
+\texttt{PlayersInTurnOrder\-StartingAfter(suggester) \allowbreak : IEnumerable\allowbreak <Player>} & Returns players clockwise from the suggester for card-showing \\ \hline
+\texttt{GetNextFreeRoomSlot(\allowbreak roomID, excluding) \allowbreak : int} & Returns the next unoccupied visual slot in a room (1--6) \\ \hline
+\texttt{MoveWeaponToRoom(\allowbreak weaponName, \allowbreak roomID)} & Repositions a weapon token to the specified room's spawn point \\ \hline
+\texttt{DiceRoll() \allowbreak : GameObject} & Instantiates the physics dice and starts its roll coroutine \\ \hline
 \texttt{EndGame()} & Sets \texttt{GameEnded=true}, destroys board/tokens, calls \texttt{GameState.GameOver()} \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \subsection*{\texttt{BoardScript} (Singleton)}
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{9cm}|}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|p{4.2cm}|p{5.5cm}|}
 \hline
 \textbf{Member} & \textbf{Description} \\ \hline
 \texttt{GetTile(x, y) : int} & Returns tile value; 0 for out-of-bounds \\ \hline
 \texttt{SetTile(x, y, value)} & Writes a tile value; used by \texttt{TokenMover} to encode occupancy \\ \hline
-\texttt{IsWalkable(x, y) : bool} & Returns true iff tile value is $\geq 1$ and $< 50$ (not wall, not player-start) \\ \hline
-\texttt{FindPlayer(playerID) : Vector2Int} & Scans board for tile value == playerID; returns \texttt{(-1,-1)} if not found \\ \hline
-\texttt{FindAllTiles(value) : List<Vector2Int>} & Returns all board positions with the given tile value (used for door sets) \\ \hline
-\texttt{static RoomData : Dictionary<int,(string,Vector3)>} & Room ID $\to$ (name, world-space spawn position) \\ \hline
-\texttt{const WALL=0, WALKABLE\_FLOOR=1, SPECIAL\_TILE=33, OCCUPIED=50} & Named tile-encoding constants \\ \hline
-\end{tabular}%
-}
+\texttt{IsWalkable(x, y) \allowbreak : bool} & Returns true iff tile value is $\geq 1$ and $< 50$ (not wall, not player-start) \\ \hline
+\texttt{FindPlayer(playerID) \allowbreak : Vector2Int} & Scans board for tile value == playerID; returns \texttt{(-1,-1)} if not found \\ \hline
+\texttt{FindAllTiles(value) \allowbreak : List<Vector2Int>} & Returns all board positions with the given tile value (used for door sets) \\ \hline
+\texttt{static RoomData : \allowbreak Dictionary<int,(string,\allowbreak Vector3)>} & Room ID $\to$ (name, world-space spawn position) \\ \hline
+\texttt{const WALL=0, WALKABLE\-\_FLOOR=1, SPECIAL\-\_TILE=33, OCCUPIED=50} & Named tile-encoding constants \\ \hline
+\end{tabular}
 \end{table}
 
 \subsection*{\texttt{TokenMover} (per-player MonoBehaviour)}
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{9cm}|}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|p{4.2cm}|p{5.5cm}|}
 \hline
 \textbf{Method} & \textbf{Description} \\ \hline
-\texttt{InitialiseFromBoard(playerID)} & Locates the player's tile on \texttt{BoardScript}, sets grid position and world position \\ \hline
-\texttt{GetLegalMoves() : List<Vector2Int>} & Returns orthogonal adjacent tiles that pass \texttt{BoardScript.IsWalkable} \\ \hline
+\texttt{InitialiseFromBoard(\allowbreak playerID)} & Locates the player's tile on \texttt{BoardScript}, sets grid position and world position \\ \hline
+\texttt{GetLegalMoves() \allowbreak : List<Vector2Int>} & Returns orthogonal adjacent tiles that pass \texttt{BoardScript.IsWalkable} \\ \hline
 \texttt{Step(Vector2Int delta)} & Moves one step: restores old tile value, encodes new tile with playerID, updates world position \\ \hline
-\texttt{EnterRoom(roomID, slot)} & Moves token to the room's visual slot position; sets \texttt{CurrentRoomID} and \texttt{RoomSlot} \\ \hline
-\texttt{LeaveThroughDoor(Vector2Int door)} & Exits room: places token on door tile, clears \texttt{CurrentRoomID}/\texttt{RoomSlot} \\ \hline
-\end{tabular}%
-}
+\texttt{EnterRoom(\allowbreak roomID, slot)} & Moves token to the room's visual slot position; sets \texttt{CurrentRoomID} and \texttt{RoomSlot} \\ \hline
+\texttt{LeaveThroughDoor(\allowbreak Vector2Int door)} & Exits room: places token on door tile, clears \texttt{CurrentRoomID}/\texttt{RoomSlot} \\ \hline
+\end{tabular}
 \end{table}
 
 \subsection*{\texttt{PlayerKnowledge}}
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{9cm}|}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|p{4.2cm}|p{5.5cm}|}
 \hline
 \textbf{Method} & \textbf{Description} \\ \hline
-\texttt{NoteOwnHand(owner, cards)} & Seeds the knowledge base with cards the player holds \\ \hline
-\texttt{NoteShown(refuter, card)} & Records that \texttt{refuter} definitely holds \texttt{card} (suggester saw it) \\ \hline
-\texttt{NoteCannotRefute(refuter, cards)} & Records that \texttt{refuter} holds none of \texttt{cards} (they passed) \\ \hline
-\texttt{NoteRefutedSomething(refuter, cards)} & Records a disjunction: \texttt{refuter} holds at least one of \texttt{cards} (other observers) \\ \hline
-\texttt{GetEnvelopeCandidates(allCards)} & Returns cards not definitively held by anyone --- the set of possible envelope cards \\ \hline
-\end{tabular}%
-}
+\texttt{NoteOwnHand(\allowbreak owner, cards)} & Seeds the knowledge base with cards the player holds \\ \hline
+\texttt{NoteShown(\allowbreak refuter, card)} & Records that \texttt{refuter} definitely holds \texttt{card} (suggester saw it) \\ \hline
+\texttt{NoteCannotRefute(\allowbreak refuter, cards)} & Records that \texttt{refuter} holds none of \texttt{cards} (they passed) \\ \hline
+\texttt{NoteRefutedSomething(\allowbreak refuter, cards)} & Records a disjunction: \texttt{refuter} holds at least one of \texttt{cards} (other observers) \\ \hline
+\texttt{GetEnvelopeCandiates(\allowbreak allCards)} & Returns cards not definitively held by anyone---the set of possible envelope cards \\ \hline
+\end{tabular}
 \end{table}
 
 \section{Object-Oriented Design Principles}
@@ -165,17 +167,17 @@ The table below records where the delivered codebase differs from the original d
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|p{3.5cm}|p{8cm}|p{5cm}|p{6cm}|}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|c|p{2.4cm}|p{2.8cm}|p{2.4cm}|p{2.8cm}|}
 \hline
-\textbf{\#} & \textbf{Designed} & \textbf{Delivered} & \textbf{Why} & \textbf{Where it lives now} \\ \hline
-D1 & Standalone \texttt{Suggestion} class & Suggestion flow inside \texttt{GameManagerScript.RunSuggestion()} and \texttt{UiManager} & Late Sprint 4 integration --- a refactor risked the deadline & \texttt{GameManagerScript.cs} \\ \hline
-D2 & Standalone \texttt{Accusation} class & Accusation inside \texttt{GameManagerScript.ResolveAccusation()} & Same as D1 --- co-located with Suggestion to share player/room state & \texttt{GameManagerScript.cs} \\ \hline
-D3 & \texttt{AiPlayer} with basic notebook-based deduction & \texttt{AiPlayer} uses BFS-directed movement and knowledge-filtered suggestions; \texttt{ChooseAccusationFollowUp} returns true when envelope candidates narrow to 3 & Full deduction-based play simplified in Sprint 4; core navigation and knowledge filtering were implemented & \texttt{AiPlayer.cs} --- each method body has a \texttt{TODO (ai)} comment for the upgrade path \\ \hline
-D4 & Full A* pathfinding for movement & Legal-move-only detection; step-by-step navigation & Decided at Meeting 6 once irregular-board complexity was understood & \texttt{TokenMover.GetLegalMoves()} \\ \hline
-D5 & Single \texttt{TokenMovementScript} & Split into \texttt{Player} (abstract, turn logic) + \texttt{TokenMover} (movement only) + \texttt{HumanPlayer} / \texttt{AiPlayer} subclasses & Refactored in Sprint 4 to separate input strategy from movement mechanics & \texttt{Player.cs}, \texttt{TokenMover.cs}, \texttt{HumanPlayer.cs}, \texttt{AiPlayer.cs} \\ \hline
-\end{tabular}%
-}
+\textbf{\#} & \textbf{Designed} & \textbf{Delivered} & \textbf{Why} & \textbf{Where} \\ \hline
+D1 & Standalone \texttt{Suggestion} & Inside \texttt{GameManager\-Script} & Late integration risk & \texttt{GameManager\-Script.cs} \\ \hline
+D2 & Standalone \texttt{Accusation} & Inside \texttt{GameManager\-Script} & Same as D1 & \texttt{GameManager\-Script.cs} \\ \hline
+D3 & Notebook-based AI deduction & BFS + knowledge-filtered & Core features in S4 & \texttt{AiPlayer.cs} \\ \hline
+D4 & Full A* pathfinding & Legal-move navigation & Sprint 3 complexity & \texttt{TokenMover} \\ \hline
+D5 & Single \texttt{TokenMovement\-Script} & Split into \texttt{Player} + subclasses & Separate concerns (S4) & 4 files \\ \hline
+\end{tabular}
 \end{table}
 
 \section{Design Validation}

@@ -20,9 +20,12 @@ The evidence for each sprint is structured as: summary data, individual contribu
 \end{tabular}
 
 \subsection*{Individual Key Contributions}
+
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|p{9.5cm}|}
+\small
+\footnotesize
+\begin{tabular}{|p{1.8cm}|p{7.2cm}|}
 \hline
 \textbf{Team Member} & \textbf{Key Contribution(s)} \\ \hline
 Matt & Created initial Unity project (\texttt{clue}); pushed to GitHub; established project structure \\ \hline
@@ -100,18 +103,17 @@ cards.json structure:
 \textbf{Unit Tests:}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{5cm}|p{3cm}|p{2.5cm}|l|}
+\small
+\begin{tabular}{|l|l|p{4.2cm}|p{2.8cm}|p{2.5cm}|l|}
 \hline
 \textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\ \hline
-U1.1 & Card & Constructor sets type correctly & card.Type == Person & Person & Pass \\ \hline
-U1.2 & Card & ToString() returns name & ``Dagger'' & ``Dagger'' & Pass \\ \hline
-U1.3 & Deck & 18 cards dealt after envelope & 18 dealt, 3 in envelope & 18 dealt, 3 in envelope & Pass \\ \hline
-U1.4 & Deck & Envelope has one of each type & 1 Person + 1 Weapon + 1 Room & Confirmed & Pass \\ \hline
-U1.5 & Deck & GetCharacterHand correct & Non-empty, no duplicates & All verified & Pass \\ \hline
-U1.6 & SceneController & Singleton prevents duplicate & Second instance destroyed & Destroyed & Pass \\ \hline
-\end{tabular}%
-}
+U1.1 & Card & Constructor sets type correctly & \texttt{card.Type == Person} & Person & Pass \\ \hline
+U1.2 & Card & \texttt{ToString()} returns name & ``Dagger'' & ``Dagger'' & Pass \\ \hline
+U1.3 & Deck & 18 cards dealt after envelope & 18 dealt, 3 envelope & 18, 3 & Pass \\ \hline
+U1.4 & Deck & Envelope has one of each type & 1 of each type & Confirmed & Pass \\ \hline
+U1.5 & Deck & \texttt{GetCharacterHand} correct & Non-empty, no dups & Verified & Pass \\ \hline
+U1.6 & SceneController & Singleton prevents duplicate & 2nd destroyed & Destroyed & Pass \\ \hline
+\end{tabular}
 \end{table}
 
 \subsection*{Sprint Retrospective}
@@ -151,8 +153,8 @@ What will you do differently? Front-load repository tooling at the start of Spri
 \subsection*{Individual Key Contributions}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{10cm}|}
+\footnotesize
+\begin{tabular}{|p{1.8cm}|p{7.2cm}|}
 \hline
 \textbf{Team Member} & \textbf{Key Contribution(s)} \\ \hline
 Matt & \texttt{BoardScript}: 25-row $\times$ 24-col tile array; walkable, door, player-start squares; board prefab \\ \hline
@@ -161,8 +163,7 @@ Joe & \texttt{Player} base class: initial tile-position fields and structure; oc
 Ethan & Board movement planning; room connectivity and door position verification \\ \hline
 Ben & \texttt{DiceRollScript}: Rigidbody physics dice; face-orientation result calculation \\ \hline
 Edward & \texttt{MenuController}: OnNewGame/QuitGame; wiring \texttt{SceneController} into menu flow \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \subsection*{Requirements Analysis}
@@ -224,10 +225,10 @@ A Rigidbody physics dice was chosen over \texttt{Random.Range(1,7)} to provide v
 \textbf{Unit Tests:}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{5cm}|p{3cm}|p{2.5cm}|l|}
+\footnotesize
+\begin{tabular}{|l|l|p{4.2cm}|p{2.8cm}|p{2.5cm}|l|}
 \hline
-\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\ \hline
+\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
 U2.1 & BoardScript & GetTile returns 0 for out-of-bounds coordinates & 0 & 0 & Pass \\ \hline
 U2.2 & BoardScript & GetTile returns 1 for known corridor tile (7,0) & 1 & 1 & Pass \\ \hline
 U2.3 & BoardScript & IsWalkable returns false for wall tile (value 0) & false & false & Pass \\ \hline
@@ -235,23 +236,21 @@ U2.4 & BoardScript & IsWalkable returns true for door tile (value 2) & true & tr
 U2.5 & DiceRollScript & CalculateResult returns value in range 1--6 for all 6 face orientations & 1 $\leq$ result $\leq$ 6 & All 6 orientations in range & Pass \\ \hline
 U2.6 & GameManagerScript & Singleton prevents duplicate instance & Second instance destroyed & Second destroyed & Pass \\ \hline
 U2.7 & GameState & SetCurrentState(GameOver) sets timeScale to 0 & timeScale = 0 & timeScale = 0 & Pass \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \textbf{System Tests:}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{4cm}|p{3cm}|p{3cm}|l|}
+\footnotesize
+\begin{tabular}{|l|l|p{3.8cm}|p{2.8cm}|p{2.8cm}|l|}
 \hline
 \textbf{Ref} & \textbf{Req} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
 S2.1 & F2.2 & Game starts and board renders & Board visible; no errors & Board renders; console clean & Pass \\ \hline
 S2.2 & F2.5 & Tokens spawn correctly & Tokens at start squares & Tokens at correct positions & Pass \\ \hline
 S2.3 & F2.4 & Dice gives valid result & Value 1--6 & 1--6 displayed & Pass \\ \hline
 S2.4 & F2.6 & Menu transitions to game scene & Scene loads with correct count & Scene transition works & Pass \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \subsection*{Sprint Retrospective}
@@ -288,8 +287,8 @@ What will you do differently? Begin \texttt{TokenMovementScript} with a clearly 
 \subsection*{Individual Key Contributions}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{10cm}|}
+\footnotesize
+\begin{tabular}{|p{1.8cm}|p{7.2cm}|}
 \hline
 \textbf{Team Member} & \textbf{Key Contribution(s)} \\ \hline
 Joe & \texttt{Player}/\texttt{HumanPlayer}/\texttt{TokenMover}: legal-move detection, keyboard input, room-entry detection \\ \hline
@@ -315,7 +314,7 @@ The original \texttt{TokenMovementScript} concept was refactored into a clean cl
 
 \subsection*{Key Design Decision: Legal Move Detection (Not A* Pathfinding)}
 
-\texttt{TokenMover.GetLegalMoves()} returns the set of immediately adjacent walkable tiles (orthogonal only). The player selects direction step-by-step. This matches the Clue! rules and avoids over-engineering. A* pathfinding was cut at Meeting 6 once the irregular-board complexity was understood.
+\texttt{TokenMover.GetLegalMoves()} returns the set of orthogonally adjacent walkable tiles. The player selects direction step-by-step. This still matches the Clue! rules and avoids over-engineering. A* pathfinding was cut at Meeting 6 once the true complexity was understood.
 
 \subsection*{Key Design Decision: Callback-Driven UI}
 
@@ -348,25 +347,24 @@ A player in a passage room can take \texttt{TurnAction.Passage} instead of rolli
 \textbf{Unit Tests:}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{5cm}|p{3cm}|p{2.5cm}|l|}
+\footnotesize
+\begin{tabular}{|l|l|p{4.2cm}|p{2.8cm}|p{2.5cm}|l|}
 \hline
-\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\ \hline
+\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
 U3.1 & TokenMover & Legal moves exclude impassable (value 0) tiles & 0-tile not in result & 0-tile excluded & Pass \\ \hline
 U3.2 & TokenMover & Legal moves exclude out-of-play (value $\geq$ 50) tiles & $\geq$50 tile not in result & Excluded & Pass \\ \hline
 U3.3 & RoomRules & IsRoomTile returns true for door values (2, 5, 9, 11); false for non-door values & true/false per value & All cases correct & Pass \\ \hline
 U3.4 & BoardScript & Tile resets to WALKABLE\_FLOOR (1) after token steps away & Old tile = 1 & Old tile reset to 1 & Pass \\ \hline
 U3.5 & BoardScript & RoomData maps room IDs 2--11 to correct room names & e.g.\ RoomData[2].name = ``Study'' & All 10 room names correct & Pass \\ \hline
 U3.6 & NotepadGrid & LoadData processes 147 toggles (21 columns $\times$ 7 rows) & Toggle count = 147 & 147 toggles & Pass \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \textbf{System Tests:}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{4cm}|p{3cm}|p{3cm}|l|}
+\footnotesize
+\begin{tabular}{|l|l|p{3.8cm}|p{2.8cm}|p{2.8cm}|l|}
 \hline
 \textbf{Ref} & \textbf{Req} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
 S3.1 & F3.1 & Player moves by dice value & Token moves N squares & Moves exactly N & Pass \\ \hline
@@ -376,8 +374,7 @@ S3.4 & F3.4 & Room entry ends movement & Movement stops & Halts on door tile & P
 S3.5 & F3.6 & Turn UI appears on player turn & Controls visible & UiManager prompts & Pass \\ \hline
 S3.6 & F3.7 & Suggestion UI shows correct room & Room field locked & Read-only field & Pass \\ \hline
 S3.7 & F3.9 & AI moves without input & AI selects move & Turn completes & Pass \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \subsection*{Sprint Retrospective}
@@ -415,8 +412,8 @@ What will you do differently? Focus Sprint 4 exclusively on the end-to-end game 
 \subsection*{Individual Key Contributions}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{10cm}|}
+\footnotesize
+\begin{tabular}{|p{1.8cm}|p{7.2cm}|}
 \hline
 \textbf{Team Member} & \textbf{Key Contribution(s)} \\ \hline
 Ewan & \texttt{GameManagerScript.MainLoop()}: full coroutine turn cycle; \texttt{RunSuggestion()}: clockwise card-showing; \texttt{ResolveAccusation()} \\ \hline
@@ -490,10 +487,10 @@ A \texttt{PlayerKnowledge} class was added to track per-player card inferences:
 \textbf{Unit Tests:}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{5cm}|p{3cm}|p{2.5cm}|l|}
+\footnotesize
+\begin{tabular}{|l|l|p{4.2cm}|p{2.8cm}|p{2.5cm}|l|}
 \hline
-\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\ \hline
+\textbf{Ref} & \textbf{Class} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
 U4.1 & GameManagerScript & Turn order cycles Scarlett$\to$Mustard$\to$White (canonical character order) & Correct order & Correct order & Pass \\ \hline
 U4.2 & GameManagerScript & Player with HasLost=true is excluded from active turn order & Mustard absent from order & Mustard absent & Pass \\ \hline
 U4.3 & GameManagerScript & CheckAccusation returns true when all three cards match the envelope & true & true & Pass \\ \hline
@@ -501,8 +498,7 @@ U4.4 & GameManagerScript & CheckAccusation returns false for wrong guess; accuse
 U4.5 & GameManagerScript & RunSuggestion: refuter's revealed card recorded as Held in suggester's PlayerKnowledge & Knowledge.Status = Held & Held confirmed & Pass \\ \hline
 U4.6 & GameManagerScript & RunSuggestion: SuggestionLog records no-refute when no player holds matching cards & log contains ``could not refute'' & Confirmed & Pass \\ \hline
 U4.7 & GameManagerScript & RunSuggestion moves suggested character's CurrentRoomID to suggestion room & CurrentRoomID = targetRoom & Character correctly moved & Pass \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \textbf{System Tests:}
@@ -510,8 +506,8 @@ U4.7 & GameManagerScript & RunSuggestion moves suggested character's CurrentRoom
 \noindent\textit{Note: the system tests below were designed against functional requirements F4.1--F4.9 and non-functional requirement NF4.2. The test cases and expected outputs were completed, but manual play-through results and Pass/Fail verdicts could not be recorded before the submission deadline.}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{4cm}|p{3cm}|p{3cm}|l|}
+\footnotesize
+\begin{tabular}{|l|l|p{3.8cm}|p{2.8cm}|p{2.8cm}|l|}
 \hline
 \textbf{Ref} & \textbf{Req} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
 S4.1 & F4.1 & Miss Scarlett goes first & Turn 1 = Scarlett & \textit{[TODO]} & \textit{[TODO]} \\ \hline
@@ -526,8 +522,7 @@ S4.9 & F4.8 & Wrong accusation eliminates player; they still respond to suggesti
 S4.10 & F4.8 & Eliminated players are skipped in turn order & Eliminated player gets no turn & \textit{[TODO]} & \textit{[TODO]} \\ \hline
 S4.11 & F4.9 & AI completes a full turn without human input & No hang; completes in $<$5 s & \textit{[TODO]} & \textit{[TODO]} \\ \hline
 S4.12 & NF4.2 & Card reveal is private; other players cannot see & Private modal; others unaware & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \subsection*{Known Issues / Deficiencies}
@@ -535,15 +530,14 @@ S4.12 & NF4.2 & Card reveal is private; other players cannot see & Private modal
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{5cm}|l|p{3.5cm}|}
+\footnotesize
+\begin{tabular}{|l|p{4.5cm}|l|p{3.2cm}|}
 \hline
 \textbf{ID} & \textbf{Description} & \textbf{Severity} & \textbf{Planned Fix} \\ \hline
 KI-1 & \texttt{AiPlayer} uses BFS-directed movement and knowledge-filtered suggestions; \texttt{ChooseAccusationFollowUp} returns true when envelope candidates narrow to exactly 3. Full probability-based deduction not implemented. & Low & Extend \texttt{PlayerKnowledge} inference to eliminate cards more aggressively \\ \hline
 KI-2 & Suggestion/Accusation lives inside \texttt{GameManagerScript} not standalone classes & Low (architectural) & Extract into \texttt{Suggestion}/\texttt{Accusation} classes; add unit tests \\ \hline
-KI-3 & Suggested character and weapon tokens do not fully move to the suggestion room under all conditions. \texttt{RunSuggestion()} calls \texttt{target.Mover.EnterRoom()} only when \texttt{GetPlayerByCharacterName()} returns non-null and the target is not the suggester; \texttt{MoveWeaponToRoom()} is called unconditionally. This means that tokens that aren't spawned won't be placed in the room if suggested. & Low (functional) & Spawn the tokens for each player, even if they aren't playing, and just omit them from the board until suggested. \\ \hline
+KI-3 & Suggested tokens do not fully move to suggestion room in all cases & Low & Spawn all tokens; omit from board until suggested \\ \hline
 \end{tabular}
-}
 \end{table}
 
 \subsection*{Sprint Retrospective}

@@ -5,3 +5,5 @@ report.synctex.gz
 tocloft.sty
 .DS_Store
 submission/
+**.bak
+**.aux

@@ -7,7 +7,9 @@
 This section details the project timeline, task allocations and risk management strategies for the Cluedo/Clue! Desktop Game, developed in C\# / Unity.
 
 \subsection{Initial Gantt Chart}
+
 The project timeline and task assignments are visualised in the Gantt chart (Figure \ref{fig:gantt_chart}). This chart and the accompanying breakdown in Table \ref{tab:gantt_tasks} represent a combination of the individual Gantt charts developed at the start of each sprint, rather than an initial Gantt chart for the entire project. This approach was chosen as the problem was large and unfamiliar enough that we could not predict the scope from the beginning.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{gantt.png}
@@ -17,8 +19,9 @@ The project timeline and task assignments are visualised in the Gantt chart (Fig
 
 \begin{table}[H]
     \centering
-    \small
-    \begin{tabular}{|p{6.2cm}|l|c|c|c|}
+    \footnotesize
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{|p{5.5cm}|p{1.8cm}|c|c|c|}
         \hline
         \textbf{Task} & \textbf{Owner(s)} & \textbf{Start} & \textbf{End} & \textbf{Status} \\ \hline
         Initial planning, meetings \& role assignments & All & 26 Jan & 19 Feb & Done \\ \hline
@@ -82,8 +85,7 @@ Table \ref{tab:effort} shows the approximate hours per team member per sprint, e
 
 \begin{table}[H]
 \centering
-\caption{Effort Allocation (Approximate Hours)}
-\label{tab:effort}
+\small
 \begin{tabular}{|l|r|r|r|r|r|}
 \hline
 \textbf{Team Member} & \textbf{Sprint 1} & \textbf{Sprint 2} & \textbf{Sprint 3} & \textbf{Sprint 4} & \textbf{Total} \\ \hline
@@ -95,6 +97,8 @@ Ben & 5 & 9 & 11 & 14 & \textbf{40} \\ \hline
 Matt & 6 & 9 & 10 & 15 & \textbf{40} \\ \hline
 \textbf{Sprint Total} & \textbf{41} & \textbf{59} & \textbf{75} & \textbf{95} & \textbf{270} \\ \hline
 \end{tabular}
+\caption{Effort Allocation (Approximate Hours)}
+\label{tab:effort}
 \end{table}
 
 \textit{Average 45 hours per person over the 10-week project (4.5 h/week).}
@@ -104,24 +108,23 @@ Matt & 6 & 9 & 10 & 15 & \textbf{40} \\ \hline
 
 \begin{table}[H]
 \centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|c|p{2.8cm}|c|c|c|p{3cm}|c|}
+\hline
+\textbf{ID} & \textbf{Risk} & \textbf{L} & \textbf{I} & \textbf{Sev} & \textbf{Mitigation} & \textbf{Owner} \\ \hline
+R1 & Unity version incompatibility & 4 & 3 & High & Agree LTS; test S1 & Matt \\ \hline
+R2 & Git merge conflicts & 4 & 4 & High & YAML Merge; owner per scene & Edward \\ \hline
+R3 & Member unavailable & 2 & 4 & Med & Pair-coding & All \\ \hline
+R4 & Scope creep & 3 & 3 & Med & Prioritise core loop & Joe \\ \hline
+R5 & Inconsistent dice & 3 & 2 & Med & Fallback logic & Ben \\ \hline
+R6 & AI too complex & 3 & 2 & Low & Random moves first & Ben \\ \hline
+R7 & Corrupted zip & 2 & 5 & Med & Verify unpacking & Joe \\ \hline
+R8 & Incomplete loop & 2 & 5 & High & Prioritise playable & All \\ \hline
+R9 & Knowledge gap & 5 & 4 & High & Tutorials; pair-code & All \\ \hline
+\end{tabular}
 \caption{Risk Register}
 \label{tab:risk_register}
-% This line forces the table to fit the text width
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|>{\centering\arraybackslash}p{4cm}|c|c|c|>{\centering\arraybackslash}p{4.5cm}|c|}
-\hline
-\textbf{ID} & \textbf{Risk} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Severity} & \textbf{Mitigation Strategy} & \textbf{Owner} \\ \hline
-R1 & Unity version incompatibility & 4 & 3 & High & Agree on LTS version; test in Sprint 1 & Matt \\ \hline
-R2 & Git merge conflicts on scenes & 4 & 4 & High & Use UnityYAMLMerge; single owner per scene & Edward \\ \hline
-R3 & Team member unable to contribute & 2 & 4 & Medium & Shared codebase knowledge; pair-coding & All \\ \hline
-R4 & Scope creep & 3 & 3 & Medium & Prioritise core game loop first & Joe \\ \hline
-R5 & Inconsistent physics dice & 3 & 2 & Medium & Fallback: default to 1 if result = 0 & Ben \\ \hline
-R6 & AI player too complex & 3 & 2 & Low & Use random decision-making first & Ben \\ \hline
-R7 & Corrupted submission file & 2 & 5 & Medium & Test zip unpacking before submission & Joe \\ \hline
-R8 & Incomplete game loop & 2 & 5 & High & Prioritise end-to-end playable loop & All \\ \hline
-R9 & Knowledge gap: Most of the team lacks prior experience with Unity or \texttt{C\#} & 5 & 4 & High & Allocate time in Sprint 1 for tutorials; pair-program with the experienced member & All \\ \hline
-\end{tabular}%
-} % Closes the resizebox
 \end{table}
 
 \subsubsection*{Risk Monitoring and Lessons Learned}
@@ -146,8 +149,6 @@ Lessons for Risk Planning:
     \item \textbf{Account for learning curves in technical projects.} Identifying the knowledge gap (R9) early allowed the team to adjust Sprint 1 expectations, but future projects should formally budget time for upskilling.
 \end{enumerate}
 
-\newpage
-
 % ==================== MEETING NOTES ====================
 \section{Team Meetings}
 \label{sect:meeting}
@@ -171,9 +172,9 @@ Each meeting below follows the same structure:
 Cross-references: planning decisions feed the previous Project Plan section.
 \end{quote}
 
-\vspace{0.5cm}
+\smallskip
 \hrule
-\vspace{0.5cm}
+\smallskip
 
 \subsection{Meeting 1}
 \textbf{Date:} 26/01/2026 \\
@@ -200,22 +201,22 @@ Cross-references: planning decisions feed the previous Project Plan section.
 \end{itemize}
 
 \subsubsection*{Actions Agreed}
+
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|p{8cm}|l|l|}
+\small
+\begin{tabular}{|p{6cm}|p{1.8cm}|p{2.8cm}|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Completed?} \\ \hline
 Research Unity after meeting & All & Yes \\ \hline
 Set up an empty Unity project as a ``spike'' to confirm everyone can run it & Edward & Yes --- initial commit 28/01 \\ \hline
 Prepare for next meeting & All & Yes \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-\vspace{0.5cm}
+\smallskip
 \hrule
-\vspace{0.5cm}
+\smallskip
 
 \subsection{Meeting 2}
 \textbf{Date:} 02/02/2026 \\
@@ -243,10 +244,11 @@ Prepare for next meeting & All & Yes \\ \hline
 \end{itemize}
 
 \subsubsection*{Actions Agreed}
+
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|p{8cm}|l|l|}
+\small
+\begin{tabular}{|p{6cm}|p{1.8cm}|p{2.8cm}|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Completed?} \\ \hline
 Create skeleton class diagram & Edward & Yes --- see \texttt{Design} docs \\ \hline
@@ -254,13 +256,12 @@ Agree commit schematic format & All & Yes --- followed across PRs \\ \hline
 Set up documentation structure (\texttt{report/} folder) & Joe & Yes --- commits 19/02 \\ \hline
 Draft initial risk register & Joe / Edward & Yes --- Table~\ref{tab:risk_register} \\ \hline
 Continue building out basic Unity project structure & Edward & Yes --- commits 01/02 \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-\vspace{0.5cm}
+\smallskip
 \hrule
-\vspace{0.5cm}
+\smallskip
 
 \subsection{Meeting 3}
 \textbf{Date:} 19/02/2026 \\
@@ -279,17 +280,17 @@ Continue building out basic Unity project structure & Edward & Yes --- commits 0
 
 \subsubsection*{Decisions Made}
 
-\textbf{Code Documentation:} \texttt{C\#} XML doc comments agreed as the standard.
-
-\textbf{Privacy model discussed:} Options considered: (A) pass-and-play single screen, (B) cards hidden/revealed on demand via private modal, (C) split screen. \textbf{Agreed: Option B} --- Matt to implement a private modal in \texttt{UiManager} so revealed cards are shown only to the suggesting player.
-
-\textbf{Data-driven design:} Board layout, character names, weapon names loaded from JSON files using Unity's built-in JsonUtility.
+\begin{itemize}
+    \item\textbf{Code Documentation:} \texttt{C\#} XML doc comments agreed as the standard.
+    \item\textbf{Privacy model discussed:} Options considered: (A) pass-and-play single screen, (B) cards hidden/revealed on demand via private modal, (C) split screen. Agreed upon Option B. Matt to implement a private modal in \texttt{UiManager} so revealed cards are shown only to the suggesting player.
+    \item\textbf{Data-driven design:} Board layout, character names, weapon names loaded from JSON files using Unity's built-in JsonUtility.
+\end{itemize}
 
 \begin{table}[H]
 \centering
 \caption*{Role Assignments}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{8cm}|l|}
+% Removed resizebox for better formatting
+\begin{tabular}{|p{6cm}|p{1.8cm}|p{2.2cm}|}
 \hline
 \textbf{Area} & \textbf{Scope} & \textbf{Assigned To} \\ \hline
 \textbf{Game Logic \& Rules} & GameManager, turn flow, suggestions, accusations, win conditions & Ewan \\ \hline
@@ -300,14 +301,13 @@ Continue building out basic Unity project structure & Edward & Yes --- commits 0
 \textbf{Diagrams \& Plans} & Gantt chart (or similar), UML diagram & Joe \\ \hline
 \textbf{AI Player Agent} & Random agent first, then improved strategy if time allows & Ben \\ \hline
 \textbf{Testing \& Docs} & Test plans, unit tests, sprint docs, meeting notes, report & Everyone \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \begin{table}[H]
 \centering
 \caption*{Sprint Plan}
-\resizebox{\textwidth}{!}{%
+% Removed resizebox for better formatting
 \begin{tabular}{|l|l|p{8cm}|}
 \hline
 \textbf{Sprint} & \textbf{Focus} & \textbf{Key Deliverables} \\ \hline
@@ -315,14 +315,13 @@ Sprint 1 & Core logic & Board representation, player movement, turn system, dice
 Sprint 2 & Core gameplay & Suggestions, accusations, UI card logic, detective notes, rooms \\ \hline
 Sprint 3 & AI \& polish & AI player agent, GUI polish, JSON loading \\ \hline
 Sprint 4 & Testing \& docs & System/unit testing, bug fixes, documentation, final integration \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \subsubsection*{Actions Agreed}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
+% Removed resizebox for better formatting
 \begin{tabular}{|p{6cm}|l|l|l|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Due} & \textbf{Completed?} \\ \hline
@@ -333,13 +332,12 @@ Draft initial Gantt chart / project plan & Joe & Next meeting & Yes \\ \hline
 Design board data file schema (JSON) & Edward & --- & Yes \\ \hline
 Create initial class diagram & Edward, Ethan & --- & Yes \\ \hline
 Begin Sprint 1 work on assigned area & All & --- & Yes \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-\vspace{0.5cm}
+\smallskip
 \hrule
-\vspace{0.5cm}
+\smallskip
 
 \subsection{Meeting 4}
 \textbf{Date:} 05/03/2026 \\
@@ -366,7 +364,7 @@ Begin Sprint 1 work on assigned area & All & --- & Yes \\ \hline
 \subsubsection*{Actions Agreed}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
+% Removed resizebox for better formatting
 \begin{tabular}{|p{6cm}|l|l|l|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Due} & \textbf{Completed?} \\ \hline
@@ -377,13 +375,12 @@ Begin \texttt{BoardScript} (25$\times$24 tile encoding) & Matt & Sprint 2 & Yes 
 Begin \texttt{GameManagerScript} (setup) & Ewan & Sprint 2 & Yes \\ \hline
 Begin \texttt{DiceRollScript} (Rigidbody) & Ben & Sprint 2 & Yes \\ \hline
 Refine class diagram alongside dev & Edward, Ethan & Ongoing & Yes \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-\vspace{0.5cm}
+\smallskip
 \hrule
-\vspace{0.5cm}
+\smallskip
 
 \subsection{Meeting 5}
 \textbf{Date:} 10/03/2026 \\
@@ -410,7 +407,7 @@ Refine class diagram alongside dev & Edward, Ethan & Ongoing & Yes \\ \hline
 \subsubsection*{Actions Agreed}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
+% Removed resizebox for better formatting
 \begin{tabular}{|p{8cm}|l|l|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Completed?} \\ \hline
@@ -420,13 +417,12 @@ Begin token spawning logic in \texttt{GameManagerScript} & Edward & Yes (17/03) 
 Flesh out \texttt{PlayerScripts} (player state container) & Joe & Yes (17/03) \\ \hline
 Finalise \texttt{Card} / \texttt{Deck} data classes & Ben & Yes (17/03) \\ \hline
 Confirm \texttt{cards.json} covers 6 chars, 6 weapons, 9 rooms & Edward & Yes \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-\vspace{0.5cm}
+\smallskip
 \hrule
-\vspace{0.5cm}
+\smallskip
 
 \subsection{Meeting 6}
 \textbf{Date:} 17/03/2026 \\
@@ -452,7 +448,7 @@ Confirm \texttt{cards.json} covers 6 chars, 6 weapons, 9 rooms & Edward & Yes \\
 \subsubsection*{Actions Agreed}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
+% Removed resizebox for better formatting
 \begin{tabular}{|p{8cm}|l|l|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Completed?} \\ \hline
@@ -461,13 +457,12 @@ Begin \texttt{TokenMovementScript} & Joe, Ethan & Yes \\ \hline
 Integrate \texttt{DiceRollScript} result into turn start & Ben & Yes \\ \hline
 Finalise \texttt{SceneController} with DontDestroyOnLoad & Edward & Yes \\ \hline
 Begin \texttt{MenuController} scene transition & Edward & Yes \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-\vspace{0.5cm}
+\smallskip
 \hrule
-\vspace{0.5cm}
+\smallskip
 
 \subsection{Meeting 7}
 \textbf{Date:} 31/03/2026 \\
@@ -494,7 +489,7 @@ Begin \texttt{MenuController} scene transition & Edward & Yes \\ \hline
 \subsubsection*{Actions Agreed}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
+% Removed resizebox for better formatting
 \begin{tabular}{|p{8cm}|l|l|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Completed?} \\ \hline
@@ -504,13 +499,12 @@ Complete \texttt{UiManager} prompts and private modal & Matt & Yes \\ \hline
 Implement \texttt{NotepadGrid} toggle UI & Matt & Yes \\ \hline
 Wire AI move into \texttt{PlayTurn} coroutine & Ewan, Joe & Yes \\ \hline
 Everyone write up own contribution notes & All & Partially (in Sp 4) \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-\vspace{0.5cm}
+\smallskip
 \hrule
-\vspace{0.5cm}
+\smallskip
 
 \subsection{Meeting 8}
 \textbf{Date:} 14/04/2026 \\
@@ -536,7 +530,7 @@ Everyone write up own contribution notes & All & Partially (in Sp 4) \\ \hline
 \subsubsection*{Actions Agreed}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
+% Removed resizebox for better formatting
 \begin{tabular}{|p{8cm}|l|l|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Completed?} \\ \hline
@@ -546,13 +540,12 @@ AI suggestion when in room & Ben & In progress \\ \hline
 \texttt{GameOverScreen} --- restart and return-to-menu & Matt & Yes \\ \hline
 Fill sprint docs and report skeleton & Joe, All & In progress \\ \hline
 Record any known bugs for testing documentation & All & In progress \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-\vspace{0.5cm}
+\smallskip
 \hrule
-\vspace{0.5cm}
+\smallskip
 
 \subsection{Meeting 9}
 \textbf{Date:} 20/04/2026 \\
@@ -578,7 +571,7 @@ Record any known bugs for testing documentation & All & In progress \\ \hline
 \subsubsection*{Actions Agreed}
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
+% Removed resizebox for better formatting
 \begin{tabular}{|p{8cm}|l|l|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Completed?} \\ \hline
@@ -589,8 +582,7 @@ Complete group report (achievements, lessons) & Joe & In progress \\ \hline
 Agree peer assessment marks & All & Before 30 Apr \\ \hline
 Record gameplay video (MP4) & Ethan & Before 01 May\\ \hline
 Final submission ZIP upload to Canvas & TBC & By 01 May\\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \newpage

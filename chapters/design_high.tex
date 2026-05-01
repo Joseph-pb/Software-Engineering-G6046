@@ -7,8 +7,9 @@ The Clue! simulation is a desktop game implemented in Unity (C\#). The table bel
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|p{7cm}|}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{|p{2.5cm}|p{2.8cm}|p{5.5cm}|}
 \hline
 \textbf{Subsystem} & \textbf{Key Classes} & \textbf{Responsibility} \\ \hline
 Scene Management & \texttt{SceneController}, \texttt{MenuController} & Persists player/AI count between menu and game scenes \\ \hline
@@ -27,8 +28,7 @@ UI & \texttt{UiManager} & Central singleton: all player-facing prompts, suggesti
 Notebook & \texttt{NotepadGrid} & 147-cell toggle grid for detective deduction \\ \hline
 Card Knowledge & \texttt{PlayerKnowledge} & Per-player card inference (Held / NotHeld / disjunctions) \\ \hline
 End Screen & \texttt{GameOverScreen} & Restart / return-to-menu on game conclusion \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \section{Use Cases}
@@ -37,23 +37,22 @@ Actors: Human Player, AI Player.
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
+\small
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Use Case} & \textbf{Human Player} & \textbf{AI Player} \\ \hline
-Configure game (human/AI counts) & \checkmark & --- \\ \hline
-Roll dice & \checkmark & \checkmark (automated) \\ \hline
-Move token step-by-step & \checkmark (arrow keys) & \checkmark (BFS-directed toward target room) \\ \hline
-Use secret passage & \checkmark & \checkmark (takes passage only if it leads to target room) \\ \hline
+Configure game & \checkmark & --- \\ \hline
+Roll dice & \checkmark & \checkmark (auto) \\ \hline
+Move token & \checkmark (arrows) & \checkmark (BFS) \\ \hline
+Use secret passage & \checkmark & \checkmark (if to target) \\ \hline
 Enter room & \checkmark & \checkmark \\ \hline
-Make suggestion & \checkmark & \checkmark (knowledge-filtered char + weapon) \\ \hline
-Respond to suggestion (show card) & \checkmark & \checkmark (first matching card) \\ \hline
-View hand of cards & \checkmark & --- \\ \hline
+Make suggestion & \checkmark & \checkmark (filtered) \\ \hline
+Respond to suggestion & \checkmark & \checkmark (first card) \\ \hline
+View hand & \checkmark & --- \\ \hline
 Open detective notebook & \checkmark & --- \\ \hline
-Make accusation & \checkmark & \checkmark (when envelope candidates == 3) \\ \hline
-Restart game / return to menu & \checkmark & --- \\ \hline
-\end{tabular}%
-}
+Make accusation & \checkmark & \checkmark (3 left) \\ \hline
+Restart / return to menu & \checkmark & --- \\ \hline
+\end{tabular}
 \end{table}
 
 \noindent\textit{Note: ``Make Suggestion'' \texttt{<<include>>} ``Respond to Suggestion''; ``Make Accusation'' ends the game (correct) or eliminates the player (incorrect).}

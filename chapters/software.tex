@@ -167,10 +167,11 @@ documented in its class summary:
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{10cm}|}
+\small
+\footnotesize
+\begin{tabular}{|p{1.8cm}|p{7.2cm}|}
 \hline
-\textbf{Script} & \textbf{Responsibility (from class \texttt{<summary>})} \\ \hline
+\textbf{Script} & \textbf{Responsibility} \\ \hline
 \texttt{GameManagerScript.cs} & Central game controller: main turn loop, player
 spawning, weapon placement, suggestion / accusation resolution \\ \hline
 \texttt{BoardScript.cs} & 25$\times$24 tile grid; single source of truth for
@@ -203,8 +204,7 @@ theme switching \\ \hline
 \texttt{BakeData.cs} / \texttt{BakedNavData.cs} & Pre-computed navigation data
 for AI BFS \\ \hline
 \texttt{DiceDebugLogger.cs} & Editor-only diagnostic logger for dice physics \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \caption{Gameplay scripts and their documented responsibilities}
 \end{table}
 

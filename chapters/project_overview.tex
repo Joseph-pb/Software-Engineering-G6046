@@ -1,15 +1,6 @@
 \chapter{Project Overview}
 \label{chap:project-overview}
 
-\noindent \textbf{Team Number:} 15 \\
-\textbf{Module:} Software Engineering G6046 \\
-\textbf{Submission Date:} 30 April 2026 \\
-\textbf{University of Sussex}
-
-\vspace{0.5cm}
-\hrule
-\vspace{0.8cm}
-
 \section{Team Members}
 
 \begin{longtable}{llp{8cm}}
@@ -30,9 +21,9 @@ Edward & edward-baker05 & Data handling --- JSON schema design, \texttt{DeckScri
 
 \subsection{Project Description}
 
-This report documents the development of a computer simulation of the classic board game \textbf{Clue!} (Cluedo), commissioned by the fictional client Watson Games. The system was developed in \textbf{Unity (C\#)} over four Agile sprint cycles between February and April 2026.
+This report documents the development of a computer simulation of the classic board game Clue! (Cluedo) for the fictional client Watson Games. The system was developed in Unity (C\#) over four Agile sprint cycles between February and April.
 
-The final deliverable is a desktop game for Mac/PC that supports multiple players (human and/or AI), featuring:
+The final deliverable is a desktop game for Mac/PC that supports multiple players (human or AI), featuring:
 \begin{itemize}
     \item A faithful 25-row $\times$ 24-column tile representation of the Clue! board with all 9 rooms, corridors, doors, starting squares and secret passages
     \item Physics-based dice rolling (Rigidbody simulation with a fallback for degenerate results)
@@ -40,7 +31,7 @@ The final deliverable is a desktop game for Mac/PC that supports multiple player
     \item A 21-card deck (6 characters, 6 weapons, 9 rooms) dealt from a 3-card murder envelope, with private per-player hand display
     \item Suggestion system: clockwise card-showing round with private card reveal via modal, and suggested token movement into the suggestion room
     \item Accusation evaluation against the murder envelope, with win condition and player elimination
-    \item A random-decision AI player that takes full turns (roll, move, suggest, optionally accuse) without human input
+    \item An AI player that takes full turns (roll, move, suggest, optionally accuse) without human input using BFS and basic knowledge tracking
     \item Per-player detective notepad (147-cell toggle grid)
     \item Game-over screen with restart and return-to-menu options
     \item Data-driven card names loaded from \texttt{cards.json} --- characters, weapons and rooms are configurable without recompiling
@@ -72,39 +63,34 @@ We used \textbf{Git / GitHub} throughout. Branching strategy: feature branches p
 \endhead
 Sprint 1 & 19 Feb -- 05 Mar & Planning, role assignments, Unity project setup; \texttt{Card}, \texttt{Deck}, \texttt{SceneController} classes; \texttt{cards.json} schema & Compiles and runs; no visual game yet \\
 Sprint 2 & 05 -- 17 Mar & \texttt{BoardScript} (25$\times$24 tile grid), \texttt{GameManagerScript} singleton, \texttt{DiceRollScript} (Rigidbody), token spawning; repo tooling (Git LFS, PR templates, Unity merge settings) & Board visible; tokens spawn; dice rolls; no movement \\
-Sprint 3 & 17 Mar -- 11 Apr & \texttt{TokenMovementScript} (corridor movement, room entry, occupancy), \texttt{UiManager} (suggestion/card reveal prompts), \texttt{NotepadGrid}, \texttt{HandManager}/\texttt{CardInteraction} & Playable board: move tokens, view hand, enter rooms; suggestion prompt appears \\
- Sprint 4 & 11 -- 30 Apr & \texttt{GameManagerScript.MainLoop()} full turn cycle; \texttt{ResolveSuggestion()} clockwise card-showing; accusation evaluation; AI player (random decisions); \texttt{GameOverScreen}; system testing; documentation & Full playable game with documented limitations (KI-1 through KI-5) \\
+Sprint 3 & 17 Mar -- 14 Apr & \texttt{TokenMovementScript} (corridor movement, room entry, occupancy), \texttt{UiManager} (suggestion/card reveal prompts), \texttt{NotepadGrid}, \texttt{HandManager}/\texttt{CardInteraction} & Playable board: move tokens, view hand, enter rooms; suggestion prompt appears \\
+ Sprint 4 & 14 -- 30 Apr & \texttt{GameManagerScript.MainLoop()} full turn cycle; \texttt{RunSuggestion()} clockwise card-showing; accusation evaluation; AI player (BFS + Basic game state knowledge); \texttt{GameOverScreen}; system testing; documentation & Full playable game with documented limitations (KI-1 through KI-3) \\
 \bottomrule
 \end{longtable}
 
 \section{Key Achievements}
 
 \begin{itemize}
-    \item \textbf{Board}: A 25$\times$24 tile grid (\texttt{BoardScript}) encodes all 9 rooms (tile values 2--11), corridors (value 1), walls (value 0), door squares and character starting squares. Room layout faithfully reproduces the standard Cluedo board. Evidence: \texttt{BoardScript.cs}, Section~\ref{sec:sprint2}.
+    \item \textbf{Board}: A 25$\times$24 tile grid (\texttt{BoardScript}) encodes all 9 rooms (tile values 2--11), corridors (value 1), walls (value 0), door squares and character starting squares. Room layout faithfully reproduces the standard Cluedo board. Evidence: \texttt{BoardScript.cs}, Section~\ref{sec:sprint2}, submission video.
     \item \textbf{Physics dice}: \texttt{DiceRollScript} uses a Unity Rigidbody simulation rather than \texttt{Random.Range}, giving the dice a visible roll animation. Face orientation is decoded by dot product against \texttt{Vector3.up}; a \texttt{Random.Range(1,7)} fallback handles any degenerate result. Risk R5 (dice giving zero results) never triggered in testing. Evidence: \texttt{DiceRollScript.cs}, Section~\ref{sec:sprint2}.
     \item \textbf{Movement}: Orthogonal token movement bounded by the dice roll value, with occupancy tracking (two tokens cannot share a corridor square), room-entry detection, and secret-passage support. Full A* pathfinding was deliberately descoped in favour of legal-move detection on the current roll --- documented as a design decision, not a defect. Evidence: \texttt{TokenMover.cs}, Section~\ref{sec:sprint3}.
     \item \textbf{Card system}: A 21-card deck (6 characters, 6 weapons, 9 rooms) loaded from \texttt{cards.json}. Three cards (one of each type) are selected as the murder envelope before dealing; remaining 18 are dealt round-robin. Each player's hand is displayed in a private UI visible only to that player. Evidence: \texttt{DeckScript.cs}, \texttt{HandManager.cs}, \texttt{cards.json}.
     \item \textbf{Suggestion and accusation}: End-to-end suggestion flow --- the suggesting player's character and weapon are named, the room is fixed as the current room, and the suggested character token is moved into the room. A clockwise card-showing round follows: each player in turn is prompted to reveal one matching card privately (via \texttt{UiManager.ShowRevealedCard}), ending when the first match is shown. Accusations are evaluated against \texttt{Deck.GetEnvelope()}: a correct accusation triggers the win screen; an incorrect one eliminates the player from future turns while keeping their hand available for responses. Evidence: \texttt{GameManagerScript.cs}, \texttt{UiManager.cs}, Section~\ref{sec:sprint4}.
-    \item \textbf{AI player}: \texttt{AiPlayer} takes full turns without human input --- rolls dice, selects a random legal move (BFS-directed toward envelope-candidate rooms), enters rooms and makes random suggestions (character and weapon chosen from cards not yet eliminated from its knowledge base), and accuses when envelope candidates narrow to exactly 3. Each turn completes in under 5 seconds. Evidence: \texttt{AiPlayer.cs}, Section~\ref{sec:sprint4}.
+    \item \textbf{AI player}: \texttt{AiPlayer} takes full turns without human input --- rolls dice, selects a good legal move (BFS-directed toward envelope-candidate rooms), enters rooms and makes a suggestion from the character and weapon cards not yet eliminated from its knowledge base, and accuses when envelope candidates narrow to exactly 3. Each turn completes in under 5 seconds. Evidence: \texttt{AiPlayer.cs}, Section~\ref{sec:sprint4}.
     \item \textbf{Detective notepad}: A 147-cell toggle grid (\texttt{NotepadGrid} / \texttt{NotepadUI.cs}) is available per human player. It persists across turns and allows players to manually track which cards have been shown. Evidence: \texttt{NotepadUI.cs}, Section~\ref{sec:sprint3}.
     \item \textbf{Process and engineering}: Nine documented team meetings with agreed actions and completion tracking; four sprint cycles each with retrospectives; PR-driven workflow with Unity compile checks on every PR preventing broken builds from landing on \texttt{master}; Git LFS and UnityYAMLMerge preventing destructive scene-file conflicts after Sprint 2. Evidence: Section~\ref{sect:meeting}, Table~\ref{tab:risk_register} (Sprint~2 row), GitHub PR history.
 \end{itemize}
 
 \section{Outstanding Issues and Known Bugs}
 
-Documented bugs score better than unacknowledged ones per the marking guidance. These issues are consistent with Section~\ref{sec:sprint4-known-issues} and Section~\ref{sec:sprint4}.
-
 \begin{longtable}{lp{4cm}p{4cm}p{4cm}}
 \toprule
 \textbf{Issue} & \textbf{Description} & \textbf{Why it exists} & \textbf{What we'd do with more time} \\
 \midrule
 \endhead
-KI-1 & \texttt{MenuController} player/AI counts are hardcoded (\texttt{playerCount=4}, \texttt{aiCount=2}); not read from the UI selector & The UI controls were wired after the game-loop integration push; connecting them to \texttt{SceneController} was deprioritised to protect the critical path & Wire the UI dropdowns/sliders to \texttt{SceneController} values in \texttt{MenuController.Start()} \\
-KI-2 & Token spawning has a known issue with fewer than 6 players (TODO comment in \texttt{GameManagerScript.SpawnTokens}) & The spawn loop was written assuming 6 active player slots and not refactored after multi-player support was added & Fix the loop condition in \texttt{SpawnTokens()}; add unit tests for player counts 2--6 \\
-KI-3 & AI player makes decisions randomly only --- it does not eliminate confirmed cards from its notepad based on what it has observed in suggestion rounds & Deeper deduction logic was scoped down in Sprint 4 due to time pressure; the \texttt{PlayerKnowledge} scaffold is in place & Layer card-elimination deduction on top of the random base using \texttt{PlayerKnowledge.GetEnvelopeCandidates()} --- the architecture already supports this \\
-KI-4 & Suggestion / Accusation logic lives inside \texttt{GameManagerScript.cs} and \texttt{UiManager.cs} rather than as standalone classes & Late integration timeline in Sprint 4 did not allow a clean refactor without risking the deadline; accepted as a deliberate trade-off & Extract \texttt{Suggestion} and \texttt{Accusation} into their own classes; add focused unit tests for each \\
-KI-5 & System test S4.7 (F4.5): suggested character and weapon tokens do not fully move to the suggestion room. \texttt{RunSuggestion()} calls \texttt{target.Mover.EnterRoom()}
-only when \texttt{GetPlayerByCharacterName()} returns non-null and the target is not the suggester; \texttt{MoveWeaponToRoom()} is called unconditionally. At least one path is not producing the expected result (\texttt{GameManagerScript.cs} lines 334--338). & Root cause not fully isolated before submission deadline; a fix was not attempted to avoid risking the working suggestion flow and accusation chain & Trace the exact failing path (null character lookup, suggester = target, or positioning error in \texttt{EnterRoom()}/\texttt{MoveWeaponToRoom()}); add a unit test asserting both token positions after \texttt{RunSuggestion()} \\
+KI-1 & AI player makes basic suggestion decisions only --- it eliminates cards from its notepad based on what it has observed, but does not use probability to remove inferred cards & Deeper deduction logic was scoped down in Sprint 4 due to time pressure; the \texttt{PlayerKnowledge} scaffold is in place & Layer probability-elimination deduction on top of the base using \texttt{PlayerKnowledge.GetEnvelopeCandidates()} --- the architecture already supports this \\
+KI-2 & Suggestion / Accusation logic lives inside \texttt{GameManagerScript.cs} and \texttt{UiManager.cs} rather than as standalone classes & Late integration timeline in Sprint 4 did not allow a clean refactor without risking the deadline; accepted as a deliberate trade-off & Extract \texttt{Suggestion} and \texttt{Accusation} into their own classes; add focused unit tests for each \\
+KI-3 & Test S4.7 (F4.5): suggested character and weapon tokens do not fully move to the suggestion room. \texttt{RunSuggestion()} calls \texttt{target.Mover.EnterRoom()} only when \texttt{GetPlayerByCharacterName()} returns non-null and the target is not the suggester; \texttt{MoveWeaponToRoom()} is called unconditionally. This means that tokens that aren't spawned won't be placed in the room if suggested. & Root cause is simply the tokens not being marked as active if they aren't involved in the game; a fix was not attempted due to time constraints & Trace the exact failing path (null character lookup, suggester = target, or positioning error in \texttt{EnterRoom()}/\texttt{MoveWeaponToRoom()}); add a unit test asserting both token positions after \texttt{RunSuggestion()} \\
 \bottomrule
 \end{longtable}
 
@@ -114,25 +100,25 @@ only when \texttt{GetPlayerByCharacterName()} returns non-null and the target is
 \begin{itemize}
     \item \textbf{Repository tooling prevented merge disasters}: Setting up Git LFS, \texttt{.gitattributes} for Unity Smart Merge, and PR templates at the start of Sprint 2 (Meeting 4 actions, completed 6--7 March by Ethan and Edward) eliminated Unity scene and prefab merge conflicts for the rest of the project. Risk R2 materialised in Sprint 2 and was immediately contained; it did not recur. Without this tooling, late-sprint parallel feature work would have been extremely fragile.
     \item \textbf{Parallel development by area kept work non-blocking}: Assigning ownership of one or two scripts per person per sprint (agreed at Meeting 3) meant team members rarely blocked each other. The card system (Ben), board rendering (Matt), game manager (Ewan), and movement (Joe, Ethan) all progressed in parallel across Sprints 2--3 with minimal dependency conflicts. Evidence: Table~\ref{tab:gantt_tasks} (owners column).
-    \item \textbf{Architecture decisions made early paid off throughout}: The backend/frontend separation (Meeting 1), the \texttt{GameManagerScript} singleton as the single bridge (Meeting 5), and the data-driven \texttt{cards.json} approach (Meeting 3) were all agreed before coding began. These decisions kept each area independently developable and meant Watson Games' customisation requirement was satisfied without any rework.
+    \item \textbf{Architecture decisions made early paid off throughout}: The backend/frontend separation (Meeting 1), the \texttt{GameManagerScript} singleton as the single bridge (Meeting 5), and the data-driven \texttt{cards.json} approach (Meeting 3) were all agreed before coding began. These decisions kept each area independently developable and meant Watson Games' customisation requirement could be satisfied in the future without any rework.
     \item \textbf{End-to-end delivery of Sprint 4 critical path}: Every critical-path objective for Sprint 4 shipped --- full turn cycle, clockwise suggestion resolution, accusation evaluation, AI player, and game-over screen. The late-sprint integration push (Edward's large branch merge on 18 April, followed by collaborative work from Ewan, Edward, and Ethan on suggestion logic) consolidated all major feature branches without losing work.
-    \item \textbf{Honest documentation of limitations}: Rather than silently leaving known bugs undocumented, the team logged all five known issues (KI-1 through KI-5) explicitly in Section~\ref{sec:sprint4} and Section~\ref{sec:sprint4-known-issues} of this report. This reflects mature engineering practice and satisfies the marking guidance that documented defects score better than unacknowledged ones.
-    \item \textbf{Risk R5 and R6 never materialised}: The physics dice fallback (R5) and the random-AI fallback approach (R6) were both planned defensively from Sprint 1 and neither became a problem. The dice never returned an invalid result in testing; the AI approach was correct from the outset.
+    \item \textbf{Honest documentation of limitations}: Rather than silently leaving known bugs undocumented, the team logged known issues (KI-1 through KI-3) explicitly in Section~\ref{sec:sprint4} and Section~\ref{sec:sprint4-known-issues} of this report.
+    \item \textbf{Risk R5 and R6 never materialised}: The physics dice fallback (R5) and the random-AI fallback approach (R6) were both planned defensively from Sprint 1 and neither became a problem. The dice never returned an invalid result in testing; the AI approach was scoped fairly from the start.
 \end{itemize}
 
 \section{What Didn't Go Well / Lessons Learned}
 
 \begin{itemize}
-    \item \textbf{Easter break was not budgeted into the plan}: The 3.5-week Easter pause (20 March -- 14 April) was completely foreseeable but not reflected in the Gantt chart or sprint dates. The plan assumed continuous progress through Sprint 3. In reality, Sprint 3 work was compressed into the period 15--24 April, overlapping heavily with Sprint 4 and creating significant time pressure on the critical path. \textit{Lesson: cost all known vacation windows into the plan from day one.}
+    \item \textbf{Easter break was not budgeted into the plan}: The 3.5-week Easter pause (20 March -- 14 April) was completely foreseeable but not reflected in the Gantt chart or sprint dates. The plan assumed continuous progress through Sprint 3. In reality, Sprint 3 work was compressed into the period 15--24 April, overlapping heavily with Sprint 4 and creating significant time pressure. \textit{Lesson: cost all known vacation windows into the plan from day one.}
     \item \textbf{Sprint 2 lost approximately one week to unplanned repository tooling}: Git LFS setup, \texttt{.gitignore} fixes, PR templates, Unity merge settings and the compile-check workflow were all necessary --- but should have been done in Sprint 1 before any feature work began. The plan did not budget this time, so Sprint 2 feature tasks arrived late. \textit{Lesson: front-load all toolchain work on day one of Sprint 1, before feature branches open.}
-    \item \textbf{TokenMovement was harder than estimated and slipped}: The planned end date was 15 April; significant movement fixes landed on 17--18 April (Ethan's ``fixed movement'' and Edward's large merge). Legal-move detection on the irregular Cluedo board required substantially more edge-case handling than anticipated, and the task sat on the critical path for everything downstream. \textit{Lesson: for the longest single task on the critical path, add an explicit buffer and consider stubbing the interface earlier so downstream work can proceed.}
-    \item \textbf{Late integration push created architectural debt}: Because the game loop, suggestion, accusation and AI player all converged in the final 10 days, the Suggestion and Accusation classes could not be extracted cleanly --- they were merged into \texttt{GameManagerScript} and \texttt{UiManager} under time pressure (KI-4). \textit{Lesson: stub the end-to-end game loop in Sprint 1, even if every action just logs to the console. Building outwards from a working skeleton would have surfaced integration problems much earlier.}
+    \item \textbf{TokenMovement was harder than estimated and slipped}: The planned end date was 15 April; significant movement fixes landed on 17--18 April (Ethan's ``fixed movement'' and Edward's large merge). Legal-move detection on the irregular Cluedo board required substantially more edge-case handling than anticipated, and the task blocked development for everything downstream. \textit{Lesson: for the longest single task, add an explicit buffer and consider stubbing the interface earlier so other work can proceed.}
+    \item \textbf{Late integration push created architectural debt}: Because the game loop, suggestion, accusation and AI player all converged in the final 10 days, the Suggestion and Accusation classes could not be extracted cleanly --- they were merged into \texttt{GameManagerScript} and \texttt{UiManager} under time pressure (KI-2). \textit{Lesson: stub the end-to-end game loop in Sprint 1, even if every action just logs to the console. Building outwards from a working skeleton would have surfaced integration problems much earlier.}
     \item \textbf{Documentation was partly reconstructed rather than maintained in real time}: Several sprint docs were filled in retrospectively during the Sprint 4 documentation push rather than being written as each sprint ran. This cost effort near the deadline and made it harder to verify exact timelines. \textit{Lesson: designate one person per sprint to maintain the sprint doc live, not retroactively.}
     \item \textbf{Two of the final five meetings were held without Matt}: Meetings 8 and 9 were attended by Ben, Edward, Ethan, Ewan and Joe only. Some Sprint 4 UI integration decisions were made without Matt's direct input and required follow-up via async communication, adding friction at a critical time. \textit{Lesson: agree a minimum-attendance rule early; if a member cannot attend, ensure decisions are communicated to them within 24 hours with an explicit confirmation required.}
     \item \textbf{Sprint~4 system tests were not fully executed before submission}: The system test table (S4.1--S4.12, Section~\ref{sec:sprint4}) has complete test cases and expected outputs, but Actual Result and Pass/Fail columns could not be filled in before the deadline. This is the most significant gap against the 9--10 testing band, which requires full documentation including pass/fail verdicts. The test cases are requirements-linked (F4.x / NF4.x), which partially satisfies the 7--8 band criterion.
-    \item \textbf{AI player does not reach full deduction sophistication}: The \texttt{AiPlayer} uses BFS-directed navigation toward envelope-candidate rooms and filters suggestions against its \texttt{PlayerKnowledge} base, but does not perform full card-elimination deduction (D3, KI-3). The 41--50 code band requires ``some aspects of more sophisticated decision making''; the implemented AI partially satisfies this through knowledge-filtering, but the absence of full deduction means the game is more solidly in the 31--40 band.
-    \item \textbf{Watson Games' customisation requirement only partially met}: The brief explicitly identifies customisation as a selling point. The team delivered four selectable board themes (Section~\ref{chap:appendix}), but player names are not user-configurable and the player-count UI selector is not fully wired to the backend (KI-1). Weapon and character art packs loadable from data files were identified as future work but not delivered.
-    \item \textbf{No animated visual appearance or formal cross-platform verification}: The 41--50 code band mentions animated visuals and multi-device support. The physics-based dice provides some animation, but character tokens do not animate on movement. Watson Games requested Mac and PC support; both Unity build targets were available but cross-platform testing was not formally conducted or documented.
+    \item \textbf{AI player does not reach full deduction sophistication}: The \texttt{AiPlayer} uses BFS-directed navigation toward envelope-candidate rooms and filters suggestions against its \texttt{PlayerKnowledge} base, but does not perform full card-elimination deduction (D3, KI-1). \\ 
+    \item \textbf{Watson Games' customisation requirement only partially met}: The brief explicitly identifies customisation as a selling point. The team delivered four selectable board themes (Section~\ref{chap:appendix}), but player names are not user-configurable. Weapon and character art packs loadable from data files were identified as future work but not delivered, but this only requires creating the assets and giving a menu on the front end. On the back end, the logic for this exists.
+    \item \textbf{No animated visual appearance}: The physics-based dice provides some animation, but character tokens do not animate on movement. 
 \end{itemize}
 
 \section{What We Would Do Differently}
@@ -142,15 +128,13 @@ only when \texttt{GetPlayerByCharacterName()} returns non-null and the target is
     \item \textbf{Treat the Easter break as a hard Sprint 3 deadline, not a mid-sprint pause.} Sprint 3 should have closed its deliverables before 20 March. Planning the sprint to finish \textit{before} Easter would have preserved Sprint 4 as a genuine testing and integration buffer rather than a compressed feature sprint.
     \item \textbf{Set up all repository tooling on day one of Sprint 1.} Git LFS, \texttt{.gitattributes}, Unity Smart Merge, PR templates and the compile-check workflow should all be done before the first feature branch opens. Toolchain failures early in a sprint cascade into feature delays.
     \item \textbf{Allocate one person per sprint to maintain documentation alongside development.} A rotating ``sprint scribe'' role --- someone responsible for keeping the sprint doc current throughout the sprint rather than at the end --- would have prevented the retroactive reconstruction near the deadline.
-    \item \textbf{Define a minimum viable AI contract early, then expand.} The random-decision AI was the right minimum; the architecture (\texttt{PlayerKnowledge}, abstract decision hooks on \texttt{Player}) was well designed for layering on deduction. But this design should have been locked in Sprint 1 and expanded incrementally, rather than being finalised under Sprint 4 time pressure with deduction left unimplemented.
+    \item \textbf{Define a minimum viable AI contract early, then expand.} The random-decision AI was the right minimum; the architecture (\texttt{PlayerKnowledge}, abstract decision hooks on \texttt{Player}) was well designed for layering on deduction. However, this design should have been locked in Sprint 1 and expanded incrementally, rather than being finalised under Sprint 4 time pressure with deduction left unimplemented.
 \end{itemize}
 
 \section{Ideas for Further Development}
 
 \begin{itemize}
     \item A smarter AI player using card-elimination deduction logic (the \texttt{PlayerKnowledge} scaffold is already in place --- \texttt{GetEnvelopeCandidates()} is implemented and wired into the AI)
-    \item Wire the menu UI player/AI count selectors to \texttt{SceneController} to fix KI-1 and allow configurable game sizes
-    \item Fix the $<$ 6 player token spawning issue (KI-2) and add unit tests for each player count
     \item Animated token movement along the path (rather than step-by-step per key press)
     \item Online/networked multiplayer support (the abstract \texttt{Player} base class with decision hooks would accommodate a \texttt{NetworkPlayer} subclass without changes to \texttt{GameManagerScript})
     \item Custom board, character and weapon packs loaded from Watson Games data files (foundation already in place via \texttt{cards.json})
@@ -163,7 +147,7 @@ only when \texttt{GetPlayerByCharacterName()} returns non-null and the target is
 \begin{quote}
 \textbf{120 points total to distribute} (6 members $\times$ 20 points). Marks must be agreed by every team member. Justifications reference concrete contributions --- specific scripts, docs, or sprint outcomes --- not personality or generic effort claims.
 
-Effort allocation from Table~\ref{tab:effort}: Edward 80 h, Ewan 76 h, Ethan 70 h, Joe 70 h, Ben 60 h, Matt 60 h (total $\approx$ 416 h). Peer marks below are proportional to effort, adjusted by team agreement.
+Effort allocation from Table~\ref{tab:effort}: Edward 52 h, Ethan 49 h, Ewan 45 h, Joe 45 h, Ben 40 h, Matt 40 h (total $\approx$ 270 h). The peer marks below represent the fact that everyone equally did their parts.
 \end{quote}
 
 \begin{longtable}{llp{9cm}}
@@ -172,11 +156,11 @@ Effort allocation from Table~\ref{tab:effort}: Edward 80 h, Ewan 76 h, Ethan 70 
 \midrule
 \endhead
 Matt & 20 & Unity project setup (clue), BoardScript scene work, UiManager (PromptSuggestion / PromptCardReveal / ShowRevealedCard), NotepadGrid UI, CardGenerator/HandManager, GameOverScreen, main menu. Significant scene/prefab contributions that do not appear as script commits. \\
-Ewan & 20 & GameManagerScript (MainLoop, ResolveSuggestion, ResolveAccusation, EndGame), GameStateScript, turn cycle design, menu scene transitions, coordinated Sprint 4 critical-path delivery. \\
+Ewan & 20 & GameManagerScript (MainLoop, RunSuggestion, ResolveAccusation, EndGame), GameStateScript, turn cycle design, menu scene transitions, coordinated Sprint 4 critical-path delivery. \\
 Joe & 20 & TokenMovementScript (corridor movement, room entry, DragIntoRoom integration), branching/workflow documentation, board representation planning, Sprint documentation and report lead across all sprints. \\
 Ethan & 20 & Git LFS and master/development branch cleanup (Sprint 2), TokenMovementScript movement edge cases and fixes (17--18 April integration), suggestion loop bug fix (``fixed suggestion to loop over everyone''), room entry integration testing. \\
-Ben & 20 & Card / Deck classes and cards.json, DiceRollScript (Rigidbody physics + fallback), HandManager / CardInteraction / CardGenerator, AI player decision methods (random move selection, random suggestion generation, accusation trigger). \\
-Edward & 20 & cards.json schema design, DeckScript refactor, SceneController, MenuController, PR/issue templates, Unity compile-check workflow, Git LFS setup, Unity merge settings, ``Large merge of all major branches'' (18 Apr), guessing/suggestion logic contribution, ongoing integration and documentation. \\
+Ben & 20 & Card / Deck classes and cards.json, DiceRollScript (Rigidbody physics + fallback), HandManager / CardInteraction / CardGenerator, AI player decision methods (move selection, suggestion generation, accusation trigger). \\
+Edward & 20 & cards.json schema design, DeckScript refactor, SceneController, MenuController, PR/issue templates, Unity compile-check workflow, Git LFS setup, Unity merge settings, ``Large merge of all major branches'' (18 Apr), guessing/suggestion logic contribution, ongoing integration and documentation, refactored TokenMovementScript into separate classes, helped others when they fell behind. \\
 \bottomrule
 \end{longtable}
 
@@ -197,17 +181,16 @@ Edward & 20 & cards.json schema design, DeckScript refactor, SceneController, Me
 \textbf{Week} & \textbf{Dates} & \textbf{Progress} \\
 \midrule
 \endhead
-Week 1 & 26 Jan -- 01 Feb & Meeting 1 (26/01): project briefing reviewed; Unity/C\# agreed; frontend/backend architecture agreed; Matt designated frontend lead. Meeting 2 (02/02): Unity spike confirmed working on all machines; class diagram approach agreed; risk register initiated; commit schematic format agreed. \\
-Week 2 & 02 -- 08 Feb & Edward: Unity spike seeded (01/02); basic game setup commits. Risk register drafted (Joe, Edward). \\
-Week 3 & 16 -- 22 Feb & Meeting 3 (19/02): role assignments finalised; sprint plan agreed; XML doc comments standard set; privacy model (Option B --- private modal) agreed; data-driven JSON approach confirmed. Joe: report/ skeleton committed; meeting notes written up. \\
-Week 4 & 23 Feb -- 01 Mar & Sprint 1 work underway: Ben implementing Card/Deck classes; Edward designing \texttt{cards.json} schema and SceneController; Joe and Ethan on board/movement planning. \\
-Week 5 & 02 -- 08 Mar & Meeting 4 (05/03): Sprint 1 closed; all objectives met. Sprint 2 plan agreed. Ethan: Git LFS and branch cleanup (06/03). Edward: PR templates, Unity merge settings, compile-check workflow (07/03). Matt: initial Unity project pushed (07/03). \\
-Week 6 & 09 -- 15 Mar & Meeting 5 (10/03): backend/frontend boundary clarified; Matt explained Unity to the team; Deck refactor agreed. Edward: Deck refactor, GameManager scaffold, token spawning started (11--17 Mar). Ewan: GameManagerScript on gamemanager\_dev branch. Ben: DiceRollScript. \\
-Week 7 & 16 -- 22 Mar & Meeting 6 (17/03): Sprint 2 review; GameState singleton agreed; Joe and Ethan assigned to TokenMovementScript; SceneController DontDestroyOnLoad agreed. Sprint 2 closed. Ewan: GameStateScript. Joe/Ethan: TokenMovementScript begun. \\
-Week 8 & 23 -- 29 Mar & TokenMovementScript: corridor movement and occupancy tracking working; UiManager scaffolded by Matt; RoomScript door mapping started by Ben. [Easter break begins $\sim$20 March] \\
-Week 9 & 06 -- 12 Apr & [Easter break --- no commits] \\
-Week 10 & 13 -- 19 Apr & Meeting 8 (14/04): Sprint 3 closed; suggestion resolution identified as top Sprint 4 priority; known issues KI-1 and KI-2 logged for documentation. UiManager completed (Matt). NotepadGrid working (Matt). Room entry detection done (Joe/Ethan). CardInteraction and GameOverScreen committed. Edward: large merge of all major branches (18 Apr). \\
-Week 11 & 20 -- 26 Apr & Meeting 9 (20/04): suggestion resolution working end-to-end; accusation logic complete; AI player taking full turns; GameOverScreen wired. Ethan: suggestion loop fix. Ben: AI random suggestion generation. Documentation push begun (Joe lead). \\
-Week 12 & 27 -- 30 Apr & Testing, documentation completion (sprint docs, group report, system testing), peer assessment agreement, video recording (Matt), submission ZIP preparation and upload to Canvas by 30 Apr 4PM. \\
+Week 1 & 26 Jan -- 01 Feb & Meeting 1 (29/01): project briefing reviewed; Unity/C\# agreed; frontend/backend architecture agreed; Matt designated frontend lead. Edward: Unity project created and set up.  \\
+Week 2, 3 & 02 -- 15 Feb & Meeting 2 (02/02): Unity spike confirmed working on all machines; class diagram approach agreed; risk register initiated; commit schematic format agreed. Basic game setup commits. Risk register drafted (Joe, Edward). \\
+Week 4 & 16 -- 22 Feb & Meeting 3 (19/02): role assignments finalised; sprint plan agreed; XML doc comments standard set; privacy model (Option B --- private modal) agreed; data-driven JSON approach confirmed. Joe: report/ skeleton committed; meeting notes written up. \\
+Week 5 & 23 Feb -- 01 Mar & Sprint 1 work underway: Ben implementing Card/Deck classes; Edward designing \texttt{cards.json} schema and SceneController; Joe and Ethan on board/movement planning. \\
+Week 6 & 02 -- 08 Mar & Meeting 4 (05/03): Sprint 1 closed; all objectives met. Sprint 2 plan agreed. Ethan: Git LFS and branch cleanup (06/03). Edward: PR templates, Unity merge settings, compile-check workflow (07/03). Matt: initial Unity project pushed (07/03). \\
+Week 7 & 09 -- 15 Mar & Meeting 5 (10/03): backend/frontend boundary clarified; Matt explained Unity to the team; Deck refactor agreed. Edward: Deck refactor, GameManager scaffold, token spawning started (11--17 Mar). Ewan: GameManagerScript. Ben: DiceRollScript. \\
+Week 8 & 16 -- 22 Mar & Meeting 6 (17/03): Sprint 2 review; GameState singleton agreed; Joe and Ethan assigned to TokenMovementScript; SceneController DontDestroyOnLoad agreed. Sprint 2 closed. Ewan: GameStateScript. Joe/Ethan: TokenMovementScript begun. \\
+Week 9, 10, 11 & 23 -- 12 Apr & [Easter break --- no commits] \\
+Week 12 & 13 -- 19 Apr & TokenMovementScript: corridor movement and occupancy tracking working; UiManager scaffolded by Matt; RoomScript door mapping started by Ben. Meeting 8 (14/04): Sprint 3 closed; suggestion resolution identified as top Sprint 4 priority; known issue KI-1 logged for documentation. UiManager completed (Matt). NotepadGrid working (Matt). Room entry detection done (Joe/Ethan). CardInteraction and GameOverScreen committed. Edward: large merge of all major branches (18 Apr). \\
+Week 13 & 20 -- 26 Apr & Meeting 9 (20/04): suggestion resolution working end-to-end; accusation logic complete; TokenMovementScript refactored to allow for easier AI implementation; AI player taking full turns; GameOverScreen wired. Ethan: suggestion loop fix. Ben: AI suggestion generation. Documentation push begun (Joe lead). \\
+Week 14 & 27 -- 01 May & Testing, documentation completion (sprint docs, group report, system testing), peer assessment agreement, video recording (Ethan), submission ZIP preparation and upload to Canvas. \\
 \bottomrule
 \end{longtable}

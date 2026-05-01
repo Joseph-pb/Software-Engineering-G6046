@@ -91,7 +91,7 @@ All card names (characters, weapons, rooms) loaded from \texttt{StreamingAssets/
 \subsection*{4.5 Callback-Driven UI (Action Delegates)}
 \texttt{UiManager} communicates results to game logic via \texttt{System.Action} callbacks; \texttt{Player} coroutines wait via \texttt{WaitUntil}. Keeps UI code and game logic independent.
 
-\subsection*{4.6 AI Player --- Random Decision-Making with Knowledge Scaffold}
+\subsection*{4.6 AI Player --- Basic Decision-Making with Knowledge Scaffold}
 \texttt{AiPlayer} uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestion generation. \texttt{ChooseAccusationFollowUp} returns true when the envelope has been narrowed to exactly 3 candidates. A \texttt{PlayerKnowledge} instance is maintained for each AI player and updated on every suggestion round, providing a clean foundation for further deduction-based improvements without requiring a rewrite.
 
 \section{Activity Diagram --- Full Game Flow}

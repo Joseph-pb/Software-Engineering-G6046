@@ -3,8 +3,8 @@
 
 \section{Agile Process Evidence}
 
-The project followed four two-to-three week Agile sprints running from 19 February to 30 April 2026.
-Each sprint produced a working increment and closed with a retrospective that fed directly into the next sprint plan.
+The project followed four two-to-three week Agile sprints running from 19 February to 30 April.
+Each sprint produced significant progress and closed with a retrospective that fed directly into the next sprint plan.
 The evidence for each sprint is structured as: summary data, individual contributions, user stories, requirements, design decisions, test results, and retrospective.
 
 % ---- SPRINT 1 ----
@@ -15,8 +15,8 @@ The evidence for each sprint is structured as: summary data, individual contribu
 \begin{tabular}{ll}
 \textbf{Team Number:} & 15 \\
 \textbf{Sprint Technical Lead:} & Edward (Unity setup, class diagram, JSON schema) \\
-\textbf{Start Date:} & 19 February 2026 \\
-\textbf{End Date:} & 05 March 2026 \\
+\textbf{Start Date:} & 19 February \\
+\textbf{End Date:} & 05 March \\
 \end{tabular}
 
 \subsection*{Individual Key Contributions}
@@ -118,13 +118,13 @@ U1.6 & SceneController & Singleton prevents duplicate & Second instance destroye
 
 \subsection*{Sprint Retrospective}
 
-\textbf{Did you achieve your objectives?} Yes. Unity/C\# agreed and confirmed running on every machine. Deck, Card, and CardType implemented and unit-tested. \texttt{cards.json} in place. \texttt{SceneController} persists player and AI count between scenes.
+\textbf{Did you achieve your objectives?} Partly. Unity/C\# agreed and confirmed running on every machine. Deck, Card, and CardType implemented and unit-tested. \texttt{cards.json} in place. \texttt{SceneController} persists player and AI count between scenes. Board representation and the core game loop did not get finished.
 
 \textbf{Is there a working prototype?} Not yet a playable game. The project compiles and runs cleanly; card and deck logic is functional.
 
 \textbf{What went well?}
 \begin{itemize}
-    \item Role split agreed quickly at Meeting 3 before any code was written.
+    \item Role split agreed quickly at Meeting 1 before any code was written.
     \item JSON-driven card system designed early, giving downstream systems a fixed data contract.
     \item Edward's early Unity spike de-risked the tool chain from day one.
 \end{itemize}
@@ -133,6 +133,7 @@ U1.6 & SceneController & Singleton prevents duplicate & Second instance destroye
 \begin{itemize}
     \item Repository tooling (Git LFS, Unity merge settings, PR templates) not yet in place --- caused early Sprint 2 conflicts.
     \item Class diagram was rough at sprint close; refined in parallel with implementation.
+    \item Fell short of some objectives due to underestimating the learning overhead that came with using Unity for the first time.
 \end{itemize}
 
 \textbf{What will you do differently?} Front-load repository tooling at the start of Sprint 2: Git LFS, \texttt{.gitattributes}, UnityYAMLMerge, PR templates, Unity compile-check workflow.
@@ -145,8 +146,8 @@ U1.6 & SceneController & Singleton prevents duplicate & Second instance destroye
 \begin{tabular}{ll}
 \textbf{Team Number:} & 15 \\
 \textbf{Sprint Technical Lead:} & Ewan (GameManagerScript + GameState) \\
-\textbf{Start Date:} & 05 March 2026 \\
-\textbf{End Date:} & 17 March 2026 \\
+\textbf{Start Date:} & 05 March \\
+\textbf{End Date:} & 17 March \\
 \end{tabular}
 
 \subsection*{Individual Key Contributions}
@@ -214,6 +215,7 @@ Edward & \texttt{MenuController}: OnNewGame/QuitGame; wiring \texttt{SceneContro
 11 & Stairwell \\ \hline
 \end{tabular}
 \end{table}
+While technically not a room, \texttt{BoardScript} treats Stairwell as such in case it is to be used in the future.
 
 \subsection*{Key Design Decision: Physics Dice}
 
@@ -281,8 +283,8 @@ S2.4 & F2.6 & Menu transitions to game scene & Scene loads with correct count & 
 \begin{tabular}{ll}
 \textbf{Team Number:} & 15 \\
 \textbf{Sprint Technical Lead:} & Joe (movement lead, paired with Ethan) \\
-\textbf{Start Date:} & 17 March 2026 \\
-\textbf{End Date:} & 11 April 2026 \\
+\textbf{Start Date:} & 17 March \\
+\textbf{End Date:} & 14 April \\
 \end{tabular}
 
 \subsection*{Individual Key Contributions}
@@ -408,8 +410,8 @@ S3.7 & F3.9 & AI moves without input & AI selects move & Turn completes & Pass \
 \begin{tabular}{ll}
 \textbf{Team Number:} & 15 \\
 \textbf{Sprint Technical Lead:} & Ewan (MainLoop, Suggestion, Accusation) \\
-\textbf{Start Date:} & 11 April 2026 \\
-\textbf{End Date:} & 30 April 2026 \\
+\textbf{Start Date:} & 14 April \\
+\textbf{End Date:} & 30 April \\
 \end{tabular}
 
 \subsection*{Individual Key Contributions}
@@ -424,8 +426,8 @@ Ben & \texttt{AiPlayer} decision methods: BFS-directed move, knowledge-filtered 
 Joe & \texttt{Player.DoSuggestionThenAccusation()}: room-entry suggestion + accusation follow-up \\ \hline
 Ethan & Movement edge cases; room entry integration testing; large-branch merge \\ \hline
 Matt & \texttt{GameOverScreen}: restart / return-to-menu; final UI polish \\ \hline
-Edward & \texttt{MenuController} input wiring; \texttt{PlayerKnowledge} integration; documentation \\ \hline
-\end{tabular}%
+Edward & \texttt{TokenMovementScript} refactor; \texttt{MenuController} input wiring; \texttt{PlayerKnowledge} integration; documentation \\ \hline
+\end{tabular}
 }
 \end{table}
 
@@ -453,7 +455,7 @@ The original design called for standalone \texttt{Suggestion} and \texttt{Accusa
     \item \texttt{GameManagerScript.ResolveAccusation()} --- checks accusation against \texttt{Deck.GetEnvelope()}, calls \texttt{EndGame()} on correct or sets \texttt{player.HasLost = true} on incorrect.
 \end{itemize}
 
-This is a known architectural deviation (KI-4), documented transparently.
+This is a known architectural deviation (KI-2), documented transparently.
 
 \subsection*{Key Design Decision: PlayerKnowledge}
 
@@ -500,14 +502,14 @@ U4.3 & GameManagerScript & CheckAccusation returns true when all three cards mat
 U4.4 & GameManagerScript & CheckAccusation returns false for wrong guess; accuser HasLost set true & false; HasLost = true & Confirmed & Pass \\ \hline
 U4.5 & GameManagerScript & RunSuggestion: refuter's revealed card recorded as Held in suggester's PlayerKnowledge & Knowledge.Status = Held & Held confirmed & Pass \\ \hline
 U4.6 & GameManagerScript & RunSuggestion: SuggestionLog records no-refute when no player holds matching cards & log contains ``could not refute'' & Confirmed & Pass \\ \hline
-U4.7 & GameManagerScript & RunSuggestion moves suggested character's CurrentRoomID to suggestion room & CurrentRoomID = targetRoom & \textbf{Failing} --- EnterRoom dependency on BoardScript.Instance in Play Mode & \textbf{Fail} \\ \hline
+U4.7 & GameManagerScript & RunSuggestion moves suggested character's CurrentRoomID to suggestion room & CurrentRoomID = targetRoom & Character correctly moved & Pass \\ \hline
 \end{tabular}%
 }
 \end{table}
 
 \textbf{System Tests:}
 
-\noindent\textit{Note: the system tests below were designed against functional requirements F4.1--F4.9 and non-functional requirement NF4.2. The test cases and expected outputs were completed, but manual play-through results and Pass/Fail verdicts could not be recorded before the submission deadline. The incomplete Actual and Pass/Fail columns are an acknowledged gap against the 9--10 band for testing documentation (see Marking Scheme).}
+\noindent\textit{Note: the system tests below were designed against functional requirements F4.1--F4.9 and non-functional requirement NF4.2. The test cases and expected outputs were completed, but manual play-through results and Pass/Fail verdicts could not be recorded before the submission deadline.}
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
@@ -539,19 +541,17 @@ S4.12 & NF4.2 & Card reveal is private; other players cannot see & Private modal
 \begin{tabular}{|l|p{5cm}|l|p{3.5cm}|}
 \hline
 \textbf{ID} & \textbf{Description} & \textbf{Severity} & \textbf{Planned Fix} \\ \hline
-KI-1 & \texttt{GameManagerScript.Awake()} falls back to \texttt{playerCount=4, aiCount=2} if \texttt{SceneController} is null. Player/AI counts are adjusted via \texttt{StepHumans(int)}/\texttt{StepAI(int)} in \texttt{MenuController} and written to \texttt{SceneController} in \texttt{OnBegin()}, but the fallback path remains. & Medium & Ensure \texttt{SceneController} is always initialised before \texttt{GameManagerScript.Awake()} \\ \hline
-KI-2 & \texttt{SpawnTokens()} comment notes issue with fewer than 6 players; AI player selection uses random shuffle across all 6 slots & Medium & Fix loop condition to handle $<$6 players cleanly \\ \hline
-KI-3 & \texttt{AiPlayer} uses BFS-directed movement and knowledge-filtered suggestions; \texttt{ChooseAccusationFollowUp} returns true when envelope candidates narrow to exactly 3. Full notebook-based deduction not implemented. & Low & Extend \texttt{PlayerKnowledge} inference to eliminate cards more aggressively \\ \hline
-KI-4 & Suggestion/Accusation lives inside \texttt{GameManagerScript} not standalone classes & Low (architectural) & Extract into \texttt{Suggestion}/\texttt{Accusation} classes; add unit tests \\ \hline
-KI-5 & Suggested character and weapon tokens do not fully move to the suggestion room under all conditions. \texttt{RunSuggestion()} calls \texttt{target.Mover.EnterRoom()} only when \texttt{GetPlayerByCharacterName()} returns non-null and the target is not the suggester; \texttt{MoveWeaponToRoom()} is called unconditionally. At least one path is not producing the expected result (\texttt{GameManagerScript.cs} lines 334--338). Root cause not isolated before submission deadline. & Medium (functional) & Trace the exact failing path; add a unit test asserting both token positions after \texttt{RunSuggestion()} \\ \hline
-\end{tabular}%
+KI-1 & \texttt{AiPlayer} uses BFS-directed movement and knowledge-filtered suggestions; \texttt{ChooseAccusationFollowUp} returns true when envelope candidates narrow to exactly 3. Full probability-based deduction not implemented. & Low & Extend \texttt{PlayerKnowledge} inference to eliminate cards more aggressively \\ \hline
+KI-2 & Suggestion/Accusation lives inside \texttt{GameManagerScript} not standalone classes & Low (architectural) & Extract into \texttt{Suggestion}/\texttt{Accusation} classes; add unit tests \\ \hline
+KI-3 & Suggested character and weapon tokens do not fully move to the suggestion room under all conditions. \texttt{RunSuggestion()} calls \texttt{target.Mover.EnterRoom()} only when \texttt{GetPlayerByCharacterName()} returns non-null and the target is not the suggester; \texttt{MoveWeaponToRoom()} is called unconditionally. This means that tokens that aren't spawned won't be placed in the room if suggested. & Low (functional) & Spawn the tokens for each player, even if they aren't playing, and just omit them from the board until suggested. \\ \hline
+\end{tabular}
 }
 \end{table}
 
 \subsection*{Sprint Retrospective}
 
-\textbf{Did you achieve your objectives?} Largely yes. The game loop is integrated end-to-end via `GameManagerScript.MainLoop()`. Suggestion with clockwise card-showing is implemented (`ResolveSuggestion`).
-          Accusation evaluation and win / elimination logic both work as specified. The AI player takes full turns without human input. Two issues carry into the known deficiencies log: Suggestion and Accusation logic lives inside `GameManagerScript` and `UiManager` rather than as standalone classes (KI-4, architectural), and system testing identified that suggested character and weapon tokens do not fully move to the suggestion room under all conditions (KI-5, functional). Both are documented in the Known Issues / Deficiencies subsection above.
+\textbf{Did you achieve your objectives?} Largely yes. The game loop is integrated end-to-end via \texttt{GameManagerScript.MainLoop()}. Suggestion with clockwise card-showing is implemented (`RunSuggestion`).
+          Accusation evaluation and win / elimination logic both work as specified. The AI player takes full turns without human input. Two issues carry into the known deficiencies log: Suggestion and Accusation logic lives inside `GameManagerScript` and `UiManager` rather than as standalone classes (KI-2, architectural), and system testing identified that suggested character and weapon tokens do not fully move to the suggestion room under all conditions (KI-3, functional). Both are documented in the Known Issues / Deficiencies subsection above.
 
 \textbf{Is there a working prototype?} Yes. A full game of Clue! can be played: players take turns, roll dice, move, enter rooms, make suggestions, see cards revealed privately, and make accusations.
 
@@ -561,19 +561,20 @@ KI-5 & Suggested character and weapon tokens do not fully move to the suggestion
     \item Large merge on 18 April consolidated all feature branches without losing work.
     \item \texttt{PlayerKnowledge} class provides a clean foundation for future AI deduction.
     \item Sprint 4 testing documented all known limitations rather than hiding them.
+    \item Despite some known issues remaining, they are all minor rather than critical.
 \end{itemize}
 
 \textbf{What did not go well?}
 \begin{itemize}
-    \item Suggestion/Accusation could not be extracted into standalone classes (KI-4).
-    \item AI player movement and suggestions are functional (BFS navigation, knowledge-filtered suggestions) but full notebook-based deduction was not implemented (KI-3).
+    \item Suggestion/Accusation could not be extracted into standalone classes (KI-2).
+    \item AI player movement and suggestions are functional (BFS navigation, knowledge-filtered suggestions) but full notebook-based deduction was not implemented (KI-1).
     \item Matt missed Meetings 8 and 9, requiring async communication for UI integration decisions.
 \end{itemize}
 
 \textbf{What would you do differently?}
 \begin{itemize}
     \item Stub the end-to-end game loop in Sprint 1 so that all systems have a spine to plug into.
-    \item Treat the Easter break as a Sprint 3 deadline rather than a transparent pause.
+    \item Treat the Easter break as a Sprint 3 deadline rather than allowing it to be an unused period.
     \item Allocate explicit documentation time in each sprint alongside code.
     \item Front-load all repository tooling on day one of Sprint 1.
 \end{itemize}

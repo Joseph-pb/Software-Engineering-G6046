@@ -4,14 +4,14 @@
 \section{Project Plan}
 \label{sect:planning}
 
-This section details the project timeline, task allocations and risk management strategies for the Cluedo/Clue! Desktop Game, developed in \texttt{\texttt{C\#}} / Unity.
+This section details the project timeline, task allocations and risk management strategies for the Cluedo/Clue! Desktop Game, developed in C\# / Unity.
 
 \subsection{Initial Gantt Chart}
-The initial project timeline and task assignments are visualised in the Gantt chart (Figure \ref{fig:gantt_chart}). This chart and the accompanying breakdown in Table \ref{tab:gantt_tasks} represent the final of the project schedule, serving as combination of every individual Gantt chart developed during each sprint.
+The project timeline and task assignments are visualised in the Gantt chart (Figure \ref{fig:gantt_chart}). This chart and the accompanying breakdown in Table \ref{tab:gantt_tasks} represent a combination of the individual Gantt charts developed at the start of each sprint, rather than an initial Gantt chart for the entire project. This approach was chosen as the problem was large and unfamiliar enough that we could not predict the scope from the beginning.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{gantt.png}
-    \caption{Unity project timeline (19 Feb -- 30 Apr 2026)}
+    \caption{Unity project timeline (19 Feb -- 30 Apr)}
     \label{fig:gantt_chart}
 \end{figure}
 
@@ -30,9 +30,9 @@ The initial project timeline and task assignments are visualised in the Gantt ch
         \texttt{GameManagerScript} singleton \& \texttt{GameState} & Ewan & 05 Mar & 17 Mar & Done \\ \hline
         \texttt{DiceRollScript} (physics) \& \texttt{MenuController} & Ben, Edward & 05 Mar & 17 Mar & Done \\ \hline
         \texttt{Player}/\texttt{HumanPlayer}/\texttt{TokenMover} (movement)$^*$ & Joe, Ethan & 17 Mar & 15 Apr & Done \\ \hline
-        \texttt{UiManager}, \texttt{NotepadGrid} \& private modal & Matt & 17 Mar & 11 Apr & Done \\ \hline
-        \texttt{RoomRules} (secret passages) \& \texttt{PlayTurn} coroutine & Ben, Ewan & 17 Mar & 11 Apr & Done \\ \hline
-        \texttt{CharacterData} ScriptableObject \& JSON integration & Edward & 17 Mar & 11 Apr & Done \\ \hline
+        \texttt{UiManager}, \texttt{NotepadGrid} \& private modal & Matt & 17 Mar & 14 Apr & Done \\ \hline
+        \texttt{RoomRules} (secret passages) \& \texttt{PlayTurn} coroutine & Ben, Ewan & 17 Mar & 14 Apr & Done \\ \hline
+        \texttt{CharacterData} ScriptableObject \& JSON integration & Edward & 17 Mar & 14 Apr & Done \\ \hline
         \texttt{MainLoop}, suggestion \& accusation resolution & Ewan, Edward, Ethan & 14 Apr & 26 Apr & Done \\ \hline
         \texttt{AiPlayer} (BFS navigation, knowledge-filtered suggestions) & Ben & 14 Apr & 24 Apr & Done \\ \hline
         \texttt{PlayerKnowledge} \& \texttt{DoSuggestionThenAccusation} & Joe, Edward & 14 Apr & 26 Apr & Done \\ \hline
@@ -60,7 +60,7 @@ HandManager / CardInteraction sits on a \textit{parallel} branch off Deck/Cards 
 TokenMovement was both the \textbf{longest single task} in the plan (17 Mar -- 15 Apr, $\sim$4 weeks) and the \textbf{task with the highest downstream impact} --- Suggestion, GameLoop progression, and AI movement all block on it. It was the right task to mark as the highest-risk item, and in practice it did slip slightly past its planned end date (see Revised Plan below).
 
 \subsubsection*{Easter Break Disruption}
-No development was scheduled or executed during the Easter holiday window (20 March -- 14 April). Effectively the critical path was paused for $\sim$3.5 weeks, which compressed Sprint 3 work into the second half of April and forced parallel execution of TokenMovement, GameLoop, and Suggestion in the final 10 days.
+No development was scheduled or executed during the Easter holiday window (20 March -- 14 April). Effectively development was paused for $\sim$3 weeks, which compressed Sprint 3 work into the second half of April and forced parallel execution of TokenMovement, GameLoop, and Suggestion in the final 10 days.
 
 \subsection{Revised Plan}
 
@@ -88,10 +88,10 @@ Table \ref{tab:effort} shows the approximate hours per team member per sprint, e
 \hline
 \textbf{Team Member} & \textbf{Sprint 1} & \textbf{Sprint 2} & \textbf{Sprint 3} & \textbf{Sprint 4} & \textbf{Total} \\ \hline
 Edward & 8 & 12 & 14 & 18 & \textbf{52} \\ \hline
-Ewan & 7 & 12 & 12 & 18 & \textbf{49} \\ \hline
-Ethan & 8 & 9 & 14 & 14 & \textbf{45} \\ \hline
+Ethan & 7 & 12 & 12 & 18 & \textbf{49} \\ \hline
+Ewan & 8 & 9 & 14 & 14 & \textbf{45} \\ \hline
 Joe & 7 & 8 & 14 & 16 & \textbf{45} \\ \hline
-Ben & 5 & 9 & 11 & 14 & \textbf{39} \\ \hline
+Ben & 5 & 9 & 11 & 14 & \textbf{40} \\ \hline
 Matt & 6 & 9 & 10 & 15 & \textbf{40} \\ \hline
 \textbf{Sprint Total} & \textbf{41} & \textbf{59} & \textbf{75} & \textbf{95} & \textbf{270} \\ \hline
 \end{tabular}
@@ -129,7 +129,7 @@ R9 & Knowledge gap: Most of the team lacks prior experience with Unity or \textt
 The team reviewed the risk register at the start of each sprint planning meeting.
 
 \begin{itemize}
-    \item \textbf{Sprint 1:} R1 was pre-empted. The team agreed on a Unity LTS version, and Edward seeded the repository with a working scene validated end-to-end. R9 materialised as the team's knowledge gap in Unity and C\# became apparent early on. To mitigate this, time was explicitly allocated in Sprint 1 for tutorials, and members relied heavily on pair-programming with the experienced team member to get up to speed.
+    \item \textbf{Sprint 1:} R1 was pre-empted. The team agreed on a Unity LTS version, and Edward seeded the repository with a placeholder scene. R9 materialised as the team's knowledge gap in Unity and C\# became apparent early on. To mitigate this, time was explicitly allocated in Sprint 1 for tutorials, and members relied heavily on pair-programming with the experienced team member to get up to speed.
     \item \textbf{Sprint 2:} R2 materialised (Unity scene merge conflicts) and R1 partially materialised (incomplete \texttt{.gitignore}). Ethan configured Git LFS, and Edward established Unity Smart Merge settings, PR compile-checks, and \texttt{.gitattributes} for \texttt{.unity} and \texttt{.prefab} files. The issue did not recur.
     \item \textbf{Sprint 3:} R3 materialised (the Easter break effectively paused all development for $\sim$3.5 weeks). R4 partially materialised as TokenMovement was more complex than estimated. The team scoped down TokenMovement, cutting A* pathfinding in favour of legal-move detection (documented in Section~\ref{sec:sprint3}).
     \item \textbf{Sprint 4:} R8 materialised (GameLoop, Suggestion, and AI were unfinished). R4 materialised via deliberate descoping under pressure. R2 re-emerged during the final integration push. Edward executed a large consolidate merge on 18 April. R7 was mitigated by verifying the zip unpacking before the deadline.
@@ -142,7 +142,7 @@ Lessons for Risk Planning:
 \begin{enumerate}
     \item \textbf{Easter / holiday windows must be costed into the plan from the start.} Treating R3 as ``individual illness'' understated the systemic impact of a predictable shutdown.
     \item \textbf{Tool chain risks (R1, R2) have a higher early-impact than they appear.} Sprint 2 lost $\sim$1 week of feature work to repository tooling.
-    \item \textbf{Scope-reduction is a valid mitigation.} Cutting some final UI tweaks preserved the critical path at the cost of design purity.
+    \item \textbf{Scope-reduction is a valid mitigation.} Cutting some final UI tweaks preserved the time for core features at the cost of nice UI design.
     \item \textbf{Account for learning curves in technical projects.} Identifying the knowledge gap (R9) early allowed the team to adjust Sprint 1 expectations, but future projects should formally budget time for upskilling.
 \end{enumerate}
 
@@ -157,7 +157,7 @@ This section contains the records of all team meetings for the Clue! Simulation 
 \subsection{How to Read This Section}
 
 \begin{quote}
-The marking criterion for \textit{Planning -- meeting notes} (band 5) requires:
+The marking criteria for \textit{Planning -- meeting notes} (band 5) requires:
 \textit{``A full set of notes that demonstrate an organised team, reflecting on progress on the project plan, and monitoring of risk factors identified, with appropriate mitigation through decision-making.''}
 
 Each meeting below follows the same structure:
@@ -165,7 +165,7 @@ Each meeting below follows the same structure:
     \item \textbf{Date / Duration / Attendees} --- for traceability and peer-assessment support.
     \item \textbf{Summary} --- what was discussed.
     \item \textbf{Decisions Made} --- outputs of the meeting (architectural, process, or planning).
-    \item \textbf{Actions Agreed} --- owner-tagged tasks, each with a \textit{Completed?} column so the reader can see whether the action was actually delivered (band 4 requirement).
+    \item \textbf{Actions Agreed} --- owner-tagged tasks, each with a \textit{Completed?} column so the reader can see whether the action was actually delivered (band 4).
 \end{itemize}
 
 Cross-references: planning decisions feed the previous Project Plan section.
@@ -313,7 +313,7 @@ Continue building out basic Unity project structure & Edward & Yes --- commits 0
 \textbf{Sprint} & \textbf{Focus} & \textbf{Key Deliverables} \\ \hline
 Sprint 1 & Core logic & Board representation, player movement, turn system, dice, cards \\ \hline
 Sprint 2 & Core gameplay & Suggestions, accusations, UI card logic, detective notes, rooms \\ \hline
-Sprint 3 & AI \& polish & Random AI player agent, GUI polish, JSON loading \\ \hline
+Sprint 3 & AI \& polish & AI player agent, GUI polish, JSON loading \\ \hline
 Sprint 4 & Testing \& docs & System/unit testing, bug fixes, documentation, final integration \\ \hline
 \end{tabular}%
 }
@@ -414,7 +414,7 @@ Refine class diagram alongside dev & Edward, Ethan & Ongoing & Yes \\ \hline
 \begin{tabular}{|p{8cm}|l|l|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Completed?} \\ \hline
-Refactor \texttt{DeckScript} so it initialises from GameManager & Edward & Yes (11/03) \\ \hline
+Refactor \texttt{DeckScript} so it initialises from GameManager & Edward & Yes (14/03) \\ \hline
 Continue \texttt{GameManagerScript} (singleton + setup) & Ewan & Yes (17/03) \\ \hline
 Begin token spawning logic in \texttt{GameManagerScript} & Edward & Yes (17/03) \\ \hline
 Flesh out \texttt{PlayerScripts} (player state container) & Joe & Yes (17/03) \\ \hline
@@ -480,7 +480,7 @@ Begin \texttt{MenuController} scene transition & Edward & Yes \\ \hline
     \item Identified issue: two competing implementations in \texttt{TokenMovementScript} (int array vs Vector2Int). Agreed to keep Vector2Int.
     \item Discussed card reveal during suggestions --- Matt to handle private modal.
     \item Room entry needs mapping door tile values (2--11) to strings.
-    \item Discussed AI --- agreed random legal moves are sufficient.
+    \item Discussed AI --- agreed random legal moves are sufficient if we run out of time.
 \end{itemize}
 
 \subsubsection*{Decisions Made}
@@ -488,7 +488,7 @@ Begin \texttt{MenuController} scene transition & Edward & Yes \\ \hline
     \item \textbf{\texttt{Vector2Int}} adopted as standard; old \texttt{int[]} movement approach removed.
     \item \textbf{\texttt{UiManager}} to be the single point of contact for all player-facing UI.
     \item \textbf{Room mapping} to map door IDs 2--11 to room names.
-    \item \textbf{AI movement:} random selection from \texttt{GetLegalMoves()} --- no A* pathfinding.
+    \item \textbf{AI movement:} BFS move selection is ideal, fallback to random if time is tight.
 \end{itemize}
 
 \subsubsection*{Actions Agreed}
@@ -502,7 +502,7 @@ Clean up \texttt{TokenMovementScript} --- remove old \texttt{int[]} & Joe & Yes 
 Implement \texttt{TokenMover.EnterRoom()} \& string mapping & Ben & Yes \\ \hline
 Complete \texttt{UiManager} prompts and private modal & Matt & Yes \\ \hline
 Implement \texttt{NotepadGrid} toggle UI & Matt & Yes \\ \hline
-Wire AI random move into \texttt{PlayTurn} coroutine & Ewan, Joe & Yes \\ \hline
+Wire AI move into \texttt{PlayTurn} coroutine & Ewan, Joe & Yes \\ \hline
 Everyone write up own contribution notes & All & Partially (in Sp 4) \\ \hline
 \end{tabular}%
 }
@@ -540,9 +540,9 @@ Everyone write up own contribution notes & All & Partially (in Sp 4) \\ \hline
 \begin{tabular}{|p{8cm}|l|l|}
 \hline
 \textbf{Action} & \textbf{Owner} & \textbf{Completed?} \\ \hline
-Implement \texttt{ResolveSuggestion()} clockwise coroutine & Ewan & In progress \\ \hline
+Implement \texttt{RunSuggestion()} clockwise coroutine & Ewan & In progress \\ \hline
 Implement accusation check vs \texttt{GetEnvelope()} & Ewan & In progress \\ \hline
-AI random suggestion when in room & Ben & In progress \\ \hline
+AI suggestion when in room & Ben & In progress \\ \hline
 \texttt{GameOverScreen} --- restart and return-to-menu & Matt & Yes \\ \hline
 Fill sprint docs and report skeleton & Joe, All & In progress \\ \hline
 Record any known bugs for testing documentation & All & In progress \\ \hline
@@ -587,8 +587,8 @@ Fix / document $<$ 6 player token spawn issue & Ethan & In progress \\ \hline
 Fill all sprint doc test result columns & All & In progress \\ \hline
 Complete group report (achievements, lessons) & Joe & In progress \\ \hline
 Agree peer assessment marks & All & Before 30 Apr \\ \hline
-Record gameplay video (MP4) & Matt & Before 29 Apr \\ \hline
-Final submission ZIP upload to Canvas & TBC & By 30 Apr 4PM \\ \hline
+Record gameplay video (MP4) & Ethan & Before 01 May\\ \hline
+Final submission ZIP upload to Canvas & TBC & By 01 May\\ \hline
 \end{tabular}%
 }
 \end{table}

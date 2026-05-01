@@ -141,7 +141,6 @@ code is left uncommented to avoid noise.
 \textbf{Path} & \textbf{Contents} \\ \hline
 \texttt{README.md} & Setup guide: cloning, opening the project in Unity, Smart
 Merge configuration, commit / PR workflow conventions \\ \hline
-\texttt{UIstuff.md} & UI development notes for menu / in-game panels \\ \hline
 \texttt{clue/} & Unity project root (open this folder in Unity Hub) \\ \hline
 \texttt{clue/Assets/Main Game/} & Game scene, prefabs, scripts \\ \hline
 \texttt{clue/Assets/Main Game/Scripts/} & 22 gameplay scripts (board,
@@ -154,9 +153,9 @@ settings, stepper, modal, room plaque) \\ \hline
 (\texttt{Sprint1Tests.cs}\,--\,\texttt{Sprint4Tests.cs}) \\ \hline
 \texttt{clue/Assets/StreamingAssets/} & \texttt{cards.json} --- runtime
 data contract for the deck \\ \hline
-\texttt{report/} & All design / planning / testing / meeting documentation
+\texttt{documentation/} & All design / planning / testing / meeting documentation
 sources (Markdown + PlantUML) \\ \hline
-\texttt{report/overleaf/} & LaTeX source of this submission report \\ \hline
+\texttt{report/} & LaTeX source of this submission report \\ \hline
 \end{tabular}
 \caption{Repository layout and documentation locations}
 \end{table}
@@ -220,12 +219,8 @@ steps it covers are:
     prompt if a different version is opened).
     \item In Unity Hub, click \textit{Add} $\to$ select the \texttt{clue}
     folder.
-    \item Open \textit{Assets / Main Game / Main Game} (the main scene) and
+    \item Open \textit{Assets / Main Game / MenuScene} 
     press \textit{Play}.
-    \item Configure \texttt{git config merge.unityyamlmerge.driver} once per
-    machine using the OS-specific command in \texttt{README.md} ---
-    this enables Unity Smart Merge for \texttt{.unity} and \texttt{.prefab}
-    files (R2 mitigation, see \S\ref{sec:sprint2}).
 \end{enumerate}
 
 \noindent The README additionally documents the team's commit-message

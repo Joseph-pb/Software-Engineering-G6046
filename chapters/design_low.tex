@@ -3,7 +3,7 @@
 
 \section{Class Diagram}
 
-The full class diagram below shows all major classes, inheritance relationships, aggregation, and key public interfaces. The diagram reflects the codebase as delivered on the \texttt{guessing} branch.
+The full class diagram below shows all major classes, inheritance relationships, aggregation, and key public interfaces.
 
 \begin{figure}[H]
 \centering
@@ -11,19 +11,6 @@ The full class diagram below shows all major classes, inheritance relationships,
 \caption{Full class diagram --- all sprints (see also Figure \ref{fig:class-diagram} in Process section)}
 \label{fig:class-diagram-low}
 \end{figure}
-
-% TODO: Verify the class_diagram.png matches the guessing branch class hierarchy below.
-% The diagram MUST show:
-%  - Player (abstract MonoBehaviour) <- HumanPlayer, AiPlayer (sealed)
-%  - Player has-a TokenMover (composition), PlayerKnowledge (composition), CharacterData (association)
-%  - GameManagerScript (Singleton) 1--* Player; holds Deck reference; runs RunSuggestion/ResolveAccusation
-%  - BoardScript (Singleton) holds int[25,24] boardArray and static RoomData dictionary
-%  - Deck (static state class) -> Card (pure C# data class), CardType (enum)
-%  - RoomRules (static utility class)
-%  - UiManager (Singleton MonoBehaviour)
-%  - DiceRollScript, NotepadGrid, GameOverScreen, MenuController, SceneController, GameState (class in GameStateScript.cs)
-% If the current class_diagram.png was drawn before the Player/HumanPlayer/AiPlayer refactor
-% (which replaced TokenMovementScript), redraw it to reflect the actual guessing branch structure.
 
 \subsection*{Player Class Hierarchy}
 
@@ -174,7 +161,7 @@ All card names are loaded from \texttt{StreamingAssets/cards.json} at runtime vi
 
 \section{Design vs.\ Implementation Deviations}
 
-The table below records where the delivered codebase on the \texttt{guessing} branch differs from the original design. Each deviation is documented transparently.
+The table below records where the delivered codebase differs from the original design. Each deviation is documented transparently.
 
 \begin{table}[H]
 \centering
@@ -186,7 +173,7 @@ D1 & Standalone \texttt{Suggestion} class & Suggestion flow inside \texttt{GameM
 D2 & Standalone \texttt{Accusation} class & Accusation inside \texttt{GameManagerScript.ResolveAccusation()} & Same as D1 --- co-located with Suggestion to share player/room state & \texttt{GameManagerScript.cs} \\ \hline
 D3 & \texttt{AiPlayer} with full notebook-based deduction & \texttt{AiPlayer} uses BFS-directed movement and knowledge-filtered suggestions; \texttt{ChooseAccusationFollowUp} returns true when envelope candidates narrow to 3 & Full deduction-based play scoped down in Sprint 4; core navigation and knowledge filtering were implemented & \texttt{AiPlayer.cs} --- each method body has a \texttt{TODO (ai)} comment for the upgrade path \\ \hline
 D4 & Full A* pathfinding for movement & Legal-move-only detection; step-by-step navigation & Decided at Meeting 6 once irregular-board complexity was understood & \texttt{TokenMover.GetLegalMoves()} \\ \hline
-D5 & Single \texttt{TokenMovementScript} & Split into \texttt{Player} (abstract, turn logic) + \texttt{TokenMover} (movement only) + \texttt{HumanPlayer} / \texttt{AiPlayer} subclasses & Refactored in Sprint 3 to separate input strategy from movement mechanics & \texttt{Player.cs}, \texttt{TokenMover.cs}, \texttt{HumanPlayer.cs}, \texttt{AiPlayer.cs} \\ \hline
+D5 & Single \texttt{TokenMovementScript} & Split into \texttt{Player} (abstract, turn logic) + \texttt{TokenMover} (movement only) + \texttt{HumanPlayer} / \texttt{AiPlayer} subclasses & Refactored in Sprint 4 to separate input strategy from movement mechanics & \texttt{Player.cs}, \texttt{TokenMover.cs}, \texttt{HumanPlayer.cs}, \texttt{AiPlayer.cs} \\ \hline
 \end{tabular}%
 }
 \end{table}

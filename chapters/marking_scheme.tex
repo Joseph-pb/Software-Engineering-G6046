@@ -15,35 +15,31 @@ This document is structured to address all marking criteria for the Software Eng
 \textcolor{white}{\textbf{Link}} \\
 \hline
 
-Planning Docs (out of 5) & 5 & Project plan, PERT/Gantt charts, risk analysis & \hyperref[chap:planning]{\color{blue}\underline{Chapter \ref*{chap:planning}}} \\
+Planning Docs & 5 & Project plan, PERT/Gantt charts, risk analysis & \hyperref[chap:planning]{\color{blue}\underline{Chapter \ref*{chap:planning}}} \\
 \hline
 
-Planning --- Meeting Notes (out of 5) & 5 & Meeting records, action tracking, team decisions & \hyperref[sect:meeting]{\color{blue}\underline{Section \ref*{sect:meeting}}} \\
+Planning --- Meeting Notes & 5 & Meeting records, action tracking, team decisions & \hyperref[sect:meeting]{\color{blue}\underline{Section \ref*{sect:meeting}}} \\
 \hline
 
-Process Documentation (out of 10) & 10 & Sprint documentation, user stories, Agile evidence & \hyperref[chap:process]{\color{blue}\underline{Chapter \ref*{chap:process}}} \\
+Process Documentation & 10 & Sprint documentation, user stories, Agile evidence & \hyperref[chap:process]{\color{blue}\underline{Chapter \ref*{chap:process}}} \\
 \hline
 
-Design Documentation --- High Level (out of 5) & 5 & System architecture, component roles, interactions & \hyperref[chap:design-high]{\color{blue}\underline{Chapter \ref*{chap:design-high}}} \\
+Design Documentation --- High Level & 5 & System architecture, component roles, interactions & \hyperref[chap:design-high]{\color{blue}\underline{Chapter \ref*{chap:design-high}}} \\
 \hline
 
-Design Documentation --- Low Level (out of 5) & 5 & Class diagrams, OO principles, API design & \hyperref[chap:design-low]{\color{blue}\underline{Chapter \ref*{chap:design-low}}} \\
+Design Documentation --- Low Level & 5 & Class diagrams, OO principles, API design & \hyperref[chap:design-low]{\color{blue}\underline{Chapter \ref*{chap:design-low}}} \\
 \hline
 
-Software Documentation (out of 5) & 5 & Code comments, XML DocStrings, IntelliSense cross-refs & \hyperref[chap:software]{\color{blue}\underline{Chapter \ref*{chap:software}}} \\
+Software Documentation & 5 & Code comments, XML DocStrings, IntelliSense cross-refs & \hyperref[chap:software]{\color{blue}\underline{Chapter \ref*{chap:software}}} \\
 \hline
 
-Testing Documentation (out of 10) & 10 & Unit tests, system tests, requirements traceability, edge cases & \hyperref[chap:process]{\color{blue}\underline{Chapter \ref*{chap:process}}} \\
+Testing Documentation & 10 & Unit tests, system tests, requirements traceability, edge cases & \hyperref[chap:process]{\color{blue}\underline{Chapter \ref*{chap:process}}} \\
 \hline
 
-Code (out of 50) & 50 & Working game, AI player, GUI, customisation & Submitted codebase \\
+Group Report & 5 & Achievements, issues, critical analysis, team organisation & \hyperref[chap:project-overview]{\color{blue}\underline{Chapter \ref*{chap:project-overview}}} \\
 \hline
 
-Group Report (out of 5) & 5 & Achievements, issues, critical analysis, team organisation & \hyperref[chap:project-overview]{\color{blue}\underline{Chapter \ref*{chap:project-overview}}} \\
-\hline
-
-\rowcolor{lightblue}
-\textbf{TOTAL} & \textbf{100} & \textbf{Team Mark Base} & --- \\
+Code & 50 & Working game, AI player, GUI, customisation & Submitted codebase \\
 \hline
 
 \end{tabular}
@@ -51,11 +47,11 @@ Group Report (out of 5) & 5 & Achievements, issues, critical analysis, team orga
 
 \vspace{1em}
 
-\noindent\textbf{Known gaps against the highest marking bands.} The following limitations prevent a full claim on the top band for some elements and are acknowledged explicitly in the report:
+\noindent\textbf{Known gaps against the highest marking bands.} The following features are yet to be implemented and would strengthen the project if implemented.
 
 \begin{itemize}
     \item \textbf{Testing (9--10 band):} Sprint~4 system tests (S4.1--S4.12) were not fully executed before submission --- the Actual Result and Pass/Fail columns remain incomplete (Section~\ref{sec:sprint4}). Edge-case tests were performed for board movement (Sprint~3) but are not formally catalogued as a dedicated edge-case suite. Unit tests are linked to classes but not formally cross-referenced back to individual design artefacts (class diagram entries or sequence diagrams).
-    \item \textbf{Code (41--50 band):} The AI player uses BFS-directed navigation toward envelope-candidate rooms and knowledge-filtered suggestions, but full notebook-based card-elimination deduction was not implemented (D3, KI-3 in Section~\ref{sec:sprint4-known-issues}). The player-count selector in the menu is not fully wired to \texttt{SceneController} (KI-1), and player names are not user-configurable --- Watson Games specifically identified customisation as a selling point. The game does not feature animated character movement or formally verified cross-platform (Mac/PC) operation.
+    \item \textbf{Code (41--50 band):} The AI player uses BFS-directed navigation toward envelope-candidate rooms and knowledge-filtered suggestions, but full notebook-based card-elimination deduction was not implemented (D3, KI-1 in Section~\ref{sec:sprint4-known-issues}). Player names are not customisable, although the board design is. Watson Games specifically identified customisation as a selling point. The game does not feature animated character movement or formally verified cross-platform (Mac/PC) operation.
 \end{itemize}
 
 \newpage

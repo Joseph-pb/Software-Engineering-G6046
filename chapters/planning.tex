@@ -18,26 +18,29 @@ The initial project timeline and task assignments are visualised in the Gantt ch
 \begin{table}[H]
     \centering
     \small
-    \begin{tabular}{|p{6cm}|l|c|c|c|}
+    \begin{tabular}{|p{6.2cm}|l|c|c|c|}
         \hline
         \textbf{Task} & \textbf{Owner(s)} & \textbf{Start} & \textbf{End} & \textbf{Status} \\ \hline
-        Planning, role assignments, sprint plan & All & 19 Feb & 05 Mar & Done \\ \hline
-        Design class diagram \& JSON schema & Edward, Ethan & 19 Feb & 05 Mar & Done \\ \hline
-        Set up Unity project \& repository & Matt & 05 Mar & 07 Mar & Done \\ \hline
-        Establish branching strategy \& workflow doc & Joe & 07 Mar & 07 Mar & Done \\ \hline
-        Implement Deck / Card classes & Ben & 08 Mar & 11 Mar & Done \\ \hline
-        Implement BoardScript (tile array) & Matt & 08 Mar & 11 Mar & Done \\ \hline
-        Implement GameManagerScript (singleton, setup) & Ewan & 11 Mar & 17 Mar & Done \\ \hline
-        Implement DiceRollScript (physics) & Ben & 11 Mar & 17 Mar & Done \\ \hline
-        Implement TokenMovementScript (movement, pathfinding) & Joe, Ethan & 17 Mar & 15 Apr & Done \\ \hline
-        Implement CardGenerator / HandManager / CardInteraction & Matt, Ben & 15 Apr & 17 Apr & Done \\ \hline
-        Implement Suggestion / Accusation system & Ewan & 17 Apr & 24 Apr & Done \\ \hline
-        Implement AI player (random decision-making) & Ben & 17 Apr & 24 Apr & Done \\ \hline
-        Implement GameLoop / turn management & Ewan & 17 Apr & 26 Apr & Done \\ \hline
-        System testing \& bug fixing & All & 24 Apr & 28 Apr & Done \\ \hline
-        Documentation, report \& submission prep & All & 26 Apr & 30 Apr & Done \\ \hline
+        Initial planning, meetings \& role assignments & All & 26 Jan & 19 Feb & Done \\ \hline
+        Class diagram \& \texttt{cards.json} schema & Edward, Ethan & 19 Feb & 05 Mar & Done \\ \hline
+        \texttt{Card}, \texttt{Deck} data classes \& \texttt{SceneController} & Ben, Edward & 19 Feb & 05 Mar & Done \\ \hline
+        Unity project setup \& GitHub push & Matt & 19 Feb & 07 Mar & Done \\ \hline
+        Repo tooling: Git LFS, PR templates, merge settings & Ethan, Edward & 05 Mar & 07 Mar & Done \\ \hline
+        \texttt{BoardScript} (25$\times$24 tile array) & Matt & 10 Mar & 17 Mar & Done \\ \hline
+        \texttt{GameManagerScript} singleton \& \texttt{GameState} & Ewan & 05 Mar & 17 Mar & Done \\ \hline
+        \texttt{DiceRollScript} (physics) \& \texttt{MenuController} & Ben, Edward & 05 Mar & 17 Mar & Done \\ \hline
+        \texttt{Player}/\texttt{HumanPlayer}/\texttt{TokenMover} (movement)$^*$ & Joe, Ethan & 17 Mar & 15 Apr & Done \\ \hline
+        \texttt{UiManager}, \texttt{NotepadGrid} \& private modal & Matt & 17 Mar & 11 Apr & Done \\ \hline
+        \texttt{RoomRules} (secret passages) \& \texttt{PlayTurn} coroutine & Ben, Ewan & 17 Mar & 11 Apr & Done \\ \hline
+        \texttt{CharacterData} ScriptableObject \& JSON integration & Edward & 17 Mar & 11 Apr & Done \\ \hline
+        \texttt{MainLoop}, suggestion \& accusation resolution & Ewan, Edward, Ethan & 14 Apr & 26 Apr & Done \\ \hline
+        \texttt{AiPlayer} (BFS navigation, knowledge-filtered suggestions) & Ben & 14 Apr & 24 Apr & Done \\ \hline
+        \texttt{PlayerKnowledge} \& \texttt{DoSuggestionThenAccusation} & Joe, Edward & 14 Apr & 26 Apr & Done \\ \hline
+        \texttt{GameOverScreen} \& final UI polish & Matt & 14 Apr & 28 Apr & Done \\ \hline
+        System testing, integration \& bug fixes & All & 18 Apr & 28 Apr & Done \\ \hline
+        Documentation, report \& submission prep & Joe, All & 26 Apr & 30 Apr & Done \\ \hline
     \end{tabular}
-    \caption{Final Consolidated Project Tasks and Timeline}
+    \caption{Final Consolidated Project Tasks and Timeline ($^*$Easter break 20~Mar -- 14~Apr: no development)}
     \label{tab:gantt_tasks}
 \end{table}
 

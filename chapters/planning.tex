@@ -49,31 +49,31 @@ The project timeline and task assignments are visualised in the Gantt chart (Fig
 The critical path runs through:
 
 \begin{quote}
-\textbf{BoardScript $\rightarrow$ GameManager $\rightarrow$ Deck/Cards $\rightarrow$ TokenMovement $\rightarrow$ GameLoop $\rightarrow$ Suggestion/Accusation $\rightarrow$ Win condition}
+BoardScript → GameManager → Deck/Cards → TokenMovement → GameLoop → Suggestion/Accusation → Win condition
 \end{quote}
 
-Each task in this chain blocks the next: a player can only be \textit{placed} once the board exists; can only \textit{take a turn} once GameManager exists; can only \textit{move} once Deck/Cards is set up (the deck is built during game initialisation); can only \textit{make a Suggestion} once they are physically in a room (which requires TokenMovement); and can only \textit{win} via an Accusation evaluated against the solution envelope.
+Each task in this chain blocks the next. A player can only be placed once the board exists. They can only take a turn once GameManager exists. They can only move once Deck/Cards is set up (the deck is built during game initialisation). They can only make a Suggestion once they are physically in a room, which requires TokenMovement. Finally, they can only win via an Accusation evaluated against the solution envelope.
 
 HandManager / CardInteraction sits on a \textit{parallel} branch off Deck/Cards --- Ben was able to develop the player hand UI during the same window as TokenMovement, so it does not appear on the critical path itself.
 
 \subsubsection*{The Actual Bottleneck: TokenMovement}
-TokenMovement was both the \textbf{longest single task} in the plan (17 Mar -- 15 Apr, $\sim$4 weeks) and the \textbf{task with the highest downstream impact} --- Suggestion, GameLoop progression, and AI movement all block on it. It was the right task to mark as the highest-risk item, and in practice it did slip slightly past its planned end date (see Revised Plan below).
+TokenMovement was the longest single task in the plan (17 Mar to 15 Apr, approximately 4 weeks) and had the highest downstream impact. Suggestion, GameLoop progression, and AI movement all depend on it. It was correctly identified as the highest-risk item, and in practice it did slip slightly past its planned end date.
 
 \subsubsection*{Easter Break Disruption}
-No development was scheduled or executed during the Easter holiday window (20 March -- 14 April). Effectively development was paused for $\sim$3 weeks, which compressed Sprint 3 work into the second half of April and forced parallel execution of TokenMovement, GameLoop, and Suggestion in the final 10 days.
+No development was scheduled or executed during the Easter holiday window (20 March to 14 April). Development was effectively paused for approximately 3 weeks, which compressed Sprint 3 work into the second half of April and forced parallel execution of TokenMovement, GameLoop, and Suggestion in the final 10 days.
 
 \subsection{Revised Plan}
 
 The execution deviated from the initial Gantt in seven notable ways. They are recorded here so that a reader can compare the plan against what actually happened and understand why the team's structure changed during the project.
 
 \begin{itemize}
-    \item \textbf{Easter break paused development for $\sim$3.5 weeks:} There were \textbf{zero commits between 20 March and 14 April} on any branch. All the work nominally scheduled across the second half of Sprint 3 was compressed into the period 15--24 April.
-    \item \textbf{TokenMovement slipped past its planned end date:} The major movement-fix commits actually landed on \textbf{17 April} and \textbf{18 April}. Legal-move detection on the irregular Cluedo board required more edge-case handling than the plan accounted for.
-    \item \textbf{Suggestion / Accusation became a team task:} Originally assigned to Ewan, the work was distributed across Edward (guessing logic), Ethan (looping mechanisms), and Ewan (GameStateScript and menus) under time pressure.
-    \item \textbf{Suggestion / Accusation logic merged into existing managers:} In the delivered codebase, the logic lives inside \texttt{GameManagerScript.cs} and \texttt{UiManager.cs} rather than in standalone classes. Splitting the classes cleanly would have required a refactor the team did not have time for (reflected in Chapter~\ref{chap:design-low}).
-    \item \textbf{AI player scoped down:} The AI uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestions; full notebook-based deduction (eliminating cards systematically) was not implemented (documented in Section~\ref{sec:sprint4}).
-    \item \textbf{Sprint 2 absorbed unplanned repo infrastructure work:} Significant effort went into Git LFS setup, \texttt{.gitignore} fixes, PR templates, and Unity merge settings. This was necessary to prevent merge conflicts in Unity scenes but consumed feature development time.
-    \item \textbf{Matt's script commits arrived late:} Matt's earlier work was contributed via pair-programming or was scene/asset work in Unity (which does not surface as distinct script commits). His first direct script commits in the repository arrived on 22--23 April.
+    \item Easter break paused development for approximately 3.5 weeks. There were no commits between 20 March and 14 April on any branch. All the work nominally scheduled across the second half of Sprint 3 was compressed into the period 15 to 24 April.
+    \item TokenMovement slipped past its planned end date. The major movement-fix commits actually landed on 17 April and 18 April. Legal-move detection on the irregular Cluedo board required more edge-case handling than the plan accounted for.
+    \item Suggestion and Accusation became a team task. Originally assigned to Ewan, the work was distributed across Edward (guessing logic), Ethan (looping mechanisms), and Ewan (GameStateScript and menus) under time pressure.
+    \item Suggestion and Accusation logic merged into existing managers. In the delivered codebase, the logic lives inside \texttt{GameManagerScript.cs} and \texttt{UiManager.cs} rather than in standalone classes. Splitting the classes cleanly would have required a refactor the team did not have time for.
+    \item AI player was scoped down. The AI uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestions. Full notebook-based deduction (eliminating cards systematically) was not implemented.
+    \item Sprint 2 absorbed unplanned repo infrastructure work. Significant effort went into Git LFS setup, \texttt{.gitignore} fixes, PR templates, and Unity merge settings. This was necessary to prevent merge conflicts in Unity scenes but consumed feature development time.
+    \item Matt's script commits arrived late. Matt's earlier work was contributed via pair-programming or was scene and asset work in Unity (which does not surface as distinct script commits). His first direct script commits in the repository arrived on the 22nd of April.
 \end{itemize}
 
 \subsection{Effort Allocation}

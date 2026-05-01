@@ -74,18 +74,18 @@ Edward & Data handling: designed \texttt{cards.json} external data file; \texttt
     \item \textbf{D1.2} One person, one weapon, one room card in the murder envelope; remaining 18 dealt.
 \end{itemize}
 
-\subsection*{Design --- Class Diagram (Sprint 1 scope)}
+\subsection*{Design: Class Diagram (Sprint 1 scope)}
 
 The full class diagram below covers all sprint deliverables. Key Sprint 1 classes are \texttt{Card}, \texttt{Deck}, and \texttt{SceneController}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{class_diagram.png}
-\caption{Full class diagram --- all sprints}
+\caption{Full class diagram for all sprints}
 \label{fig:class-diagram}
 \end{figure}
 
-\textbf{cards.json structure:}
+cards.json structure:
 \begin{verbatim}
 {
   "names":   ["Miss Scarlett","Colonel Mustard","Mrs. White",
@@ -118,25 +118,25 @@ U1.6 & SceneController & Singleton prevents duplicate & Second instance destroye
 
 \subsection*{Sprint Retrospective}
 
-\textbf{Did you achieve your objectives?} Partly. Unity/C\# agreed and confirmed running on every machine. Deck, Card, and CardType implemented and unit-tested. \texttt{cards.json} in place. \texttt{SceneController} persists player and AI count between scenes. Board representation and the core game loop did not get finished.
+Did you achieve your objectives? Partly. Unity and C\# were agreed and confirmed running on every machine. Deck, Card, and CardType were implemented and unit-tested. \texttt{cards.json} is in place, and \texttt{SceneController} persists player and AI count between scenes. Board representation and the core game loop were not finished.
 
-\textbf{Is there a working prototype?} Not yet a playable game. The project compiles and runs cleanly; card and deck logic is functional.
+Is there a working prototype? Not yet a playable game. The project compiles and runs cleanly, and card and deck logic is functional.
 
-\textbf{What went well?}
+What went well?
 \begin{itemize}
-    \item Role split agreed quickly at Meeting 1 before any code was written.
-    \item JSON-driven card system designed early, giving downstream systems a fixed data contract.
+    \item Role split was agreed quickly at Meeting 1 before any code was written.
+    \item JSON-driven card system was designed early, giving downstream systems a fixed data contract.
     \item Edward's early Unity spike de-risked the tool chain from day one.
 \end{itemize}
 
-\textbf{What did not go well?}
+What did not go well?
 \begin{itemize}
-    \item Repository tooling (Git LFS, Unity merge settings, PR templates) not yet in place --- caused early Sprint 2 conflicts.
-    \item Class diagram was rough at sprint close; refined in parallel with implementation.
-    \item Fell short of some objectives due to underestimating the learning overhead that came with using Unity for the first time.
+    \item Repository tooling (Git LFS, Unity merge settings, PR templates) was not yet in place, causing early Sprint 2 conflicts.
+    \item Class diagram was rough at sprint close and was refined in parallel with implementation.
+    \item The team fell short of some objectives due to underestimating the learning overhead that came with using Unity for the first time.
 \end{itemize}
 
-\textbf{What will you do differently?} Front-load repository tooling at the start of Sprint 2: Git LFS, \texttt{.gitattributes}, UnityYAMLMerge, PR templates, Unity compile-check workflow.
+What will you do differently? Front-load repository tooling at the start of Sprint 2: Git LFS, \texttt{.gitattributes}, UnityYAMLMerge, PR templates, and the Unity compile-check workflow.
 
 % ---- SPRINT 2 ----
 \section{Sprint 2 --- Board, Game Manager, Dice \& Scene Infrastructure}
@@ -219,7 +219,7 @@ While technically not a room, \texttt{BoardScript} treats Stairwell as such in c
 
 \subsection*{Key Design Decision: Physics Dice}
 
-A Rigidbody physics dice was chosen over \texttt{Random.Range(1,7)} to provide visual authenticity (Watson Games requirement: ``fun to play, colourful interface''). \texttt{CalculateResult()} uses dot products against \texttt{Vector3.up} to identify the uppermost face. A \texttt{Random.Range(1,7)} fallback is used if no face is clearly detected.
+A Rigidbody physics dice was chosen over \texttt{Random.Range(1,7)} to provide visual authenticity, meeting Watson Games' requirement for a fun and colourful interface. \texttt{CalculateResult()} uses dot products against \texttt{Vector3.up} to identify the uppermost face. A \texttt{Random.Range(1,7)} fallback is used if no face is clearly detected.
 
 \subsection*{Test Plan and Evidence of Testing}
 
@@ -258,22 +258,22 @@ S2.4 & F2.6 & Menu transitions to game scene & Scene loads with correct count & 
 
 \subsection*{Sprint Retrospective}
 
-\textbf{Did you achieve your objectives?} Yes. \texttt{BoardScript} with 25-row $\times$ 24-col tile encoding is in place. \texttt{GameManagerScript} handles player setup and deck initialisation. \texttt{DiceRollScript} produces physics-based rolls. Tokens spawn at designated start positions.
+Did you achieve your objectives? Yes. \texttt{BoardScript} with 25 by 24 tile encoding is in place. \texttt{GameManagerScript} handles player setup and deck initialisation. \texttt{DiceRollScript} produces physics-based rolls. Tokens spawn at designated start positions.
 
-\textbf{What went well?}
+What went well?
 \begin{itemize}
-    \item Repository tooling (Git LFS, \texttt{.gitattributes}, UnityYAMLMerge, PR templates, Unity compile-check) completed in week 1 of Sprint 2 --- prevented destructive merge conflicts for the remainder of the project (R2 mitigated).
+    \item Repository tooling (Git LFS, \texttt{.gitattributes}, UnityYAMLMerge, PR templates, and Unity compile-check) was completed in week 1 of Sprint 2 and prevented destructive merge conflicts for the remainder of the project.
     \item Singleton patterns for \texttt{GameManagerScript}, \texttt{BoardScript}, and \texttt{GameState} made cross-script communication clean and predictable.
     \item Matt's Unity walkthrough at Meeting 5 levelled-up backend-focused team members.
 \end{itemize}
 
-\textbf{What did not go well?}
+What did not go well?
 \begin{itemize}
-    \item Repo tooling consumed $\sim$1 week of effort not budgeted in the Gantt.
-    \item The deck refactor briefly delayed GameManager work ($\sim$2 days).
+    \item Repo tooling consumed approximately 1 week of effort not budgeted in the Gantt.
+    \item The deck refactor briefly delayed GameManager work for approximately 2 days.
 \end{itemize}
 
-\textbf{What will you do differently?} Begin \texttt{TokenMovementScript} with a clearly bounded scope --- legal-move detection only, not A* pathfinding. Schedule the Easter break explicitly in Sprint 3 plan. Adopt \texttt{Vector2Int} as the standard board-coordinate type from day one of Sprint 3.
+What will you do differently? Begin \texttt{TokenMovementScript} with a clearly bounded scope: legal-move detection only, not A* pathfinding. Schedule the Easter break explicitly in the Sprint 3 plan. Adopt \texttt{Vector2Int} as the standard board-coordinate type from day one of Sprint 3.
 
 % ---- SPRINT 3 ----
 \section{Sprint 3 --- Movement, Rooms, UI \& Detective Notebook}
@@ -309,10 +309,10 @@ Edward & \texttt{CharacterData} ScriptableObject; JSON integration verification 
 The original \texttt{TokenMovementScript} concept was refactored into a clean class hierarchy that separates movement mechanics from game-logic decisions:
 
 \begin{itemize}
-    \item \textbf{\texttt{Player} (abstract MonoBehaviour):} owns all turn sequencing (\texttt{PlayTurn} coroutine), board-position state delegation, knowledge tracking (\texttt{PlayerKnowledge}), and notepad toggles. Defines abstract ``decision hook'' methods that subclasses override.
-    \item \textbf{\texttt{HumanPlayer}:} overrides decision hooks by calling \texttt{UiManager} and awaiting player input.
-    \item \textbf{\texttt{AiPlayer}:} overrides decision hooks: BFS-directed movement toward envelope-candidate rooms, knowledge-filtered suggestions, and envelope-based accusation trigger (satisfies Watson Games AI requirement).
-    \item \textbf{\texttt{TokenMover} (MonoBehaviour component on the same prefab):} handles all grid movement, room entry/exit, and world-space positioning. Exposes \texttt{GetLegalMoves()}, \texttt{Step()}, \texttt{EnterRoom()}, \texttt{LeaveThroughDoor()}.
+    \item \texttt{Player} (abstract MonoBehaviour): Owns all turn sequencing (\texttt{PlayTurn} coroutine), board-position state delegation, knowledge tracking (\texttt{PlayerKnowledge}), and notepad toggles. Defines abstract decision-hook methods that subclasses override.
+    \item \texttt{HumanPlayer}: Overrides decision hooks by calling \texttt{UiManager} and awaiting player input.
+    \item \texttt{AiPlayer}: Overrides decision hooks with BFS-directed movement toward envelope-candidate rooms, knowledge-filtered suggestions, and envelope-based accusation trigger.
+    \item \texttt{TokenMover} (MonoBehaviour component on the same prefab): Handles all grid movement, room entry and exit, and world-space positioning. Exposes \texttt{GetLegalMoves()}, \texttt{Step()}, \texttt{EnterRoom()}, and \texttt{LeaveThroughDoor()}.
 \end{itemize}
 
 \subsection*{Key Design Decision: Legal Move Detection (Not A* Pathfinding)}
@@ -336,12 +336,12 @@ A player in a passage room can take \texttt{TurnAction.Passage} instead of rolli
 
 \texttt{NotepadGrid} (in \texttt{NotepadUI.cs}) generates three toggle sections for characters, weapons, and rooms. Section dimensions are configured via Unity Inspector fields (\texttt{charColumns=6}, \texttt{weaponColumns=6}, \texttt{roomColumns=9}, \texttt{rows=7}). Toggle state is stored as \texttt{int[147]} in \texttt{Player.NotepadToggles} (7 rows $\times$ 6 characters + 7 rows $\times$ 6 weapons + 7 rows $\times$ 9 rooms = 147 cells).
 
-\subsection*{Sequence Diagram --- Player Turn (Movement Phase)}
+\subsection*{Sequence Diagram: Player Turn (Movement Phase)
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{sequence_movement.png}
-\caption{Sequence diagram --- player turn movement phase}
+\caption{Sequence diagram for player turn movement phase}
 \label{fig:seq-movement}
 \end{figure}
 
@@ -384,26 +384,26 @@ S3.7 & F3.9 & AI moves without input & AI selects move & Turn completes & Pass \
 
 \subsection*{Sprint Retrospective}
 
-\textbf{Did you achieve your objectives?} Partially. \texttt{Player}/\texttt{HumanPlayer}/\texttt{AiPlayer}/\texttt{TokenMover}, \texttt{RoomRules}, \texttt{UiManager}, and \texttt{NotepadGrid} were delivered. A* pathfinding was scoped down to legal-move-only detection. Suggestion/Accusation was formally pushed into Sprint 4 at Meeting 8.
+Did you achieve your objectives? Partially. \texttt{Player}, \texttt{HumanPlayer}, \texttt{AiPlayer}, \texttt{TokenMover}, \texttt{RoomRules}, \texttt{UiManager}, and \texttt{NotepadGrid} were delivered. A* pathfinding was scoped down to legal-move-only detection. Suggestion and Accusation were formally pushed into Sprint 4 at Meeting 8.
 
-\textbf{What went well?}
+What went well?
 \begin{itemize}
     \item The Player class hierarchy cleanly separates game logic from rendering and input.
     \item \texttt{UiManager} as single UI entry point kept GUI logic decoupled from movement and game-state code.
-    \item \texttt{Vector2Int} adopted as standard at Meeting 7, avoiding coordinate-system bugs in Sprint 4.
+    \item \texttt{Vector2Int} was adopted as standard at Meeting 7, avoiding coordinate-system bugs in Sprint 4.
 \end{itemize}
 
-\textbf{What did not go well?}
+What did not go well?
 \begin{itemize}
-    \item Easter break (20 March -- 14 April) paused all development for $\sim$3.5 weeks.
+    \item Easter break (20 March to 14 April) paused all development for approximately 3.5 weeks.
     \item Legal-move detection on the irregular Cluedo board was more complex than estimated.
-    \item Suggestion/Accusation (originally Sprint 3 work) deferred into Sprint 4, compressing that sprint.
+    \item Suggestion and Accusation (originally Sprint 3 work) were deferred into Sprint 4, compressing that sprint.
 \end{itemize}
 
-\textbf{What will you do differently?} Focus Sprint 4 exclusively on the end-to-end game loop. Plan a single integration day mid-sprint. Accept architectural compromises where a refactor risks the deadline.
+What will you do differently? Focus Sprint 4 exclusively on the end-to-end game loop. Plan a single integration day mid-sprint. Accept architectural compromises where a refactor risks the deadline.
 
 % ---- SPRINT 4 ----
-\section{Sprint 4 --- Game Loop, Suggestions, Accusations \& Testing}
+\section{Sprint 4: Game Loop, Suggestions, Accusations, and Testing}
 \label{sec:sprint4}
 
 \subsection*{Summary Data}
@@ -451,8 +451,8 @@ Edward & \texttt{TokenMovementScript} refactor; \texttt{MenuController} input wi
 The original design called for standalone \texttt{Suggestion} and \texttt{Accusation} classes. Under time pressure in Sprint 4, both were implemented directly in \texttt{GameManagerScript}:
 
 \begin{itemize}
-    \item \texttt{GameManagerScript.RunSuggestion()} --- coroutine that iterates players clockwise, prompts card reveal, updates \texttt{PlayerKnowledge}, logs refutations, and calls \texttt{UiManager.ShowRevealedCard()} for private display.
-    \item \texttt{GameManagerScript.ResolveAccusation()} --- checks accusation against \texttt{Deck.GetEnvelope()}, calls \texttt{EndGame()} on correct or sets \texttt{player.HasLost = true} on incorrect.
+    \item \texttt{GameManagerScript.RunSuggestion()}: A coroutine that iterates players clockwise, prompts card reveal, updates \texttt{PlayerKnowledge}, logs refutations, and calls \texttt{UiManager.ShowRevealedCard()} for private display.
+    \item \texttt{GameManagerScript.ResolveAccusation()}: Checks accusation against \texttt{Deck.GetEnvelope()}, calls \texttt{EndGame()} on correct, or sets \texttt{player.HasLost = true} on incorrect.
 \end{itemize}
 
 This is a known architectural deviation (KI-2), documented transparently.
@@ -461,10 +461,10 @@ This is a known architectural deviation (KI-2), documented transparently.
 
 A \texttt{PlayerKnowledge} class was added to track per-player card inferences:
 \begin{itemize}
-    \item \textbf{Held facts:} cards known to be held by a specific player (from \texttt{NoteShown} or own hand).
-    \item \textbf{NotHeld facts:} cards known not held by a player (from \texttt{NoteCannotRefute}).
-    \item \textbf{Disjunctions:} a player refuted \textit{something}, but the observer didn't see which card (\texttt{NoteRefutedSomething}).
-    \item \textbf{Envelope candidates:} cards not definitively held by anyone (\texttt{GetEnvelopeCandidates()}).
+    \item Held facts: Cards known to be held by a specific player (from \texttt{NoteShown} or own hand).
+    \item NotHeld facts: Cards known not held by a player (from \texttt{NoteCannotRefute}).
+    \item Disjunctions: A player refuted something, but the observer did not see which card (\texttt{NoteRefutedSomething}).
+    \item Envelope candidates: Cards not definitively held by anyone (\texttt{GetEnvelopeCandidates()}).
 \end{itemize}
 
 \texttt{PlayerKnowledge} is wired into \texttt{GameManagerScript.RunSuggestion()} and exposed to \texttt{AiPlayer} for future deduction logic.
@@ -478,12 +478,12 @@ A \texttt{PlayerKnowledge} class was added to track per-player card inferences:
 \label{fig:state-turn}
 \end{figure}
 
-\subsection*{Sequence Diagram --- Suggestion Resolution}
+\subsection*{Sequence Diagram: Suggestion Resolution}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{sequence_suggestion.png}
-\caption{Sequence diagram --- suggestion resolution}
+\caption{Sequence diagram for suggestion resolution}
 \label{fig:seq-suggestion}
 \end{figure}
 
@@ -550,12 +550,11 @@ KI-3 & Suggested character and weapon tokens do not fully move to the suggestion
 
 \subsection*{Sprint Retrospective}
 
-\textbf{Did you achieve your objectives?} Largely yes. The game loop is integrated end-to-end via \texttt{GameManagerScript.MainLoop()}. Suggestion with clockwise card-showing is implemented (`RunSuggestion`).
-          Accusation evaluation and win / elimination logic both work as specified. The AI player takes full turns without human input. Two issues carry into the known deficiencies log: Suggestion and Accusation logic lives inside `GameManagerScript` and `UiManager` rather than as standalone classes (KI-2, architectural), and system testing identified that suggested character and weapon tokens do not fully move to the suggestion room under all conditions (KI-3, functional). Both are documented in the Known Issues / Deficiencies subsection above.
+Did you achieve your objectives? Largely yes. The game loop is integrated end-to-end via \texttt{GameManagerScript.MainLoop()}. Suggestion with clockwise card-showing is implemented via \texttt{RunSuggestion()}. Accusation evaluation and win/elimination logic both work as specified. The AI player takes full turns without human input. Two issues carry into the known deficiencies log: Suggestion and Accusation logic lives inside \texttt{GameManagerScript} and \texttt{UiManager} rather than as standalone classes (KI-2, architectural), and system testing identified that suggested character and weapon tokens do not fully move to the suggestion room under all conditions (KI-3, functional).
 
-\textbf{Is there a working prototype?} Yes. A full game of Clue! can be played: players take turns, roll dice, move, enter rooms, make suggestions, see cards revealed privately, and make accusations.
+Is there a working prototype? Yes. A full game of Clue! can be played: players take turns, roll dice, move, enter rooms, make suggestions, see cards revealed privately, and make accusations.
 
-\textbf{What went well?}
+What went well?
 \begin{itemize}
     \item Every Sprint 4 critical-path objective shipped.
     \item Large merge on 18 April consolidated all feature branches without losing work.
@@ -564,14 +563,14 @@ KI-3 & Suggested character and weapon tokens do not fully move to the suggestion
     \item Despite some known issues remaining, they are all minor rather than critical.
 \end{itemize}
 
-\textbf{What did not go well?}
+What did not go well?
 \begin{itemize}
-    \item Suggestion/Accusation could not be extracted into standalone classes (KI-2).
-    \item AI player movement and suggestions are functional (BFS navigation, knowledge-filtered suggestions) but full notebook-based deduction was not implemented (KI-1).
+    \item Suggestion and Accusation could not be extracted into standalone classes (KI-2).
+    \item AI player movement and suggestions are functional (BFS navigation and knowledge-filtered suggestions) but full notebook-based deduction was not implemented (KI-1).
     \item Matt missed Meetings 8 and 9, requiring async communication for UI integration decisions.
 \end{itemize}
 
-\textbf{What would you do differently?}
+What would you do differently?
 \begin{itemize}
     \item Stub the end-to-end game loop in Sprint 1 so that all systems have a spine to plug into.
     \item Treat the Easter break as a Sprint 3 deadline rather than allowing it to be an unused period.

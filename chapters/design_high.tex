@@ -83,18 +83,18 @@ Agreed unanimously at Meeting 1. Unity provides built-in 3D rendering, Rigidbody
 \texttt{GameManagerScript}, \texttt{BoardScript}, \texttt{UiManager}, \texttt{GameState}, and \texttt{SceneController} all use the Unity Singleton pattern. These represent unique global state that any script may need to access. The singleton prevents duplicate instances and provides a predictable, globally accessible reference.
 
 \subsection*{4.3 Data-Driven Card System}
-All card names (characters, weapons, rooms) loaded from \texttt{StreamingAssets/cards.json} via \texttt{JsonUtility}. Watson Games explicitly require the game be ``easily customised.'' Changing characters or weapons requires only editing this JSON file --- no code changes.
+All card names (characters, weapons, and rooms) are loaded from \texttt{StreamingAssets/cards.json} via \texttt{JsonUtility}. Watson Games explicitly require the game be easily customised. Changing characters or weapons requires only editing this JSON file, with no code changes needed.
 
 \subsection*{4.4 Physics-Based Dice}
-\texttt{DiceRollScript} uses a Rigidbody simulation rather than \texttt{Random.Range}. Watson Games require a ``fun to play and colourful interface.'' A physical dice provides visual authenticity. Face orientation is detected by dot product against \texttt{Vector3.up}; a \texttt{Random.Range(1,7)} fallback handles any degenerate result.
+\texttt{DiceRollScript} uses a Rigidbody simulation rather than \texttt{Random.Range}. Watson Games require a fun to play and colourful interface, so a physical dice provides visual authenticity. Face orientation is detected by dot product against \texttt{Vector3.up}, and a \texttt{Random.Range(1,7)} fallback handles any degenerate result.
 
 \subsection*{4.5 Callback-Driven UI (Action Delegates)}
-\texttt{UiManager} communicates results to game logic via \texttt{System.Action} callbacks; \texttt{Player} coroutines wait via \texttt{WaitUntil}. Keeps UI code and game logic independent.
+\texttt{UiManager} communicates results to game logic via \texttt{System.Action} callbacks, while \texttt{Player} coroutines wait via \texttt{WaitUntil}. This approach keeps UI code and game logic independent.
 
-\subsection*{4.6 AI Player --- Basic Decision-Making with Knowledge Scaffold}
-\texttt{AiPlayer} uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestion generation. \texttt{ChooseAccusationFollowUp} returns true when the envelope has been narrowed to exactly 3 candidates. A \texttt{PlayerKnowledge} instance is maintained for each AI player and updated on every suggestion round, providing a clean foundation for further deduction-based improvements without requiring a rewrite.
+\subsection*{4.6 AI Player: Basic Decision-Making with Knowledge Scaffold}
+\texttt{AiPlayer} uses BFS-directed movement toward envelope-candidate rooms and knowledge-filtered suggestion generation. \texttt{ChooseAccusationFollowUp} returns true when the envelope has been narrowed to exactly 3 candidates. A \texttt{PlayerKnowledge} instance is maintained for each AI player and updated on every suggestion round, providing a foundation for further deduction-based improvements without requiring a rewrite.
 
-\section{Activity Diagram --- Full Game Flow}
+\section{Activity Diagram: Full Game Flow}
 
 \begin{figure}[H]
 \centering

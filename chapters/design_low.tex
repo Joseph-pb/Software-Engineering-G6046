@@ -153,8 +153,8 @@ Each class has one clearly bounded job:
 \subsection*{Inheritance and Polymorphism}
 \texttt{Player} is an abstract MonoBehaviour that declares all turn-sequencing logic in concrete methods (\texttt{PlayTurn}, \texttt{DoMovementBudget}, \texttt{DoSuggestionThenAccusation}) and exposes abstract ``decision hook'' methods that the two subclasses override independently.
 \begin{itemize}
-    \item \textbf{Template Method pattern}: \texttt{Player.PlayTurn()} defines the skeleton of the turn; \texttt{HumanPlayer} and \texttt{AiPlayer} supply the input strategy by overriding each hook.
-    \item \textbf{Open/closed}: adding a new player type (e.g.\ a network player) requires only a new subclass --- no changes to \texttt{GameManagerScript} or \texttt{Player.PlayTurn()}.
+    \item Template Method pattern: \texttt{Player.PlayTurn()} defines the skeleton of the turn; \texttt{HumanPlayer} and \texttt{AiPlayer} supply the input strategy by overriding each hook.
+    \item Open/closed: adding a new player type (e.g.\ a network player) requires only a new subclass --- no changes to \texttt{GameManagerScript} or \texttt{Player.PlayTurn()}.
 \end{itemize}
 
 \subsection*{Singleton (Restricted to True Globals)}
@@ -179,7 +179,7 @@ The table below records where the delivered codebase on the \texttt{guessing} br
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|p{3.5cm}|p{3.5cm}|p{3.5cm}|l|}
+\begin{tabular}{|c|p{3.5cm}|p{8cm}|p{5cm}|p{6cm}|}
 \hline
 \textbf{\#} & \textbf{Designed} & \textbf{Delivered} & \textbf{Why} & \textbf{Where it lives now} \\ \hline
 D1 & Standalone \texttt{Suggestion} class & Suggestion flow inside \texttt{GameManagerScript.RunSuggestion()} and \texttt{UiManager} & Late Sprint 4 integration --- a refactor risked the deadline & \texttt{GameManagerScript.cs} \\ \hline

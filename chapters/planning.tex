@@ -129,20 +129,20 @@ R9 & Knowledge gap: Most of the team lacks prior experience with Unity or \textt
 The team reviewed the risk register at the start of each sprint planning meeting.
 
 \begin{itemize}
-    \item \textbf{Sprint 1:} \textbf{R1} was pre-empted. The team agreed on a Unity LTS version, and Edward seeded the repository with a working scene validated end-to-end. \textbf{R9 materialised} as the team's knowledge gap in Unity and C\# became apparent early on. To mitigate this, time was explicitly allocated in Sprint 1 for tutorials, and members relied heavily on pair-programming with the experienced team member to get up to speed.
-    \item \textbf{Sprint 2:} \textbf{R2 materialised} (Unity scene merge conflicts) and \textbf{R1 partially materialised} (incomplete \texttt{.gitignore}). Ethan configured Git LFS, and Edward established Unity Smart Merge settings, PR compile-checks, and \texttt{.gitattributes} for \texttt{.unity} and \texttt{.prefab} files. The issue did not recur.
-    \item \textbf{Sprint 3:} \textbf{R3 materialised} (the Easter break effectively paused all development for $\sim$3.5 weeks). \textbf{R4 partially materialised} as TokenMovement was more complex than estimated. The team scoped down TokenMovement, cutting A* pathfinding in favour of legal-move detection (documented in Section~\ref{sec:sprint3}).
-    \item \textbf{Sprint 4:} \textbf{R8 materialised} (GameLoop, Suggestion, and AI were unfinished). \textbf{R4 materialised} via deliberate descoping under pressure. \textbf{R2 re-emerged} during the final integration push. Edward executed a large consolidate merge on 18 April. \textbf{R7} was mitigated by verifying the zip unpacking before the deadline.
+    \item \textbf{Sprint 1:} R1 was pre-empted. The team agreed on a Unity LTS version, and Edward seeded the repository with a working scene validated end-to-end. R9 materialised as the team's knowledge gap in Unity and C\# became apparent early on. To mitigate this, time was explicitly allocated in Sprint 1 for tutorials, and members relied heavily on pair-programming with the experienced team member to get up to speed.
+    \item \textbf{Sprint 2:} R2 materialised (Unity scene merge conflicts) and R1 partially materialised (incomplete \texttt{.gitignore}). Ethan configured Git LFS, and Edward established Unity Smart Merge settings, PR compile-checks, and \texttt{.gitattributes} for \texttt{.unity} and \texttt{.prefab} files. The issue did not recur.
+    \item \textbf{Sprint 3:} R3 materialised (the Easter break effectively paused all development for $\sim$3.5 weeks). R4 partially materialised as TokenMovement was more complex than estimated. The team scoped down TokenMovement, cutting A* pathfinding in favour of legal-move detection (documented in Section~\ref{sec:sprint3}).
+    \item \textbf{Sprint 4:} R8 materialised (GameLoop, Suggestion, and AI were unfinished). R4 materialised via deliberate descoping under pressure. R2 re-emerged during the final integration push. Edward executed a large consolidate merge on 18 April. R7 was mitigated by verifying the zip unpacking before the deadline.
 \end{itemize}
 
 \textbf{Risks that did not materialise:}
-\textbf{R5} (physics dice fallback never triggered an invalid roll) and \textbf{R6} (AI implementation ).
+R5 (physics dice fallback never triggered an invalid roll) and R6 (AI implementation was less difficult than expected, see section 2.4).
 
-\textbf{Lessons for Risk Planning:}
+Lessons for Risk Planning:
 \begin{enumerate}
     \item \textbf{Easter / holiday windows must be costed into the plan from the start.} Treating R3 as ``individual illness'' understated the systemic impact of a predictable shutdown.
     \item \textbf{Tool chain risks (R1, R2) have a higher early-impact than they appear.} Sprint 2 lost $\sim$1 week of feature work to repository tooling.
-    \item \textbf{Scope-reduction is a valid mitigation.} Cutting pathfinding and standalone classes preserved the critical path at the cost of design purity.
+    \item \textbf{Scope-reduction is a valid mitigation.} Cutting some final UI tweaks preserved the critical path at the cost of design purity.
     \item \textbf{Account for learning curves in technical projects.} Identifying the knowledge gap (R9) early allowed the team to adjust Sprint 1 expectations, but future projects should formally budget time for upskilling.
 \end{enumerate}
 

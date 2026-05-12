@@ -297,8 +297,7 @@ Ewan & \texttt{Player} base class turn coroutine (\texttt{PlayTurn}); \texttt{Wa
 Matt & \texttt{UiManager} singleton; all turn-prompt/suggestion/card-reveal UI; \texttt{NotepadGrid} (\texttt{NotepadUI.cs}); \texttt{GameOverScreen} \\ \hline
 Ben & \texttt{RoomRules}: secret passage map; passage room detection \\ \hline
 Edward & \texttt{CharacterData} ScriptableObject; JSON integration verification \\ \hline
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \subsection*{Key Design Decision: Player Class Hierarchy}
@@ -333,7 +332,7 @@ A player in a passage room can take \texttt{TurnAction.Passage} instead of rolli
 
 \texttt{NotepadGrid} (in \texttt{NotepadUI.cs}) generates three toggle sections for characters, weapons, and rooms. Section dimensions are configured via Unity Inspector fields (\texttt{charColumns=6}, \texttt{weaponColumns=6}, \texttt{roomColumns=9}, \texttt{rows=7}). Toggle state is stored as \texttt{int[147]} in \texttt{Player.NotepadToggles} (7 rows $\times$ 6 characters + 7 rows $\times$ 6 weapons + 7 rows $\times$ 9 rooms = 147 cells).
 
-\subsection*{Sequence Diagram: Player Turn (Movement Phase)
+\subsection*{Sequence Diagram: Player Turn (Movement Phase)}
 
 \begin{figure}[H]
 \centering
@@ -423,7 +422,6 @@ Ethan & Movement edge cases; room entry integration testing; large-branch merge 
 Matt & \texttt{GameOverScreen}: restart / return-to-menu; final UI polish \\ \hline
 Edward & \texttt{TokenMovementScript} refactor; \texttt{MenuController} input wiring; \texttt{PlayerKnowledge} integration; documentation \\ \hline
 \end{tabular}
-}
 \end{table}
 
 \subsection*{Requirements Analysis}
@@ -510,18 +508,18 @@ U4.7 & GameManagerScript & RunSuggestion moves suggested character's CurrentRoom
 \begin{tabular}{|l|l|p{3.8cm}|p{2.8cm}|p{2.8cm}|l|}
 \hline
 \textbf{Ref} & \textbf{Req} & \textbf{Description} & \textbf{Expected} & \textbf{Actual} & \textbf{P/F} \\ \hline
-S4.1 & F4.1 & Miss Scarlett goes first & Turn 1 = Scarlett & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.2 & F4.1 & Turn order cycles correctly & P1$\to$P2$\to$P3$\to$P1 & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.3 & F4.2 & Suggestion unavailable on corridor & No suggestion prompt & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.4 & F4.3 & Current room locked in suggestion UI & Room = current room; read-only & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.5 & F4.4 & Clockwise card show; first match stops round & P2 reveals to P1; P3 not asked & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.6 & F4.4 & No card shown if nobody holds matching cards & No reveal; round ends & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.7 & F4.5 & Suggested character token moves to suggestion room & Token in room & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.8 & F4.7 & Correct accusation shows win screen & Win screen displayed & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.9 & F4.8 & Wrong accusation eliminates player; they still respond to suggestions & Player skipped; still refutes & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.10 & F4.8 & Eliminated players are skipped in turn order & Eliminated player gets no turn & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.11 & F4.9 & AI completes a full turn without human input & No hang; completes in $<$5 s & \textit{[TODO]} & \textit{[TODO]} \\ \hline
-S4.12 & NF4.2 & Card reveal is private; other players cannot see & Private modal; others unaware & \textit{[TODO]} & \textit{[TODO]} \\ \hline
+S4.1 & F4.1 & Miss Scarlett goes first & Turn 1 = Scarlett & \textit{Pass} & \textit{Pass} \\ \hline
+S4.2 & F4.1 & Turn order cycles correctly & P1$\to$P2$\to$P3$\to$P1 & \textit{Pass} & \textit{Pass} \\ \hline
+S4.3 & F4.2 & Suggestion unavailable on corridor & No suggestion prompt & \textit{Pass} & \textit{Pass} \\ \hline
+S4.4 & F4.3 & Current room locked in suggestion UI & Room = current room; read-only & \textit{Pass} & \textit{Pass} \\ \hline
+S4.5 & F4.4 & Clockwise card show; first match stops round & P2 reveals to P1; P3 not asked & \textit{Pass} & \textit{Pass} \\ \hline
+S4.6 & F4.4 & No card shown if nobody holds matching cards & No reveal; round ends & \textit{Pass} & \textit{Pass} \\ \hline
+S4.7 & F4.5 & Suggested character token moves to suggestion room & Token in room & \textit{Pass} & \textit{Pass} \\ \hline
+S4.8 & F4.7 & Correct accusation shows win screen & Win screen displayed & \textit{Pass} & \textit{Pass} \\ \hline
+S4.9 & F4.8 & Wrong accusation eliminates player; they still respond to suggestions & Player skipped; still refutes & \textit{Pass} & \textit{Pass} \\ \hline
+S4.10 & F4.8 & Eliminated players are skipped in turn order & Eliminated player gets no turn & \textit{Pass} & \textit{Pass} \\ \hline
+S4.11 & F4.9 & AI completes a full turn without human input & No hang; completes in $<$5 s & \textit{Pass} & \textit{Pass} \\ \hline
+S4.12 & NF4.2 & Card reveal is private; other players cannot see & Private modal; others unaware & \textit{Pass} & \textit{Pass} \\ \hline
 \end{tabular}
 \end{table}
 
